@@ -6,7 +6,7 @@ export const SITE = {
   title: 'Aspen Integra',
   tagline: 'Personal Research Laboratory',
   description:
-    'Aspen Integra is a personal research laboratory linking the growing AI industry and infrastructure with areas that enhance nuclear waste disposal, treatment, and power. Research projects, engineering write-ups, and a CV by Aspen Spencer.',
+    'Personal research laboratory of Aspen, a process engineer on the Hanford nuclear waste mission. Research write-ups, a blog, and a CV linking machine learning with waste disposal, treatment, and power.',
   author: 'Aspen',
   /** Contact + social */
   email: 'aspencer8119@gmail.com',
