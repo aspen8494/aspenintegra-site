@@ -28,27 +28,21 @@ jobs:
       - name: Build site
         run: npm run build
 
-      # ---- Deploy over SFTP (IONOS) ----
-      # Set these repository secrets: Settings → Secrets and variables → Actions
-      #   FTP_SERVER    e.g. access-XXXXXXX.<host>.websiteservername.com (from IONOS)
-      #   FTP_USERNAME  your IONOS SFTP username
-      #   FTP_PASSWORD  your IONOS SFTP password
-      # Optional secrets (defaults shown):
-      #   FTP_PORT      22
-      #   FTP_PROTOCOL  sftp
-      #   FTP_SERVER_DIR ./  (IONOS SFTP lands directly in the site root)
+      # ---- Deploy over SFTP (IONOS, port 22) ----
+      # Secrets: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD (required)
+      #          FTP_PORT (default 22), FTP_SERVER_DIR (default ./)
+      # SamKirkland/FTP-Deploy-Action only speaks ftp/ftps, so IONOS SFTP
+      # needs this action instead. Password auth, no SSH key required.
       - name: Deploy via SFTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT || 22 }}
-          protocol: ${{ secrets.FTP_PROTOCOL || 'sftp' }}
-          local-dir: dist/
-          server-dir: ${{ secrets.FTP_SERVER_DIR || './' }}
-          dangerous-clean-slate: false
-          log-level: minimal
+          local_path: 'dist/*'
+          remote_path: ${{ secrets.FTP_SERVER_DIR || './' }}
+          delete_remote_files: false
 
       # ---- Alternative: deploy over SSH/rsync (VPS hosting) ----
       # Uncomment this step (and remove the FTP step) if your host is a VPS.
