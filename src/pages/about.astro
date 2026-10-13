@@ -7,7 +7,7 @@ const skillGroups = [
   {
     domain: 'Process & nuclear engineering',
     skills: [
-      'HLW vitrification & off-gas treatment systems',
+      'Vitrification & off-gas treatment systems',
       'Joule-heated melter operations & troubleshooting',
       'Commissioning & startup test engineering',
       'DOE-STD-3009 / DOE-STD-1228-2019 safety basis',
@@ -20,7 +20,7 @@ const skillGroups = [
       'Process stream-flow & thermodynamic modeling (Python)',
       'Campaign/mission planning algorithms (LP/QP)',
       'Monte-Carlo sensitivity sweeps & verification suites',
-      'Best-Basis Inventory (PHOENIX) data pipelines',
+      'Tank inventory data pipelines & API ingestion',
       'Streamlit engineering dashboards',
     ],
   },
@@ -35,28 +35,49 @@ const skillGroups = [
   },
 ];
 
+const projects = [
+  {
+    href: '/research/hlw-facility-mission-model/',
+    title: 'Facility mission model',
+    detail:
+      'Element-conserving, speciated simulation of a high-level waste vitrification plant and its full off-gas train, driven by real campaign schedules.',
+  },
+  {
+    href: '/research/ewg-campaign-builder/',
+    title: 'Campaign builder',
+    detail:
+      'Mission planning application: published tank inventory to sequenced retrieval campaigns with WAC evaluation and glass-forming optimization.',
+  },
+  {
+    href: '/playground/',
+    title: 'Playground experiments',
+    detail:
+      'Small in-browser models of the same ideas: capture trains, glass properties, mission packing.',
+  },
+];
+
 const timeline = [
   {
     period: '2026 —',
     title: 'Independent research — Aspen Integra',
     detail:
-      'Founded a personal research laboratory linking AI/ML with nuclear waste disposal, treatment, and power. Built the EWG campaign builder and the HLW facility mission model.',
+      'Founded a personal research laboratory linking AI/ML with nuclear waste disposal, treatment, and power. Built the campaign builder and the facility mission model.',
   },
   {
     period: '2020 — 2022',
-    title: 'Commissioning Test Engineer — Bechtel National (Hanford)',
+    title: 'Commissioning Test Engineer — U.S. nuclear waste treatment project',
     detail:
       'Planned, prepared, and executed test documents validating facility design; supervised commissioning technicians.',
   },
   {
     period: '2019 — 2020',
-    title: 'Nuclear Safety Engineer — Bechtel National (Hanford)',
+    title: 'Nuclear Safety Engineer — U.S. nuclear waste treatment project',
     detail:
-      'Maintained the LAW facility DSA, TSRs, and hazard analyses; transitioned the safety basis to DOE-STD-1228-2019.',
+      'Maintained the facility DSA, TSRs, and hazard analyses; transitioned the safety basis to DOE-STD-1228-2019.',
   },
   {
     period: '2017 — 2019',
-    title: 'Reactor Operations Training Engineer — Naval Nuclear Laboratory',
+    title: 'Reactor Operations Training Engineer — U.S. naval nuclear program',
     detail:
       'Instructed naval nuclear operators on S5W/S6G reactor plants; advanced plant simulation; qualified EOOW (2018).',
   },
@@ -97,6 +118,12 @@ const timeline = [
           <a href="/research/">Research →</a>
           <a href={SITE.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         </div>
+        <p class="disclaimer">
+          Aspen Integra is a personal project, built on my own time from public data and
+          published literature. The views here are mine alone and do not represent my
+          employer, past or present, or any organization I work with. Full work history
+          lives on the CV page.
+        </p>
       </div>
 
       <div class="about-stack">
@@ -111,6 +138,23 @@ const timeline = [
                 ))}
               </ul>
             </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <h2 class="path-title">Projects I've developed</h2>
+      <div class="card-grid cols-3">
+        {
+          projects.map((project) => (
+            <a class="glass-card project-card" href={project.href}>
+              <h3>{project.title}</h3>
+              <p>{project.detail}</p>
+              <span class="card-cta">Read more →</span>
+            </a>
           ))
         }
       </div>
@@ -173,6 +217,17 @@ const timeline = [
     margin-top: 0.5rem;
   }
 
+  .disclaimer {
+    margin-top: 0.75rem;
+    padding: 0.9rem 1.1rem;
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--accent-soft);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
   .about-stack {
     display: grid;
     gap: 1rem;
@@ -198,6 +253,34 @@ const timeline = [
   .path-title {
     font-size: 1.6rem;
     margin-bottom: 1.5rem;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.4rem 1.5rem;
+    color: var(--text);
+  }
+
+  .project-card:hover {
+    text-decoration: none;
+  }
+
+  .project-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .project-card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    flex-grow: 1;
+  }
+
+  .card-cta {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--accent-strong);
   }
 
   .timeline {

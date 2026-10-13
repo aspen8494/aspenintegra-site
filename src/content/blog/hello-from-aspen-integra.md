@@ -15,7 +15,7 @@ The name explains the intent. Aspen is what everyone calls me. Integra means int
 
 ## What you'll find here
 
-- Research write-ups for my two flagship models, the HLW facility mission model and the EWG campaign builder, each documented problem, approach, and verified result.
+- Research write-ups for my two flagship models, the facility mission model and the campaign builder, each documented problem, approach, and verified result.
 - Blog posts about what I'm building and learning: modeling techniques, nuclear engineering practice, applied AI in an industry that generates some of the hardest data problems anywhere.
 - A playground with small in-browser interactive versions of the ideas, once they're ready.
 

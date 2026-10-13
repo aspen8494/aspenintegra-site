@@ -2,7 +2,7 @@
 title: 'Washing the waste: how one retrieval parameter doubles a mission'
 description: 'A sensitivity study from the HLW facility mission model. Lowering retrieval wash efficiency from 0.9 to 0.5 nearly doubles mission glass (45.0 to 86.2 kt) and stretches the mission from 9,044 to 16,033 days. The coupling explains why.'
 pubDate: 2026-10-12
-tags: ['nuclear engineering', 'modeling', 'hanford']
+tags: ['nuclear engineering', 'modeling', 'waste treatment']
 ---
 
 One of the first genuinely useful questions my HLW facility mission model could answer was deceptively simple: what happens to the whole mission if the tanks are washed less thoroughly during retrieval?
@@ -11,7 +11,7 @@ The mechanism is worth walking through, because it's a textbook case of planning
 
 ## Why washing matters
 
-Waste in a Hanford tank is layered: supernatant liquor over saltcake over sludge. Retrieval doesn't get everything. A heel of sludge remains on the floor of nearly every tank, and that heel carries a disproportionate share of the mission's problem species.
+Waste in a typical tank is layered: supernatant liquor over saltcake over sludge. Retrieval doesn't get everything. A heel of sludge remains on the floor of nearly every tank, and that heel carries a disproportionate share of the mission's problem species.
 
 Washing the heel mobilizes and decants soluble species like sodium salts, nitrates, and sulfates into the low-activity waste stream, where they're cheap to immobilize in cast stone. Whatever doesn't wash out rides along to the high-level waste facility, where every ton of soluble salt has to go somewhere: through the melter, out the off-gas train, and eventually into the glass.
 
@@ -21,7 +21,7 @@ Wash efficiency η is the fraction of soluble species actually decanted during r
 
 Across two published scenarios, the sweep is not subtle:
 
-| Wash efficiency | Mission glass (135.105.200) | Mission runtime |
+| Wash efficiency | Mission glass (baseline scenario) | Mission runtime |
 |---|---|---|
 | 0.90 | 45.0 kt | 9,044 days |
 | 0.50 | 86.2 kt | 16,033 days |

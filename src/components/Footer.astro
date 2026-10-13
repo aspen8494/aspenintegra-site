@@ -21,5 +21,20 @@ const year = new Date().getFullYear();
       &copy; {year} {SITE.title} · Built with
       <a href="https://astro.build" rel="noopener noreferrer" target="_blank">Astro</a>
     </div>
+
+    <p class="foot-disclaimer">
+      Personal project built on my own time from public data and published literature.
+      Views are my own and do not represent any employer or organization.
+    </p>
   </div>
 </footer>
+
+<style>
+  .foot-disclaimer {
+    width: 100%;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    border-top: 1px solid var(--border);
+    padding-top: 0.9rem;
+  }
+</style>
