@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { formatDate } from '../../utils';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('research', ({ data }) => !data.draft);
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { data } = project;
+---
+
+<Layout title={data.title} description={data.description}>
+  <article class="section-sm">
+    <div class="container prose">
+      <a href="/research/" class="back-link">← All research</a>
+      <p class="eyebrow">Research</p>
+      <h1>{data.title}</h1>
+      <div class="meta-row">
+        <span class="badge">{data.status}</span>
+        <time datetime={data.pubDate.toISOString()}>Published {formatDate(data.pubDate)}</time>
+        {data.updatedDate && (
+          <span>· Updated {formatDate(data.updatedDate)}</span>
+        )}
+      </div>
+      <div class="meta-row tags-row">
+        {data.tags.map((tag) => <span class="tag">{tag}</span>)}
+      </div>
+
+      {
+        data.repo && (
+          <p>
+            <a
+              class="btn btn-primary"
+              href={data.repo}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {data.repoLabel ?? 'View on GitHub'} ↗
+            </a>
+          </p>
+        )
+      }
+
+      <hr />
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .back-link {
+    font-size: 0.9rem;
+  }
+
+  .tags-row {
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    color: var(--text-muted);
+  }
+</style>

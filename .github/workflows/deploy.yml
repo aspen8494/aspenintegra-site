@@ -1,0 +1,65 @@
+name: Deploy to aspenintegra.com
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      # ---- Deploy over FTP/FTPS (cPanel-style shared hosting) ----
+      # Set these repository secrets: Settings → Secrets and variables → Actions
+      #   FTP_SERVER    e.g. ftp.aspenintegra.com  (or the IP from your host)
+      #   FTP_USERNAME  your cPanel FTP username
+      #   FTP_PASSWORD  your cPanel FTP password
+      # Optional secrets (defaults shown):
+      #   FTP_PORT      21
+      #   FTP_PROTOCOL  ftps   (use "ftp" if your host does not support FTPS)
+      #   FTP_SERVER_DIR /home/USERNAME/public_html
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT || 21 }}
+          protocol: ${{ secrets.FTP_PROTOCOL || 'ftps' }}
+          local-dir: dist/
+          server-dir: ${{ secrets.FTP_SERVER_DIR || './public_html/' }}
+          dangerous-clean-slate: false
+          log-level: minimal
+
+      # ---- Alternative: deploy over SSH/rsync (VPS hosting) ----
+      # Uncomment this step (and remove the FTP step) if your host is a VPS.
+      # Required secrets: SSH_HOST, SSH_USER, SSH_PRIVATE_KEY, SSH_TARGET_DIR
+      # - name: Deploy via SSH
+      #   uses: appleboy/scp-action@v0.1.7
+      #   with:
+      #     host: ${{ secrets.SSH_HOST }}
+      #     username: ${{ secrets.SSH_USER }}
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     source: "dist/*"
+      #     target: ${{ secrets.SSH_TARGET_DIR }}
+      #     strip_components: 1
+      #     rm: true

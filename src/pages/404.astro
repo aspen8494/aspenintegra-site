@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Base.astro';
+---
+
+<Layout title="Page not found" description="This page could not be found.">
+  <section class="section" style="text-align: center;">
+    <div class="container" style="max-width: 36rem;">
+      <p class="eyebrow" style="font-size: 4rem; line-height: 1;">404</p>
+      <h1 style="margin-top: 1rem;">This page is off the mission schedule.</h1>
+      <p style="margin-top: 1rem; color: var(--text-muted);">
+        The page you're looking for doesn't exist or was moved. Head back to the lab.
+      </p>
+      <div style="margin-top: 2rem; display: flex; gap: 0.75rem; justify-content: center;">
+        <a class="btn btn-primary" href="/">Home</a>
+        <a class="btn btn-ghost" href="/research/">Research</a>
+      </div>
+    </div>
+  </section>
+</Layout>

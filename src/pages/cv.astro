@@ -1,0 +1,286 @@
+---
+import Layout from '../layouts/Base.astro';
+import { SITE } from '../config';
+
+const experience = [
+  {
+    role: 'Plant Engineer 2 — Melter & Offgas Systems',
+    org: 'Bechtel National, Inc. · Hanford, WA',
+    period: 'Sep 2022 — Present',
+    points: [
+      'Technical authority for design changes affecting melter feed preparation, melting feeder, joule-heated melter, and off-gas treatment systems.',
+      'Troubleshoot plant equipment and optimize the HLW off-gas treatment system during active operations.',
+      'Commission and test equipment through system startup; develop and maintain equipment maintenance cycles.',
+      'Own the technical adequacy of engineering work products and decisions for the systems.',
+    ],
+  },
+  {
+    role: 'Commissioning Test Engineer',
+    org: 'Bechtel National, Inc. · Hanford, WA',
+    period: 'Sep 2020 — Sep 2022',
+    points: [
+      'Planned, prepared, and executed commissioning test documents validating facility design.',
+      'Supervised commissioning technicians in the test environment.',
+      'Evaluated test results and troubleshot systems to closure.',
+    ],
+  },
+  {
+    role: 'Nuclear Safety Engineer',
+    org: 'Bechtel National, Inc. · Hanford, WA',
+    period: 'Jun 2019 — Sep 2020',
+    points: [
+      'Prepared nuclear licensing change packages maintaining the LAW facility DSA, TSRs, and hazard analyses (Hazard Category 3).',
+      'Evaluated proposed changes to nuclear licensing documents driven by project design changes.',
+      'Transitioned the LAW facility safety basis under the DOE-STD-1228-2019 safe harbor methodology.',
+    ],
+  },
+  {
+    role: 'Reactor Operations Training Engineer',
+    org: 'Naval Nuclear Laboratory (NNL) · Charleston, SC',
+    period: 'Jan 2017 — May 2019',
+    points: [
+      'Instructed students in the Naval Nuclear Power Program on operating S5W and S6G reactor plants.',
+      'Nuclear power plant operations and training oversight; advanced plant simulation technology.',
+      'Optimized technical and training documents; qualified S5W/S6G Engineering Officer of the Watch (2018).',
+    ],
+  },
+];
+
+const researchProjects = [
+  {
+    name: 'HLW Facility Mission Model',
+    detail:
+      'Element-conserving speciated stream-flow model of the Hanford HLW vitrification plant and full off-gas train, driven by real tank-farm campaign schedules. 135+ automated verification tests; full-campaign runtime 1–2 s.',
+  },
+  {
+    name: 'EWG Campaign Builder',
+    detail:
+      'Mission planning application converting tank-by-tank Best-Basis Inventory into sequenced retrieval campaigns with WAC evaluation and glass-forming optimization (LP/NLP, SLSQP). Reproduces published property benchmarks to 1–4%.',
+  },
+];
+
+const education = [
+  {
+    degree: 'B.S. Chemical Engineering — Magna Cum Laude',
+    org: 'University of Idaho · Moscow, ID',
+    period: '2012 — 2016',
+    points: [
+      'Outstanding Senior Award, Department of Chemical Engineering (2016).',
+      'Undergraduate Teaching Assistant, Honors Chemistry & Chemical Engineering (2014–2016).',
+    ],
+  },
+];
+
+const licenses = [
+  'Engineer in Training (EIT) — Idaho, 2016',
+  'S5W/S6G Engineering Officer of the Watch (EOOW) — 2018',
+  'DOE Q-level security clearance (inactive) — 2016',
+];
+
+const skills = [
+  {
+    group: 'Engineering',
+    items: 'Process modeling · thermodynamics · off-gas treatment · joule-heated melters · commissioning & startup · nuclear safety basis (DSA/TSR) · hazard analysis',
+  },
+  {
+    group: 'Computation',
+    items: 'Python (NumPy, SciPy, pandas, Plotly, Streamlit) · linear/nonlinear optimization · Monte-Carlo methods · pytest verification suites · Excel automation (openpyxl)',
+  },
+  {
+    group: 'Data & AI',
+    items: 'LLM-assisted engineering workflows · agent orchestration · local inference (Ollama) · document pipelines · classification & evaluation design',
+  },
+  {
+    group: 'Tools',
+    items: 'Git & GitHub Actions · MATLAB · Mathcad · Microsoft Office / Visio · cPanel / static-site deployment',
+  },
+];
+---
+
+<Layout
+  title="CV"
+  description="Curriculum vitae of Adam Spencer — nuclear process engineer, commissioning engineer, and researcher in mission modeling and applied AI."
+>
+  <section class="page-hero">
+    <div class="container cv-head">
+      <div>
+        <p class="eyebrow">Curriculum vitae</p>
+        <h1>Adam Spencer</h1>
+        <p class="lede">
+          Nuclear process engineer — HLW vitrification & off-gas systems · mission modeling ·
+          applied AI. {SITE.location}.
+        </p>
+      </div>
+      <div class="cv-actions no-print">
+        <button class="btn btn-primary" onclick="window.print()">Download PDF</button>
+        <a class="btn btn-ghost" href={`mailto:${SITE.email}`}>Email me</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container cv-body">
+      <section class="cv-section">
+        <h2>Experience</h2>
+        {
+          experience.map((job) => (
+            <article class="cv-item glass-card">
+              <header>
+                <h3>{job.role}</h3>
+                <span class="period">{job.period}</span>
+              </header>
+              <p class="org">{job.org}</p>
+              <ul>
+                {job.points.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </section>
+
+      <section class="cv-section">
+        <h2>Research & Selected Projects</h2>
+        {
+          researchProjects.map((project) => (
+            <article class="cv-item glass-card">
+              <h3>
+                <a href="/research/">{project.name}</a>
+              </h3>
+              <p>{project.detail}</p>
+            </article>
+          ))
+        }
+      </section>
+
+      <section class="cv-section">
+        <h2>Education</h2>
+        {
+          education.map((edu) => (
+            <article class="cv-item glass-card">
+              <header>
+                <h3>{edu.degree}</h3>
+                <span class="period">{edu.period}</span>
+              </header>
+              <p class="org">{edu.org}</p>
+              <ul>
+                {edu.points.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </section>
+
+      <section class="cv-section">
+        <h2>Skills</h2>
+        <div class="glass-card cv-item skills-card">
+          {
+            skills.map((skill) => (
+              <p>
+                <strong>{skill.group}:</strong> {skill.items}
+              </p>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="cv-section">
+        <h2>Licenses & Recognition</h2>
+        <div class="glass-card cv-item">
+          <ul>
+            {licenses.map((license) => (
+              <li>{license}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .cv-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+
+  .cv-actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .cv-body {
+    display: grid;
+    gap: 2.5rem;
+    max-width: 50rem;
+  }
+
+  .cv-section h2 {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .cv-item {
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .cv-item:hover {
+    transform: none;
+  }
+
+  .cv-item header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+
+  .cv-item h3 {
+    font-size: 1.02rem;
+  }
+
+  .period {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--accent-strong);
+    white-space: nowrap;
+  }
+
+  .org {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin-top: 0.15rem;
+  }
+
+  .cv-item ul {
+    margin-top: 0.6rem;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.3rem;
+    font-size: 0.93rem;
+    color: var(--text-muted);
+  }
+
+  .cv-item p + p {
+    margin-top: 0.5rem;
+  }
+
+  .skills-card p {
+    font-size: 0.93rem;
+    color: var(--text-muted);
+  }
+
+  @media print {
+    .page-hero { padding-block: 0.5rem; }
+    .cv-body { gap: 1.25rem; }
+    .cv-item { padding: 0.75rem 1rem; }
+  }
+</style>

@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Base.astro';
+import { SITE } from '../config';
+
+const channels = [
+  {
+    label: 'Email',
+    value: SITE.email,
+    href: `mailto:${SITE.email}`,
+    detail: 'Best for collaboration, questions, or opportunities.',
+  },
+  {
+    label: 'GitHub',
+    value: SITE.githubUser,
+    href: SITE.github,
+    detail: 'Where the code lives — research repos and experiments.',
+  },
+  {
+    label: 'LinkedIn',
+    value: 'Adam Spencer',
+    href: SITE.linkedin,
+    detail: 'Professional history and network.',
+  },
+];
+---
+
+<Layout
+  title="Contact"
+  description="Get in touch with Aspen — email, GitHub, and LinkedIn for collaborations, questions, and opportunities."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Contact</p>
+      <h1>Get in touch</h1>
+      <p class="lede">
+        Interested in nuclear modeling, mission planning, or applied AI in hard
+        industries? I'm open to collaborations and conversations — reach out through any
+        channel below.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <div class="card-grid cols-3">
+        {
+          channels.map((channel) => (
+            <a
+              class="glass-card channel-card"
+              href={channel.href}
+              target={channel.href.startsWith('mailto') ? undefined : '_blank'}
+              rel={channel.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+            >
+              <span class="channel-label">{channel.label}</span>
+              <span class="channel-value">{channel.value}</span>
+              <span class="channel-detail">{channel.detail}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .channel-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.6rem;
+    color: var(--text);
+  }
+
+  .channel-card:hover {
+    text-decoration: none;
+  }
+
+  .channel-label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-strong);
+  }
+
+  .channel-value {
+    font-size: 1.15rem;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+
+  .channel-detail {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+</style>

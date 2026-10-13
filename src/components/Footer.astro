@@ -1,0 +1,25 @@
+---
+import Logo from './Logo.astro';
+import { NAV, SITE } from '../config';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex; align-items:center; gap:0.5rem;">
+      <Logo />
+      <span>{SITE.title} — {SITE.tagline}</span>
+    </div>
+
+    <nav aria-label="Footer navigation">
+      {NAV.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a href="/rss.xml">RSS</a>
+    </nav>
+
+    <div>
+      &copy; {year} {SITE.title} · Built with
+      <a href="https://astro.build" rel="noopener noreferrer" target="_blank">Astro</a>
+    </div>
+  </div>
+</footer>

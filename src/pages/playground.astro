@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Base.astro';
+
+const teasers = [
+  {
+    title: 'Mission-planning sandbox',
+    detail:
+      'An in-browser toy of the campaign-building problem: pack waste blends into a volume band under WAC constraints and watch the glass mass respond. A scaled-down, fully client-side cousin of the EWG campaign builder.',
+  },
+  {
+    title: 'Off-gas capture visualizer',
+    detail:
+      'Interactive diagram of a melter off-gas train — scrubber, WESP, HEPA, carbon bed, mordenite, SCO/SCR — with sliders for decontamination factors and live stack-composition readouts.',
+  },
+  {
+    title: 'Glass property explorer',
+    detail:
+      'Drag glass composition sliders and see viscosity (VFT model), electrical conductivity, and PCT release respond in real time, per the EWG2.5 property formulations.',
+  },
+];
+---
+
+<Layout
+  title="Playground"
+  description="Interactive in-browser experiments from the Aspen Integra lab — client-side models and visualizations connecting nuclear engineering with machine learning."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Playground</p>
+      <h1>Interactive experiments</h1>
+      <p class="lede">
+        Small, fully client-side models and visualizations — the ideas behind the research,
+        made touchable. Under construction: first experiments land here soon.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <div class="card-grid cols-3">
+        {
+          teasers.map((teaser, i) => (
+            <div class="glass-card teaser-card">
+              <div class="teaser-num" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </div>
+              <h2>{teaser.title}</h2>
+              <p>{teaser.detail}</p>
+              <span class="soon">In development</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .teaser-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 1.6rem;
+  }
+
+  .teaser-num {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .teaser-card h2 {
+    font-size: 1.15rem;
+  }
+
+  .teaser-card p {
+    color: var(--text-muted);
+    font-size: 0.93rem;
+    flex-grow: 1;
+  }
+
+  .soon {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    border: 1px dashed var(--accent);
+    color: var(--accent-strong);
+  }
+</style>

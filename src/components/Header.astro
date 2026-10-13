@@ -1,0 +1,31 @@
+---
+import Logo from './Logo.astro';
+import ThemeToggle from './ThemeToggle.astro';
+import { NAV, SITE } from '../config';
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href) => {
+  const normalized = href.replace(/\/$/, '') || '/';
+  return pathname === normalized;
+};
+---
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/" aria-label={`${SITE.title} — home`}>
+      <Logo />
+      <span class="brand-name">{SITE.title}</span>
+    </a>
+
+    <nav aria-label="Main navigation">
+      {
+        NAV.filter((item) => item.href !== '/').map((item) => (
+          <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+      <ThemeToggle />
+    </nav>
+  </div>
+</header>

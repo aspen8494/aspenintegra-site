@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { formatDate } from '../../utils';
+
+const projects = (await getCollection('research', ({ data }) => !data.draft))
+  .sort((a, b) => (b.data.weight ?? 0) - (a.data.weight ?? 0) || b.data.pubDate - a.data.pubDate);
+---
+
+<Layout
+  title="Research"
+  description="Featured research projects at the intersection of nuclear waste treatment and applied AI — mission planning, facility simulation, and machine learning."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Research</p>
+      <h1>Projects & write-ups</h1>
+      <p class="lede">
+        Engineering applications and models I've built and maintain — each page walks the
+        problem, the approach, and the verified results.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <div class="card-grid cols-2">
+        {
+          projects.map((project) => (
+            <a class="glass-card project-card" href={`/research/${project.id}/`}>
+              <div class="meta-row">
+                <span class="badge">{project.data.status}</span>
+                <time datetime={project.data.pubDate.toISOString()}>
+                  {formatDate(project.data.pubDate)}
+                </time>
+              </div>
+              <h2>{project.data.title}</h2>
+              <p>{project.data.description}</p>
+              <div class="meta-row">
+                {project.data.tags.map((tag) => <span class="tag">{tag}</span>)}
+              </div>
+              <span class="card-cta">Read the write-up →</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.6rem;
+    color: var(--text);
+  }
+
+  .project-card:hover {
+    text-decoration: none;
+  }
+
+  .project-card h2 {
+    font-size: 1.3rem;
+  }
+
+  .project-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    flex-grow: 1;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    color: var(--text-muted);
+  }
+
+  .card-cta {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--accent-strong);
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+// Aspen Integra logo — an aspen-leaf formed by circuit traces.
+// Uses currentColor for the leaf outline so it adapts to theme text;
+// the vein + nodes use the site gradient.
+---
+<svg
+  viewBox="0 0 32 32"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <defs>
+    <linearGradient id="ai-grad" x1="4" y1="2" x2="28" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#06b6d4" />
+      <stop offset="0.55" stop-color="#38bdf8" />
+      <stop offset="1" stop-color="#6366f1" />
+    </linearGradient>
+  </defs>
+  <!-- leaf body -->
+  <path
+    d="M16 2.5C23.5 6.5 27 12 27 18.2 27 24.8 22.2 29.5 16 29.5 9.8 29.5 5 24.8 5 18.2 5 12 8.5 6.5 16 2.5Z"
+    stroke="currentColor"
+    stroke-width="1.8"
+    stroke-linejoin="round"
+  />
+  <!-- circuit vein -->
+  <path d="M16 8v16" stroke="url(#ai-grad)" stroke-width="1.8" stroke-linecap="round" />
+  <!-- circuit branches -->
+  <path d="M16 12.5H10.5" stroke="url(#ai-grad)" stroke-width="1.6" stroke-linecap="round" />
+  <path d="M16 17h5.5" stroke="url(#ai-grad)" stroke-width="1.6" stroke-linecap="round" />
+  <path d="M16 21.5h-4" stroke="url(#ai-grad)" stroke-width="1.6" stroke-linecap="round" />
+  <!-- circuit nodes -->
+  <circle cx="9" cy="12.5" r="1.5" fill="#06b6d4" />
+  <circle cx="23" cy="17" r="1.5" fill="#6366f1" />
+  <circle cx="10.5" cy="21.5" r="1.5" fill="#06b6d4" />
+</svg>

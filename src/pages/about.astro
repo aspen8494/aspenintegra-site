@@ -1,0 +1,241 @@
+---
+import Layout from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+import { SITE } from '../config';
+
+const skillGroups = [
+  {
+    domain: 'Process & nuclear engineering',
+    skills: [
+      'HLW vitrification & off-gas treatment systems',
+      'Joule-heated melter operations & troubleshooting',
+      'Commissioning & startup test engineering',
+      'DOE-STD-3009 / DOE-STD-1228-2019 safety basis',
+      'DSAs, TSRs, and hazard analyses',
+    ],
+  },
+  {
+    domain: 'Modeling & data',
+    skills: [
+      'Process stream-flow & thermodynamic modeling (Python)',
+      'Campaign/mission planning algorithms (LP/QP)',
+      'Monte-Carlo sensitivity sweeps & verification suites',
+      'Best-Basis Inventory (PHOENIX) data pipelines',
+      'Streamlit engineering dashboards',
+    ],
+  },
+  {
+    domain: 'Machine learning & automation',
+    skills: [
+      'LLM-assisted engineering workflows & agent orchestration',
+      'Local LLM inference (Ollama) & document pipelines',
+      'Classification systems & evaluation harness design',
+      'Git-driven development & CI (GitHub Actions)',
+    ],
+  },
+];
+
+const timeline = [
+  {
+    period: '2026 —',
+    title: 'Independent research — Aspen Integra',
+    detail:
+      'Founded a personal research laboratory linking AI/ML with nuclear waste disposal, treatment, and power. Built the EWG campaign builder and the HLW facility mission model.',
+  },
+  {
+    period: '2022 —',
+    title: 'Plant Engineer 2, Melter & Offgas Systems — Bechtel National (Hanford)',
+    detail:
+      'Technical authority for design changes; troubleshooting and optimization of the off-gas treatment system; commissioning and equipment maintenance strategy.',
+  },
+  {
+    period: '2020 — 2022',
+    title: 'Commissioning Test Engineer — Bechtel National (Hanford)',
+    detail:
+      'Planned, prepared, and executed test documents validating facility design; supervised commissioning technicians.',
+  },
+  {
+    period: '2019 — 2020',
+    title: 'Nuclear Safety Engineer — Bechtel National (Hanford)',
+    detail:
+      'Maintained the LAW facility DSA, TSRs, and hazard analyses; transitioned the safety basis to DOE-STD-1228-2019.',
+  },
+  {
+    period: '2017 — 2019',
+    title: 'Reactor Operations Training Engineer — Naval Nuclear Laboratory',
+    detail:
+      'Instructed naval nuclear operators on S5W/S6G reactor plants; advanced plant simulation; qualified EOOW (2018).',
+  },
+];
+---
+
+<Layout
+  title="About"
+  description="About Aspen — process engineer and researcher behind Aspen Integra, working at the intersection of nuclear waste treatment and applied AI."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">About</p>
+      <h1>The engineer behind the lab</h1>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container about-grid">
+      <div class="about-card glass-card">
+        <Logo />
+        <h2>Hi, I'm Aspen.</h2>
+        <p>
+          I'm a process engineer in Richland, Washington — chemical engineering by trade,
+          nuclear by career, and increasingly a computational modeler by choice. I work on
+          the Hanford high-level waste mission: the real plant, the real off-gas train,
+          the real melter.
+        </p>
+        <p>
+          Aspen Integra is where I connect that operational world to the tools it deserves:
+          speciated process models, optimization-driven mission planning, and the growing
+          machine-learning stack. The thesis is simple — the nuclear backend generates some
+          of the hardest, highest-stakes data problems in industry, and AI infrastructure
+          is finally ready to meet them.
+        </p>
+        <div class="about-links">
+          <a href="/cv/">Full CV →</a>
+          <a href="/research/">Research →</a>
+          <a href={SITE.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+      </div>
+
+      <div class="about-stack">
+        <h2>What I work with</h2>
+        {
+          skillGroups.map((group) => (
+            <div class="glass-card skill-card">
+              <h3>{group.domain}</h3>
+              <ul>
+                {group.skills.map((skill) => (
+                  <li>{skill}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <h2 class="path-title">The path so far</h2>
+      <ol class="timeline">
+        {
+          timeline.map((item) => (
+            <li class="glass-card timeline-item">
+              <span class="period">{item.period}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.detail}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .about-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 56rem) {
+    .about-grid {
+      grid-template-columns: 2fr 3fr;
+      align-items: start;
+    }
+  }
+
+  .about-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .about-card svg {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .about-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .about-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .about-stack {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .skill-card {
+    padding: 1.4rem 1.6rem;
+  }
+
+  .skill-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .skill-card ul {
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.3rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .path-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+    max-width: 48rem;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .timeline-item .period {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent-strong);
+    white-space: nowrap;
+    padding-top: 0.2rem;
+    min-width: 7.5rem;
+  }
+
+  .timeline-item h3 {
+    font-size: 1.02rem;
+  }
+
+  .timeline-item p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin-top: 0.25rem;
+  }
+</style>
