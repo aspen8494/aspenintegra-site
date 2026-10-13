@@ -28,25 +28,25 @@ jobs:
       - name: Build site
         run: npm run build
 
-      # ---- Deploy over FTP/FTPS (cPanel-style shared hosting) ----
+      # ---- Deploy over SFTP (IONOS) ----
       # Set these repository secrets: Settings → Secrets and variables → Actions
-      #   FTP_SERVER    e.g. ftp.aspenintegra.com  (or the IP from your host)
-      #   FTP_USERNAME  your cPanel FTP username
-      #   FTP_PASSWORD  your cPanel FTP password
+      #   FTP_SERVER    e.g. access-XXXXXXX.<host>.websiteservername.com (from IONOS)
+      #   FTP_USERNAME  your IONOS SFTP username
+      #   FTP_PASSWORD  your IONOS SFTP password
       # Optional secrets (defaults shown):
-      #   FTP_PORT      21
-      #   FTP_PROTOCOL  ftps   (use "ftp" if your host does not support FTPS)
-      #   FTP_SERVER_DIR /home/USERNAME/public_html
-      - name: Deploy via FTP
+      #   FTP_PORT      22
+      #   FTP_PROTOCOL  sftp
+      #   FTP_SERVER_DIR ./  (IONOS SFTP lands directly in the site root)
+      - name: Deploy via SFTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT || 21 }}
-          protocol: ${{ secrets.FTP_PROTOCOL || 'ftps' }}
+          port: ${{ secrets.FTP_PORT || 22 }}
+          protocol: ${{ secrets.FTP_PROTOCOL || 'sftp' }}
           local-dir: dist/
-          server-dir: ${{ secrets.FTP_SERVER_DIR || './public_html/' }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR || './' }}
           dangerous-clean-slate: false
           log-level: minimal
 
