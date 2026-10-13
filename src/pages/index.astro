@@ -13,7 +13,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
 const featured = research.slice(0, 2);
 const stats = [
-  { value: '15+ yrs', label: 'Nuclear energy & operations' },
+  { value: '10 yrs', label: 'Nuclear energy & operations' },
   { value: '2', label: 'Flagship mission-model applications' },
   { value: '135+', label: 'Automated tests in the HLW model suite' },
   { value: '1–2 s', label: 'Full campaign simulation runtime' },
@@ -26,10 +26,10 @@ const stats = [
       <span class="badge">Personal Research Laboratory</span>
       <h1>Linking <span class="gradient-text">AI & machine learning</span> with the nuclear backend.</h1>
       <p class="lede">
-        {SITE.title} is the research workspace of Aspen, a process engineer on the
-        Hanford high-level waste mission. At work I keep the melter and its off-gas
-        train running. Off the clock I build the modeling and machine-learning tools
-        that mission has been missing, aimed at waste disposal, treatment, and power.
+        {SITE.title} is the research workspace of Aspen, a nuclear process engineer
+        with a decade across operations, training, safety basis, commissioning, and
+        plant engineering. I build the modeling and machine-learning tools the nuclear
+        backend has been missing, aimed at waste disposal, treatment, and power.
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="/research/">Explore research</a>

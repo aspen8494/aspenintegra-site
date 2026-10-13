@@ -9,7 +9,7 @@ Welcome to Aspen Integra, my personal research laboratory. It sits between two t
 
 ## Why this site exists
 
-By day I'm a plant engineer on the Hanford high-level waste mission, which means melter and off-gas systems: the sharp end of radioactive waste treatment. Outside of that, I build the modeling and planning tools I wished existed. Speciated process simulations. Optimization-driven mission planning. Verification suites that treat mass closure as a contract instead of a hope.
+My background is the plant side of the nuclear industry: reactor operations training, safety basis, commissioning, and plant engineering, much of it around radioactive waste treatment. That work is why I build the modeling and planning tools I wished existed. Speciated process simulations. Optimization-driven mission planning. Verification suites that treat mass closure as a contract instead of a hope.
 
 The name explains the intent. Aspen is what everyone calls me. Integra means intact, whole, integrated, and that's the goal: one continuous data path from tank inventory chemistry to stack composition and operator schedules, and eventually from plant sensor to machine-learning model.
 
