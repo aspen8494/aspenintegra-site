@@ -29,20 +29,29 @@ jobs:
         run: npm run build
 
       # ---- Deploy over SFTP (IONOS, port 22) ----
+      # Custom paramiko deploy script that mirrors an interactive `sftp`
+      # login: password auth with keyboard-interactive fallback. This is
+      # what works manually (`sftp -P 22 user@host`); off-the-shelf
+      # password-SFTP actions get "Permission denied" on IONOS.
       # Secrets: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD (required)
       #          FTP_PORT (default 22), FTP_SERVER_DIR (default ./)
-      # SamKirkland/FTP-Deploy-Action only speaks ftp/ftps, so IONOS SFTP
-      # needs this action instead. Password auth, no SSH key required.
-      - name: Deploy via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT || 22 }}
-          local_path: 'dist/*'
-          remote_path: ${{ secrets.FTP_SERVER_DIR || './' }}
-          delete_remote_files: false
+          python-version: '3.12'
+
+      - name: Install paramiko
+        run: pip install paramiko
+
+      - name: Deploy via SFTP
+        env:
+          SFTP_HOST: ${{ secrets.FTP_SERVER }}
+          SFTP_USER: ${{ secrets.FTP_USERNAME }}
+          SFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          SFTP_PORT: ${{ secrets.FTP_PORT || '22' }}
+          SFTP_REMOTE_DIR: ${{ secrets.FTP_SERVER_DIR || './' }}
+          SFTP_LOCAL_DIR: dist
+        run: python scripts/deploy_sftp.py
 
       # ---- Alternative: deploy over SSH/rsync (VPS hosting) ----
       # Uncomment this step (and remove the FTP step) if your host is a VPS.
