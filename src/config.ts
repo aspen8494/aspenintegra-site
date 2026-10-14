@@ -22,7 +22,6 @@ export const NAV = [
   { href: '/papers/', label: 'White Paper' },
   { href: '/blog/', label: 'Blog' },
   { href: '/about/', label: 'About' },
-  { href: '/cv/', label: 'CV' },
   { href: '/playground/', label: 'Playground' },
   { href: '/contact/', label: 'Contact' },
 ] as const;

@@ -15,18 +15,12 @@ const channels = [
     href: SITE.github,
     detail: 'Where the code lives: research repos and experiments.',
   },
-  {
-    label: 'LinkedIn',
-    value: 'Adam Spencer',
-    href: SITE.linkedin,
-    detail: 'Professional history and network.',
-  },
 ];
 ---
 
 <Layout
   title="Contact"
-  description="Get in touch with Aspen. Email, GitHub, and LinkedIn for collaborations, questions, and opportunities."
+  description="Get in touch with Aspen. Email and GitHub for collaborations, questions, and opportunities."
 >
   <section class="page-hero">
     <div class="container">
@@ -34,15 +28,14 @@ const channels = [
       <h1>Get in touch</h1>
       <p class="lede">
         If you're working on nuclear modeling, mission planning, or machine learning in
-        unforgiving industries, I'd like to hear about it. Email is fastest; any of the
-        channels below works.
+        unforgiving industries, I'd like to hear about it. Email is fastest.
       </p>
     </div>
   </section>
 
   <section class="section-sm">
     <div class="container">
-      <div class="card-grid cols-3">
+      <div class="card-grid cols-2">
         {
           channels.map((channel) => (
             <a
