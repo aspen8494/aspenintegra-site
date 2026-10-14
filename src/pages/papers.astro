@@ -1,25 +1,51 @@
 ---
 import Layout from '../layouts/Base.astro';
 
-const paper = {
-  title: 'Coupled Mission Planning and Facility Process Modeling',
-  subtitle: 'Architecture and algorithms of the campaign builder and the facility process model',
-  pdf: '/mission-modeling-white-paper.pdf',
-  pages: 28,
-  date: 'October 2026',
-  abstract:
-    'This paper documents two coupled applications that model the end-to-end mission from published tank inventory chemistry through sequenced retrieval campaigns to glass. The campaign builder turns per-tank data into feed blends with WAC evaluation and glass-forming optimization; the facility model simulates the melter, off-gas treatment train, condensate chemistry, and the discrete operator schedule, with mass and energy closure enforced throughout and verified against published benchmarks.',
-  highlights: [
-    'End-to-end lineage from published inventory data to stack composition and operator schedules',
-    'Campaign generation under published sequencing rules with linear-program blend optimization',
-    'Glass formulation as constrained nonlinear optimization (SLSQP with multi-start)',
-    'Element-conserving melter partition engine with residual-ledger verification',
-    'Full off-gas train: scrubber, WESP, HEME, HEPA, adsorber beds, RHX/SCO/SCR',
-    'Discrete operations layer scheduling the real-time operator recipe against the calendar',
-    'Wash-efficiency sensitivity study: retrieval strategy nearly doubles mission glass',
-    'Verification: 135+ automated tests, per-species closure, energy closure, boundary audits',
-  ],
-};
+// Papers are listed newest-first. Each renders as its own embedded-viewer
+// section. Generic filenames keep program identifiers out of URLs.
+const papers = [
+  {
+    id: 'campaign-retrieval-optimization',
+    featured: true,
+    title: 'Campaign Retrieval Optimization',
+    subtitle:
+      'A large-neighborhood search over retrieval campaigns: its architecture, and what it can and cannot save',
+    pdf: '/campaign-retrieval-optimization-white-paper.pdf',
+    pages: 22,
+    date: 'October 2026 · Rev. 0',
+    abstract:
+      'This paper documents a new optimization layer over the campaign retrieval model: a large-neighborhood search that keeps the baseline campaign set, repeatedly destroys and rebuilds small groups of campaigns under all of the same sequencing and waste acceptance rules, and accepts a rebuilt set only when the exact glass formulation model confirms the mission needs less glass. The central finding is a negative result worth knowing: inverse waste loading is nearly linear in blend composition, so total mission glass is almost independent of how waste is partitioned into campaigns. What the search actually buys is structure: across all 32 published mission scenarios it cut campaign count by 20.0% (2,284 to 1,827) while trimming glass by 0.057%, with 17 scenarios improving on canisters and none worsening.',
+    highlights: [
+      'Large-neighborhood search with verification-gated, strictly-improving acceptance',
+      'Exact glass-formulation evaluation of every candidate mission (multi-start SLSQP)',
+      'The linearity result: inverse waste loading fits blend composition at R² = 0.79, explaining why greedy repartitioning loses',
+      'Suite-wide: -20.0% campaigns, -216 canisters, 0 scenarios worsened across 32 published scenarios',
+      'Reference case: a 16-campaign chain of capped campaigns collapsed to 5 by cross-blending layers the baseline kept apart',
+      'Every result passed the full hard-rule battery: precedence, volume bands, mass conservation, WAC compliance',
+      'Blend-signature memoization: 116,895 cache hits to 3,970 exact solves (29.4:1)',
+    ],
+  },
+  {
+    id: 'mission-modeling',
+    featured: false,
+    title: 'Coupled Mission Planning and Facility Process Modeling',
+    subtitle: 'Architecture and algorithms of the campaign builder and the facility process model',
+    pdf: '/mission-modeling-white-paper.pdf',
+    pages: 28,
+    date: 'October 2026',
+    abstract:
+      'This paper documents two coupled applications that model the end-to-end mission from published tank inventory chemistry through sequenced retrieval campaigns to glass. The campaign builder turns per-tank data into feed blends with WAC evaluation and glass-forming optimization; the facility model simulates the melter, off-gas treatment train, condensate chemistry, and the operator schedule, with mass and energy closure enforced throughout and verified against published benchmarks.',
+    highlights: [
+      'End-to-end lineage from published inventory data to stack composition and operator schedules',
+      'Campaign generation under published sequencing rules with linear-program blend optimization',
+      'Glass formulation as constrained nonlinear optimization (SLSQP with multi-start)',
+      'Element-conserving melter partition engine with residual-ledger verification',
+      'Full off-gas train: scrubber, WESP, HEME, HEPA, adsorber beds, RHX/SCO/SCR',
+      'Wash-efficiency sensitivity study: retrieval strategy nearly doubles mission glass',
+      'Verification: 147 automated tests, per-species closure, energy closure, boundary audits',
+    ],
+  },
+];
 
 const dashboard = {
   title: 'Interactive dashboard',
@@ -63,54 +89,65 @@ const extraShots = [
 ---
 
 <Layout
-  title="White paper & dashboard"
-  description="The mission-modeling white paper and the interactive Streamlit dashboard: methods, verified results, and the engineer-facing tooling around the facility mission model."
+  title="White papers & dashboard"
+  description="Two mission-modeling white papers (campaign retrieval optimization and coupled mission planning) and the interactive Streamlit dashboard built on the facility mission model."
 >
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Deliverables</p>
-      <h1>White paper & dashboard</h1>
+      <h1>White papers & dashboard</h1>
       <p class="lede">
-        The full write-up of the mission-modeling toolchain, and the interactive dashboard
-        that sits on top of it. Read the paper inline below; explore the dashboard's
-        capabilities next to it.
+        The full write-ups of the mission-modeling toolchain, and the interactive
+        dashboard that sits on top of it. Read each paper inline below; explore the
+        dashboard's capabilities after.
       </p>
     </div>
   </section>
 
-  <!-- ---------- White paper: embedded, not downloadable ---------- -->
-  <section class="section-sm">
-    <div class="container paper-grid">
-      <div class="paper-info glass-card">
-        <span class="badge">{paper.pages} pages · {paper.date}</span>
-        <h2>{paper.title}</h2>
-        <p class="paper-subtitle">{paper.subtitle}</p>
-        <p class="paper-abstract">{paper.abstract}</p>
+  <!-- ---------- Papers: embedded, not downloadable ---------- -->
+  {
+    papers.map((paper) => (
+      <section class="section-sm paper-section" id={paper.id}>
+        <div class="container">
+          {paper.featured && <p class="eyebrow new-flag">New</p>}
+          <div class="paper-grid">
+            <div class="paper-info glass-card">
+              <span class="badge">
+                {paper.pages} pages · {paper.date}
+              </span>
+              <h2>{paper.title}</h2>
+              <p class="paper-subtitle">{paper.subtitle}</p>
+              <p class="paper-abstract">{paper.abstract}</p>
 
-        <div class="paper-highlights">
-          <h3>What's in it</h3>
-          <ul>
-            {paper.highlights.map((highlight) => <li>{highlight}</li>)}
-          </ul>
+              <div class="paper-highlights">
+                <h3>What's in it</h3>
+                <ul>
+                  {paper.highlights.map((highlight) => (
+                    <li>{highlight}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <p class="paper-note">
+                The full paper is embedded alongside this summary (viewer on the right).
+                It's provided for reading here; for a copy or citation reference,
+                <a href="/contact/">reach out</a>.
+              </p>
+            </div>
+
+            <div class="paper-viewer glass-card">
+              <embed
+                src={paper.pdf}
+                type="application/pdf"
+                class="pdf-embed"
+                aria-label={`Embedded white paper: ${paper.title}`}
+              />
+            </div>
+          </div>
         </div>
-
-        <p class="paper-note">
-          The full paper is embedded alongside this summary (viewer on the right). It's
-          provided for reading here; for a copy or citation reference,
-          <a href="/contact/">reach out</a>.
-        </p>
-      </div>
-
-      <div class="paper-viewer glass-card">
-        <embed
-          src={paper.pdf}
-          type="application/pdf"
-          class="pdf-embed"
-          aria-label={`Embedded white paper: ${paper.title}`}
-        />
-      </div>
-    </div>
-  </section>
+      </section>
+    ))
+  }
 
   <!-- ---------- Dashboard feature ---------- -->
   <section class="section-sm">
@@ -159,7 +196,15 @@ const extraShots = [
 </Layout>
 
 <style>
-  /* ---------- White paper layout ---------- */
+  /* ---------- Papers ---------- */
+  .new-flag {
+    margin-bottom: 0.75rem;
+  }
+
+  .paper-section {
+    scroll-margin-top: 5.5rem;
+  }
+
   .paper-grid {
     display: grid;
     gap: 1.25rem;
