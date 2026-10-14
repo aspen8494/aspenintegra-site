@@ -13,7 +13,7 @@ The mechanism is worth walking through, because it's a textbook case of planning
 
 Waste in a typical tank is layered: supernatant liquor over saltcake over sludge. Retrieval doesn't get everything. A heel of sludge remains on the floor of nearly every tank, and that heel carries a disproportionate share of the mission's problem species.
 
-Washing the heel mobilizes and decants soluble species like sodium salts, nitrates, and sulfates into the low-activity waste stream, where they're cheap to immobilize in cast stone. Whatever doesn't wash out rides along to the high-level waste facility, where every ton of soluble salt has to go somewhere: through the melter, out the off-gas train, and eventually into the glass.
+Washing the heel mobilizes and decants soluble species like sodium salts, nitrates, and sulfates into the low-activity waste stream, where they're lower risk (Immobilized LAW or low-activity grout (see Saltstone as an example)). Whatever doesn't wash out rides along to the high-level waste facility, where every ton of soluble salt has to go somewhere: through the melter, out the off-gas train, or captured into the glass.
 
 Wash efficiency η is the fraction of soluble species actually decanted during retrieval. The model re-synthesizes every heel record at any specified η, so the question became a parameter sweep instead of a debate.
 
@@ -30,7 +30,7 @@ Nearly double the glass and 77% more calendar time from one retrieval parameter.
 
 1. More mass to glass. Unwashed soluble species ride the heel into HLW feed. Every retained ton of sodium must be diluted into glass to keep melt chemistry feasible, so the glass-forming optimizer adds substantially more glass-forming chemical while holding viscosity and product consistency constraints.
 2. More campaigns. Heavier feeds fill the 450 to 550 kgal campaign volume band faster per ton of true waste, and heel-dominated campaigns stretch runtime. The discrete operations layer shows campaign turnarounds and QC holds multiplying along with them.
-3. A hotter off-gas train. Soluble nitrate and sulfate volatilize in the melter and load the scrubber, catalytic reactors, and condensate system. The facility model tracks exactly which elements go where, and the stack numbers move accordingly.
+3. A dirtier off-gas train. Soluble nitrate and sulfate volatilize in the melter and load the scrubber, catalytic reactors, and condensate system. The facility model tracks exactly which elements go where, and the stack numbers move accordingly.
 
 ## Why coupling is the point
 
