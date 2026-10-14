@@ -6,12 +6,48 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  /** Optional schema.org object(s) to embed as JSON-LD */
+  jsonLd?: object | object[];
 }
 
-const { title, description = SITE.description, image = '/og.png' } = Astro.props;
+const { title, description = SITE.description, image = '/og.png', jsonLd } = Astro.props;
 
 const pageTitle = title ? `${title} · ${SITE.title}` : `${SITE.title} — ${SITE.tagline}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const siteURL = new URL('/', Astro.site);
+
+/** Person schema on every page: grounds "Aspen"/"aspenintegra.com" queries. */
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Aspen',
+  alternateName: 'Adam Spencer',
+  url: siteURL.href,
+  email: `mailto:${SITE.email}`,
+  jobTitle: 'Nuclear Process Engineer',
+  description:
+    'Process engineer and researcher running Aspen Integra, a personal research laboratory linking machine learning with nuclear waste disposal, treatment, and power.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: SITE.location,
+    addressRegion: 'WA',
+    addressCountry: 'US',
+  },
+  sameAs: [SITE.github, SITE.linkedin],
+  knowsAbout: [
+    'nuclear waste vitrification',
+    'process modeling',
+    'campaign planning optimization',
+    'large-neighborhood search',
+    'machine learning',
+    'engineering thermodynamics',
+  ],
+};
+
+const jsonLdBlocks = [
+  personLd,
+  ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []),
+];
 
 const themeInit = `
   (() => {
@@ -52,3 +88,6 @@ const themeInit = `
 <meta name="twitter:image" content={new URL(image, Astro.site)} />
 
 <script is:inline set:html={themeInit} />
+{jsonLdBlocks.map((block) => (
+  <script type="application/ld+json" set:html={JSON.stringify(block)} />
+))}

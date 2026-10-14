@@ -18,9 +18,25 @@ const stats = [
   { value: '135+', label: 'Automated tests in the HLW model suite' },
   { value: '1–2 s', label: 'Full campaign simulation runtime' },
 ];
+
+const websiteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Aspen Integra',
+  alternateName: 'Aspen Integra Personal Research Laboratory',
+  url: 'https://aspenintegra.com/',
+  description:
+    'Personal research laboratory of Aspen, a nuclear process engineer. Research write-ups, a blog, and a CV linking machine learning with waste disposal, treatment, and power.',
+  inLanguage: 'en-US',
+  author: {
+    '@type': 'Person',
+    name: 'Aspen',
+    url: 'https://aspenintegra.com/',
+  },
+};
 ---
 
-<Layout>
+<Layout jsonLd={websiteLd}>
   <section class="hero">
     <div class="container hero-inner">
       <span class="badge">Personal Research Laboratory</span>

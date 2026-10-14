@@ -104,7 +104,7 @@ const extraShots = [
     </div>
   </section>
 
-  <!-- ---------- Papers: embedded, not downloadable ---------- -->
+  <!-- ---------- Papers: summaries only, PDF on request ---------- -->
   {
     papers.map((paper) => (
       <section class="section-sm paper-section" id={paper.id}>
@@ -127,25 +127,28 @@ const extraShots = [
                   ))}
                 </ul>
               </div>
-
-              <p class="paper-note">
-                The full paper is embedded alongside this summary (viewer on the right).
-                It's provided for reading here; for a copy or citation reference,
-                <a href="/contact/">reach out</a>.
-              </p>
             </div>
 
-            <div class="paper-viewer glass-card">
-              <embed
-                src={paper.pdf}
-                type="application/pdf"
-                class="pdf-embed"
-                aria-label={`Embedded white paper: ${paper.title}`}
-              />
+            <div class="paper-access glass-card">
+              <div class="paper-access-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2h8l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" />
+                  <path d="M14 2v6h6" />
+                  <path d="M16 13H8" />
+                  <path d="M16 17H8" />
+                  <path d="M10 9H8" />
+                </svg>
+              </div>
+              <h3>Full paper available on request</h3>
+              <p>
+                The complete {paper.pages}-page write-up, with full methodology, results
+                tables, and verification evidence, is available for reading on request.
+              </p>
+              <a class="btn btn-primary" href="/contact/">Request a copy</a>
             </div>
           </div>
         </div>
-      </section>
+        </section>
     ))
   }
 
@@ -264,22 +267,55 @@ const extraShots = [
     padding-top: 0.9rem;
   }
 
-  .paper-viewer {
-    padding: 0;
-    overflow: hidden;
-    min-height: 60rem;
+  .paper-access {
+    padding: 1.75rem 1.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.9rem;
+    text-align: left;
   }
 
-  .paper-viewer:hover {
+  .paper-access:hover {
     transform: none;
   }
 
-  .pdf-embed {
-    width: 100%;
-    height: 62rem;
-    border: none;
-    display: block;
-    background: var(--surface-solid);
+  .paper-access-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-glow);
+    display: grid;
+    place-items: center;
+    color: var(--accent-strong);
+  }
+
+  .paper-access-icon svg {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .paper-access h3 {
+    font-size: 1.15rem;
+  }
+
+  .paper-access p {
+    color: var(--text-muted);
+    font-size: 0.94rem;
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+
+  @media print {
+    .paper-access {
+      border: none;
+      box-shadow: none;
+    }
+    .paper-access .btn {
+      display: none;
+    }
   }
 
   /* ---------- Dashboard ---------- */
