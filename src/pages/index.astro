@@ -68,6 +68,17 @@ const stats = [
           ))
         }
       </div>
+      <div class="glass-card paper-cta">
+        <div>
+          <span class="eyebrow">New</span>
+          <h3>White paper & interactive dashboard</h3>
+          <p>
+            The 28-page write-up of the mission-modeling toolchain, plus the Streamlit
+            dashboard for live process flow, trends, and stream ledgers.
+          </p>
+        </div>
+        <a class="btn btn-primary" href="/papers/">Read the paper →</a>
+      </div>
       <p class="section-more">
         <a href="/research/">All research projects →</a>
       </p>
@@ -200,5 +211,31 @@ const stats = [
 
   .section-more {
     margin-top: 1.5rem;
+  }
+
+  .paper-cta {
+    margin-top: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .paper-cta:hover {
+    transform: none;
+  }
+
+  .paper-cta h3 {
+    font-size: 1.15rem;
+    margin-top: 0.25rem;
+  }
+
+  .paper-cta p {
+    color: var(--text-muted);
+    font-size: 0.93rem;
+    margin-top: 0.3rem;
+    max-width: 36rem;
   }
 </style>

@@ -1,0 +1,306 @@
+---
+import Layout from '../layouts/Base.astro';
+
+const paper = {
+  title: 'Coupled Mission Planning and Facility Process Modeling',
+  subtitle: 'Architecture and algorithms of the campaign builder and the facility process model',
+  pdf: '/mission-modeling-white-paper.pdf',
+  pages: 28,
+  date: 'October 2026',
+  abstract:
+    'This paper documents two coupled applications that model the end-to-end mission from published tank inventory chemistry through sequenced retrieval campaigns to glass. The campaign builder turns per-tank data into feed blends with WAC evaluation and glass-forming optimization; the facility model simulates the melter, off-gas treatment train, condensate chemistry, and the discrete operator schedule, with mass and energy closure enforced throughout and verified against published benchmarks.',
+  highlights: [
+    'End-to-end lineage from published inventory data to stack composition and operator schedules',
+    'Campaign generation under published sequencing rules with linear-program blend optimization',
+    'Glass formulation as constrained nonlinear optimization (SLSQP with multi-start)',
+    'Element-conserving melter partition engine with residual-ledger verification',
+    'Full off-gas train: scrubber, WESP, HEME, HEPA, adsorber beds, RHX/SCO/SCR',
+    'Discrete operations layer scheduling the real-time operator recipe against the calendar',
+    'Wash-efficiency sensitivity study: retrieval strategy nearly doubles mission glass',
+    'Verification: 135+ automated tests, per-species closure, energy closure, boundary audits',
+  ],
+};
+
+const dashboard = {
+  title: 'Interactive dashboard',
+  cta: 'Demo access available on request',
+  features: [
+    {
+      title: 'Process flow diagram',
+      detail:
+        'A live PFD redrawn from model state each campaign: unit boxes with key properties (melter duty, scrubber quench, bed loadings), stream arrows carrying real T/P/flow, and side-product stubs for glass and effluent.',
+      placeholder: 'PFD view',
+    },
+    {
+      title: 'Mission trends',
+      detail:
+        'Cached mission sweeps rendered as interactive trends: campaign runtimes, glass mass, canister counts, and off-gas loadings across the full schedule, with per-campaign drill-down.',
+      placeholder: 'Trends view',
+    },
+    {
+      title: 'Streams & ledgers',
+      detail:
+        'Every computed stream exposed as composition tables: speciated feed, melter products, each off-gas stage, condensate chemistry. Element ledgers close per species and per unit.',
+      placeholder: 'Streams view',
+    },
+  ],
+};
+---
+
+<Layout
+  title="White paper & dashboard"
+  description="The mission-modeling white paper and the interactive Streamlit dashboard: methods, verified results, and the engineer-facing tooling around the facility mission model."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Deliverables</p>
+      <h1>White paper & dashboard</h1>
+      <p class="lede">
+        The full write-up of the mission-modeling toolchain, and the interactive dashboard
+        that sits on top of it. Read the paper inline below; explore the dashboard's
+        capabilities next to it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------- White paper: embedded, not downloadable ---------- -->
+  <section class="section-sm">
+    <div class="container paper-grid">
+      <div class="paper-info glass-card">
+        <span class="badge">{paper.pages} pages · {paper.date}</span>
+        <h2>{paper.title}</h2>
+        <p class="paper-subtitle">{paper.subtitle}</p>
+        <p class="paper-abstract">{paper.abstract}</p>
+
+        <div class="paper-highlights">
+          <h3>What's in it</h3>
+          <ul>
+            {paper.highlights.map((highlight) => <li>{highlight}</li>)}
+          </ul>
+        </div>
+
+        <p class="paper-note">
+          The full paper is embedded alongside this summary (viewer on the right). It's
+          provided for reading here; for a copy or citation reference,
+          <a href="/contact/">reach out</a>.
+        </p>
+      </div>
+
+      <div class="paper-viewer glass-card">
+        <embed
+          src={paper.pdf}
+          type="application/pdf"
+          class="pdf-embed"
+          aria-label={`Embedded white paper: ${paper.title}`}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Dashboard feature ---------- -->
+  <section class="section-sm">
+    <div class="container">
+      <p class="eyebrow">Tooling</p>
+      <h2 class="section-title">{dashboard.title}</h2>
+      <p class="lede">
+        Built on the facility mission model, a Streamlit application gives process and
+        mission-planning engineers a real-time view of the whole train: campaign inputs,
+        unit-by-unit streams, energy and effluent ledgers, and the discrete operator
+        schedule, all interactive.
+      </p>
+
+      <div class="card-grid cols-3 dash-grid">
+        {
+          dashboard.features.map((feature) => (
+            <div class="glass-card dash-card">
+              <div class="shot-shot" aria-label={`Placeholder: ${feature.placeholder}`}>
+                <span class="shot-label">{feature.placeholder}</span>
+                <span class="shot-sub">Dashboard screenshot pending</span>
+              </div>
+              <h3>{feature.title}</h3>
+              <p>{feature.detail}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="glass-card dash-cta">
+        <div>
+          <h3>See it live</h3>
+          <p>
+            The dashboard runs against the full dataset and isn't public-facing, but I'm
+            happy to walk through it: PFD, trends, streams, exports, and the discrete
+            operations schedule.
+          </p>
+        </div>
+        <a class="btn btn-primary" href="/contact/">{dashboard.cta}</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ---------- White paper layout ---------- */
+  .paper-grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 56rem) {
+    .paper-grid {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      align-items: start;
+    }
+  }
+
+  .paper-info {
+    padding: 1.75rem 1.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .paper-info:hover {
+    transform: none;
+  }
+
+  .paper-info h2 {
+    font-size: 1.35rem;
+  }
+
+  .paper-subtitle {
+    color: var(--accent-strong);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .paper-abstract {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .paper-highlights h3 {
+    font-size: 1.02rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .paper-highlights ul {
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.45rem;
+    color: var(--text-muted);
+    font-size: 0.93rem;
+  }
+
+  .paper-note {
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    border-top: 1px solid var(--border);
+    padding-top: 0.9rem;
+  }
+
+  .paper-viewer {
+    padding: 0;
+    overflow: hidden;
+    min-height: 60rem;
+  }
+
+  .paper-viewer:hover {
+    transform: none;
+  }
+
+  .pdf-embed {
+    width: 100%;
+    height: 62rem;
+    border: none;
+    display: block;
+    background: var(--surface-solid);
+  }
+
+  /* ---------- Dashboard ---------- */
+  .section-title {
+    font-size: 1.8rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .dash-grid {
+    margin-top: 1.5rem;
+  }
+
+  .dash-card {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .dash-card:hover {
+    transform: none;
+  }
+
+  .dash-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .dash-card p {
+    color: var(--text-muted);
+    font-size: 0.93rem;
+    flex-grow: 1;
+  }
+
+  .shot-shot {
+    border: 1.5px dashed var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--gradient-soft);
+    min-height: 9.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .shot-label {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .shot-sub {
+    font-size: 0.8rem;
+    color: var(--text-faint);
+  }
+
+  .dash-cta {
+    margin-top: 1.5rem;
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+
+  .dash-cta:hover {
+    transform: none;
+  }
+
+  .dash-cta h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .dash-cta p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    max-width: 42rem;
+  }
+</style>
