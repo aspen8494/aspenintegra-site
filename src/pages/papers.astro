@@ -29,22 +29,37 @@ const dashboard = {
       title: 'Process flow diagram',
       detail:
         'A live PFD redrawn from model state each campaign: unit boxes with key properties (melter duty, scrubber quench, bed loadings), stream arrows carrying real T/P/flow, and side-product stubs for glass and effluent.',
-      placeholder: 'PFD view',
+      shot: '/assets/dash-shot-1.png',
+      shotCaption:
+        'Live PFD of the melter and off-gas train for the selected campaign, with per-unit properties and stream labels driven by the model state.',
     },
     {
       title: 'Mission trends',
       detail:
         'Cached mission sweeps rendered as interactive trends: campaign runtimes, glass mass, canister counts, and off-gas loadings across the full schedule, with per-campaign drill-down.',
-      placeholder: 'Trends view',
+      shot: '/assets/dash-shot-2.png',
+      shotCaption:
+        'Glass composition and cumulative glass/canister output trends across the mission schedule from the Trends view.',
     },
     {
       title: 'Streams & ledgers',
       detail:
         'Every computed stream exposed as composition tables: speciated feed, melter products, each off-gas stage, condensate chemistry. Element ledgers close per species and per unit.',
-      placeholder: 'Streams view',
+      shot: '/assets/dash-shot-4.png',
+      shotCaption:
+        'Speciated stream composition for the melter off-gas stream, with phase, molar flow, mol-fraction, and mass flow per species.',
     },
   ],
 };
+
+// Fourth screenshot kept for the blog post / future use
+const extraShots = [
+  {
+    shot: '/assets/dash-shot-3.png',
+    note:
+      'Effluent quantity & composition trends across mission days (from the Effluent tab).',
+  },
+];
 ---
 
 <Layout
@@ -113,10 +128,14 @@ const dashboard = {
         {
           dashboard.features.map((feature) => (
             <div class="glass-card dash-card">
-              <div class="shot-shot" aria-label={`Placeholder: ${feature.placeholder}`}>
-                <span class="shot-label">{feature.placeholder}</span>
-                <span class="shot-sub">Dashboard screenshot pending</span>
-              </div>
+              <figure class="shot-frame">
+                <img
+                  src={feature.shot}
+                  alt={feature.shotCaption}
+                  loading="lazy"
+                />
+                <figcaption>{feature.shotCaption}</figcaption>
+              </figure>
               <h3>{feature.title}</h3>
               <p>{feature.detail}</p>
             </div>
@@ -248,6 +267,28 @@ const dashboard = {
     color: var(--text-muted);
     font-size: 0.93rem;
     flex-grow: 1;
+  }
+
+  .shot-frame {
+    margin: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .shot-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: var(--surface-solid);
+  }
+
+  .shot-frame figcaption {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    border-top: 1px solid var(--border);
+    background: var(--surface);
   }
 
   .shot-shot {
