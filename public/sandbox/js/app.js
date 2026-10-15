@@ -87,11 +87,30 @@
   }
 
   // -------------------------------------------------------------- run
+  // Any control that affects the mission marks results stale and (if a
+  // mission is already shown) triggers an automatic rebuild — otherwise the
+  // panel silently keeps showing the PREVIOUS scenario/parameters, which
+  // reads as a wrong campaign count.
+  function scheduleRun() {
+    if (!state.data) return;
+    if (!state.mission) { updateScenarioNote(); return; }
+    updateScenarioNote();
+    markStale();
+    clearTimeout(state.rebuildTimer);
+    state.rebuildTimer = setTimeout(run, 250);
+  }
+
+  function markStale() {
+    const m = $('metrics');
+    if (m) m.classList.add('stale');
+  }
+
   async function run() {
     if (state.running || !state.data) return;
     state.running = true;
     $('btn-run').textContent = 'Working…';
     $('btn-run').disabled = true;
+    $('metrics').classList.remove('stale');
 
     // let the button paint before the synchronous build
     await new Promise(r => setTimeout(r, 30));
@@ -292,12 +311,12 @@
       return `${x.toFixed(1)},${y.toFixed(1)}`;
     }).join(' ');
     svg.appendChild(svgEl('polyline', {
-      points: pts, fill: 'none', stroke: '#0f172a', 'stroke-width': 1.4 }));
+      points: pts, fill: 'none', stroke: '#f97316', 'stroke-width': 1.6 }));
     evals.forEach((e, i) => {
       const x = pad.l + ((i + 0.5) * cw) / n;
       const y = pad.t + ch - (e.waste_loading / wlMax) * ch;
       svg.appendChild(svgEl('circle', { cx: x.toFixed(1), cy: y.toFixed(1),
-                                       r: 1.6, fill: '#0f172a' }));
+                                       r: 1.6, fill: '#f97316' }));
     });
 
     const t = svgEl('text', { x: W / 2, y: H - 6, 'text-anchor': 'middle',
@@ -378,12 +397,16 @@
   function wire() {
     $('btn-run').addEventListener('click', run);
     $('btn-reset').addEventListener('click', () => window.location.reload());
-    $('sel-scenario').addEventListener('change', updateScenarioNote);
-    $('rng-vmin').addEventListener('input', e => $('out-vmin').textContent = e.target.value);
-    $('rng-vmax').addEventListener('input', e => $('out-vmax').textContent = e.target.value);
-    $('rng-wac').addEventListener('input', e => $('out-wac').textContent = e.target.value);
-    $('rng-rate').addEventListener('input', e => $('out-rate').textContent = parseFloat(e.target.value).toFixed(1));
-    $('rng-avail').addEventListener('input', e => $('out-avail').textContent = e.target.value);
+    $('sel-scenario').addEventListener('change', scheduleRun);
+    $('rng-vmin').addEventListener('input', e => { $('out-vmin').textContent = e.target.value; scheduleRun(); });
+    $('rng-vmax').addEventListener('input', e => { $('out-vmax').textContent = e.target.value; scheduleRun(); });
+    $('rng-wac').addEventListener('input', e => { $('out-wac').textContent = e.target.value; scheduleRun(); });
+    $('rng-rate').addEventListener('input', e => { $('out-rate').textContent = parseFloat(e.target.value).toFixed(1); scheduleRun(); });
+    $('rng-avail').addEventListener('input', e => { $('out-avail').textContent = e.target.value; scheduleRun(); });
+    for (const id of ['chk-heels', 'chk-quadrants']) {
+      $(id).addEventListener('change', scheduleRun);
+    }
+    document.getElementById('wac-overrides').addEventListener('change', scheduleRun);
     window.addEventListener('resize', () => {
       if (state.mission) { renderGlassChart(); renderWLChart(); }
     });
