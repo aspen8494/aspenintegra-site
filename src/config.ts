@@ -9,7 +9,7 @@ export const SITE = {
     'Personal research laboratory of Aspen, a nuclear process engineer. Research write-ups, a blog, and a CV linking machine learning with waste disposal, treatment, and power.',
   author: 'Aspen',
   /** Contact + social */
-  email: 'aspen.ws.anon@proton.me',
+  email: 'info@aspenintegra.com',
   github: 'https://github.com/aspen8494',
   githubUser: 'aspen8494',
   linkedin: 'https://www.linkedin.com/in/adam-spencer-538739101',
