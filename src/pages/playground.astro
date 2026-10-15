@@ -1,12 +1,24 @@
 ---
 import Layout from '../layouts/Base.astro';
 
-const teasers = [
+const live = [
   {
-    title: 'Mission-planning sandbox',
+    title: 'HLW Blend Sandbox',
+    href: '/sandbox/',
+    badge: 'Live',
     detail:
-      'An in-browser toy of the campaign-building problem: pack waste blends into a volume band under WAC constraints and watch the glass mass respond. A scaled-down, fully client-side cousin of the campaign builder.',
+      'An in-browser toy of the campaign-building problem: pack waste blends into a volume band under WAC constraints and watch the glass mass respond. The same algorithms as the full campaign builder — greedy layer walk, dense simplex LP, SLSQP-style glass formulation — running client-side on a reduced dataset. No server, no build step, nothing leaves your browser.',
+    features: [
+      'Live scenario picker across 8 blend conditions',
+      'Campaign recipe list with per-campaign glass metrics',
+      'Mission roll-up: campaigns, waste, glass mass, canisters, duration',
+      'Same-engine parity with the full application (within a few percent)',
+    ],
+    repo: 'https://github.com/aspen8494/hanford-blend-sandbox',
   },
+];
+
+const comingSoon = [
   {
     title: 'Off-gas capture visualizer',
     detail:
@@ -22,7 +34,7 @@ const teasers = [
 
 <Layout
   title="Playground"
-  description="Interactive in-browser experiments from the Aspen Integra lab: client-side models and visualizations connecting nuclear engineering with machine learning."
+  description="Interactive in-browser experiments from the Aspen Integra lab: a live HLW blend-sandbox mission planner, plus upcoming client-side models and visualizations."
 >
   <section class="page-hero">
     <div class="container">
@@ -30,21 +42,46 @@ const teasers = [
       <h1>Interactive experiments</h1>
       <p class="lede">
         Small client-side models and visualizations. The ideas behind the research, but
-        things you can poke at. First experiments land here soon.
+        things you can poke at. The first one is live below.
       </p>
     </div>
   </section>
 
   <section class="section-sm">
     <div class="container">
-      <div class="card-grid cols-3">
+      <div class="live-grid">
         {
-          teasers.map((teaser, i) => (
-            <div class="glass-card teaser-card">
-              <div class="teaser-num" aria-hidden="true">
-                {String(i + 1).padStart(2, '0')}
+          live.map((item) => (
+            <article class="glass-card live-card">
+              <div class="live-head">
+                <span class="live-badge">● {item.badge}</span>
+                <a class="repo-link" href={item.repo} target="_blank" rel="noopener noreferrer">
+                  Source ↗
+                </a>
               </div>
-              <h2>{teaser.title}</h2>
+              <h2>
+                <a href={item.href}>{item.title}</a>
+              </h2>
+              <p>{item.detail}</p>
+              <ul class="feature-list">
+                {item.features.map((f) => (
+                  <li>{f}</li>
+                ))}
+              </ul>
+              <a class="btn btn-primary launch" href={item.href}>
+                Open the sandbox →
+              </a>
+            </article>
+          ))
+        }
+      </div>
+
+      <h2 class="soon-heading">Coming soon</h2>
+      <div class="card-grid cols-2">
+        {
+          comingSoon.map((teaser) => (
+            <div class="glass-card teaser-card">
+              <h3>{teaser.title}</h3>
               <p>{teaser.detail}</p>
               <span class="soon">In development</span>
             </div>
@@ -56,6 +93,106 @@ const teasers = [
 </Layout>
 
 <style>
+  .live-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    margin-bottom: 2.5rem;
+  }
+
+  .live-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 1.75rem 1.9rem;
+  }
+
+  .live-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .live-badge {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent-strong);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-glow);
+    padding: 0.22rem 0.75rem;
+    border-radius: 999px;
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .repo-link {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-strong);
+  }
+
+  .repo-link:hover {
+    color: var(--accent-strong);
+    border-color: var(--accent-strong);
+  }
+
+  .live-card h2 {
+    font-size: 1.45rem;
+  }
+
+  .live-card h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .live-card h2 a:hover {
+    color: var(--accent-strong);
+  }
+
+  .live-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .feature-list li {
+    padding-left: 1.35rem;
+    position: relative;
+    color: var(--text);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .feature-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-strong);
+    font-weight: 700;
+  }
+
+  .launch {
+    align-self: flex-start;
+    margin-top: 0.35rem;
+  }
+
+  .soon-heading {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
   .teaser-card {
     display: flex;
     flex-direction: column;
@@ -63,18 +200,8 @@ const teasers = [
     padding: 1.6rem;
   }
 
-  .teaser-num {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    font-weight: 700;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .teaser-card h2 {
-    font-size: 1.15rem;
+  .teaser-card h3 {
+    font-size: 1.1rem;
   }
 
   .teaser-card p {
