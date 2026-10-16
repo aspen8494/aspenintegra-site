@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glass Property Explorer — GlassNet neural network vs published formulations</title>
+<meta name="description" content="Drag glass or feed composition sliders and watch viscosity (VFT), electrical conductivity, and PCT release respond in real time — a 3-head neural network running client-side in your browser, overlaid with the published glass property formulations.">
+<link rel="stylesheet" href="css/explorer.css">
+</head>
+<body>
+<header class="hero">
+  <p class="eyebrow">Aspen Integra · Playground</p>
+  <h1>Glass Property Explorer</h1>
+  <p class="lede">
+    Drag composition sliders and watch melt viscosity (VFT model), electrical
+    conductivity, and PCT release respond in real time — computed two ways,
+    live in your browser: a <strong>neural-network surrogate</strong> (GlassNet,
+    a 3-head PyTorch MLP ported to JavaScript) and the <strong>published glass
+    property formulations</strong> it was trained to mimic. Watch the network
+    track the physics.
+  </p>
+</header>
+
+<main class="container">
+  <nav class="mode-toggle" id="modeToggle" role="tablist">
+    <button class="mode-btn active" id="btnFeed" role="tab">Feed mode
+      <span class="mode-sub">full network chain</span></button>
+    <button class="mode-btn" id="btnGlass" role="tab">Glass mode
+      <span class="mode-sub">website copy — direct glass sliders</span></button>
+  </nav>
+
+  <section class="layout">
+    <aside class="panel inputs" id="inputPanel">
+      <h2 id="inputTitle">Waste feed composition</h2>
+      <div class="presets" id="presets">
+        <label>Preset feeds</label>
+        <select id="presetSelect"></select>
+      </div>
+      <div id="sliderHost"></div>
+      <div class="sum-row" id="sumRow"></div>
+      <details class="adv">
+        <summary>Advanced</summary>
+        <div class="adv-grid">
+          <label>Sucrose C:N target
+            <input type="number" id="cnInput" value="0.75" min="0" max="1" step="0.01">
+          </label>
+          <label>Waste oxide mass (kg)
+            <input type="number" id="wasteKgInput" value="1" min="0.001" step="any">
+          </label>
+        </div>
+        <p class="hint" id="advHint">Composition, recipe and properties are
+          batch-size invariant; the mass only scales reported tonnage.</p>
+      </details>
+    </aside>
+
+    <section class="results">
+      <div class="metric-row" id="metricRow"></div>
+
+      <div class="card chart-card">
+        <div class="card-head">
+          <h3>Viscosity & conductivity vs temperature</h3>
+          <span class="tag nn-tag">NN</span><span class="tag pub-tag">published VFT</span>
+        </div>
+        <div class="chart" id="vftChart"></div>
+        <p class="caption">Curves: VFT η(T) and κ(T) from the published
+          formulation (solid) with the neural network's point predictions at
+          1100/1150/1200&nbsp;°C (markers). Shaded band = the paper's
+          acceptance window at 1150&nbsp;°C (4–6&nbsp;Pa·s).</p>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>Property panel — network vs formulation</h3></div>
+        <table class="prop-table" id="propTable">
+          <thead><tr><th>Property</th><th class="num">GlassNet (NN)</th>
+            <th class="num">Published model</th><th>Limit</th><th>Status</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <p class="caption">Every row is computed twice: head&nbsp;C of the
+          network (trained surrogate) and the exact published formulation.
+          The published model is the acceptance basis.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3 id="networkTitle">Network outputs</h3></div>
+        <div id="networkPanel"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>Inside the network</h3>
+          <span class="tag">live activations from the trained weights</span></div>
+        <div class="tabs" id="insightTabs">
+          <button class="tab active" data-tab="flow">Signal flow</button>
+          <button class="tab" data-tab="consensus">MC-dropout consensus</button>
+          <button class="tab" data-tab="drivers">Drivers (∂WL/∂input)</button>
+          <button class="tab" data-tab="map">Data-space map</button>
+        </div>
+        <div class="tab-body" id="tabBody"></div>
+      </div>
+    </section>
+  </section>
+
+  <footer class="site-footer">
+    <p><strong>GlassNet</strong>: PyTorch 3-head MLP (waste loading · GFC recipe ·
+      13 properties) trained on 3,503 §6.2 vitrification campaigns. Glass
+      composition is assembled through the exact physics identity
+      <span class="mono">glass = WL·feed + Σ xₖ·eₖ</span> — never predicted.
+      Held-out scenario-family accuracy: WL MAE 0.006, recipe MAE 0.005,
+      η₁₁₅₀ medRel 0.24%, accept/reject agreement 96.7%.</p>
+    <p class="fine">Published formulations: the published vitreous-state model set (VFT viscosity
+      and conductivity, PCT ln[NL] response, sulfate retention, K-3 neck
+      corrosion, phosphate separation) with Appendix-C covariance Upred
+      margins. Property models reproduce the report's own Table 3-6
+      verification glasses to published precision. Everything runs
+      client-side — no server, no data leaves the browser.
+      <a href="https://github.com/aspen8494/glass-property-explorer" target="_blank" rel="noopener">Source ↗</a></p>
+  </footer>
+</main>
+
+<script src="js/nn/glassnet.js"></script>
+<script src="js/engine/props.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

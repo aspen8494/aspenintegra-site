@@ -16,6 +16,20 @@ const live = [
     ],
     repo: 'https://github.com/aspen8494/hanford-blend-sandbox',
   },
+  {
+    title: 'Glass Property Explorer',
+    href: '/glass-explorer/',
+    badge: 'Live',
+    detail:
+      'Drag glass or waste-feed composition sliders and watch melt viscosity (VFT model), electrical conductivity, and PCT release respond in real time. Every property is computed two ways: by a 3-head neural network (GlassNet) running client-side, and by the published property formulations that serve as the acceptance basis. No server, no build step, nothing leaves your browser.',
+    features: [
+      'Two input modes: final glass composition or waste feed via the WL·feed mixing identity',
+      'Live neural-network inference from shipped model weights (1.6 MB, zero dependencies)',
+      'Published property models overlaid as the acceptance check, with pass/fail flags',
+      'Inside-the-network views: signal flow, MC-dropout consensus, driver gradients, data-space map',
+    ],
+    repo: 'https://github.com/aspen8494/glass-property-explorer',
+  },
 ];
 
 const comingSoon = [
@@ -24,17 +38,12 @@ const comingSoon = [
     detail:
       'Interactive diagram of a melter off-gas train (scrubber, WESP, HEPA, carbon bed, mordenite, SCO/SCR) with sliders for decontamination factors and live stack-composition readouts.',
   },
-  {
-    title: 'Glass property explorer',
-    detail:
-      'Drag glass composition sliders and see viscosity (VFT model), electrical conductivity, and PCT release respond in real time, per the published glass property formulations.',
-  },
 ];
 ---
 
 <Layout
   title="Playground"
-  description="Interactive in-browser experiments from the Aspen Integra lab: a live HLW blend-sandbox mission planner, plus upcoming client-side models and visualizations."
+  description="Interactive in-browser experiments from the Aspen Integra lab: a live HLW blend-sandbox mission planner, a glass property explorer, and upcoming visualizations."
 >
   <section class="page-hero">
     <div class="container">
@@ -42,7 +51,7 @@ const comingSoon = [
       <h1>Interactive experiments</h1>
       <p class="lede">
         Small client-side models and visualizations. The ideas behind the research, but
-        things you can poke at. The first one is live below.
+        things you can poke at. Two are live below.
       </p>
     </div>
   </section>
