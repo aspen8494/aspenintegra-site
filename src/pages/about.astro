@@ -35,6 +35,33 @@ const skillGroups = [
   },
 ];
 
+const openSource = [
+  {
+    href: 'https://github.com/aspen8494/hanford-blend-sandbox',
+    title: 'HLW Blend Sandbox',
+    detail:
+      'In-browser mission planning toy: the campaign-packing problem, its glass formulation, and mission rollups, running entirely client-side.',
+  },
+  {
+    href: 'https://github.com/aspen8494/glass-property-explorer',
+    title: 'Glass Property Explorer',
+    detail:
+      'Drag composition sliders and watch melt viscosity, conductivity, and PCT release respond, computed by both a neural network and the published property models.',
+  },
+  {
+    href: 'https://github.com/aspen8494/srs-tank-waste-database',
+    title: 'SRS Tank Waste Database',
+    detail:
+      'The first public SRS-vs-Hanford inventory comparison: 51 Savannah River tanks against the 177-tank Hanford BBI, every row carrying its dataset, basis, and source.',
+  },
+  {
+    href: 'https://github.com/aspen8494/hlw-facility-mission-model',
+    title: 'HLW Facility Mission Model',
+    detail:
+      'Element-conserving, speciated simulation of a vitrification plant and its complete off-gas train, plus the campaign builder that sequences the whole mission.',
+  },
+];
+
 const projects = [
   {
     href: '/research/hlw-facility-mission-model/',
@@ -163,6 +190,57 @@ const timeline = [
 
   <section class="section-sm">
     <div class="container">
+      <h2 class="path-title">Why everything here is open</h2>
+      <div class="open-source-grid">
+        <div class="glass-card open-card">
+          <p>
+            A large share of what the United States knows about its nuclear waste sits in
+            public documents, produced by U.S. national laboratories, and scattered
+            across thousands of pages of technical reports. A citizen who
+            wants to understand how much waste is in the tanks, what is in it, or how
+            long cleanup will take is effectively locked out, not by classification but
+            by format.
+          </p>
+          <p>
+            This lab treats that as the problem. Everything built here starts from
+            published reports and public data services, and everything built here goes
+            back out open source: the code, the data pipelines, the papers, and
+            interactive tools that let anyone poke at the underlying numbers instead of
+            taking a summary on faith. The playground on this site is the policy in
+            practice — every experiment runs client-side in the visitor's browser, with
+            its sources cited.
+          </p>
+          <p>
+            Nuclear problems are genuinely complex, but complexity is not a reason to
+            keep the public at arm's length. Public understanding of these issues should
+            drive the conversation, and a conversation grounded in shared, explorable
+            facts is the foundation for a positive nuclear future in the United States.
+            If we want people to weigh the trade-offs of waste treatment honestly, the
+            facts need to be somewhere they can actually reach them.
+          </p>
+        </div>
+
+        <div class="about-stack">
+          <h2>Open-source repositories</h2>
+          {
+            openSource.map((repo) => (
+              <a class="glass-card repo-card" href={repo.href} target="_blank" rel="noopener noreferrer">
+                <h3>{repo.title} ↗</h3>
+                <p>{repo.detail}</p>
+              </a>
+            ))
+          }
+          <p class="open-note">
+            All repositories MIT-licensed unless otherwise noted. Source documents remain
+            the property of their issuing organizations and are cited throughout.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
       <h2 class="path-title">The path so far</h2>
       <ol class="timeline">
         {
@@ -233,6 +311,10 @@ const timeline = [
     gap: 1rem;
   }
 
+  .about-stack h2 {
+    font-size: 1.4rem;
+  }
+
   .skill-card {
     padding: 1.4rem 1.6rem;
   }
@@ -253,6 +335,59 @@ const timeline = [
   .path-title {
     font-size: 1.6rem;
     margin-bottom: 1.5rem;
+  }
+
+  .open-source-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 56rem) {
+    .open-source-grid {
+      grid-template-columns: 3fr 2fr;
+      align-items: start;
+    }
+  }
+
+  .open-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .open-card p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .repo-card {
+    padding: 1.1rem 1.3rem;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .repo-card:hover {
+    text-decoration: none;
+  }
+
+  .repo-card h3 {
+    font-size: 1rem;
+    color: var(--accent-strong);
+  }
+
+  .repo-card p {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+  }
+
+  .open-note {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    padding-left: 0.3rem;
   }
 
   .project-card {
