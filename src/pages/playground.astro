@@ -30,6 +30,20 @@ const live = [
     ],
     repo: 'https://github.com/aspen8494/glass-property-explorer',
   },
+  {
+    title: 'SRS vs Hanford Tank Comparison',
+    href: '/tank-comparison/',
+    badge: 'Live',
+    detail:
+      'A head-to-head look at the two largest defense tank-waste inventories in the country. The Savannah River Site F-/H-Area farms (51 tanks) against the 177-tank Hanford fleet: remaining volumes, curie inventories, phase splits, per-tank drill-downs, and the measured chemistry behind the sludge and salt batches. Every number carries its dataset, basis, and source, because the two sites do not publish their inventories on the same footing.',
+    features: [
+      'Head-to-head: 33.2 Mgal / 191 MCi at SRS vs 53.0 Mgal / 122.6 MCi at Hanford',
+      'Six sections: overview, phases & farms, radionuclides, tank explorer, current chemistry, methods',
+      '228-tank explorer with per-tank top-nuclide breakdowns',
+      'Basis caveats surfaced, not buried: closure-residual vs current BBI explained',
+    ],
+    repo: 'https://github.com/aspen8494/srs-tank-waste-database',
+  },
 ];
 
 const comingSoon = [
@@ -43,7 +57,7 @@ const comingSoon = [
 
 <Layout
   title="Playground"
-  description="Interactive in-browser experiments from the Aspen Integra lab: a live HLW blend-sandbox mission planner, a glass property explorer, and upcoming visualizations."
+  description="Interactive in-browser experiments from the Aspen Integra lab: a blend-sandbox mission planner, a glass property explorer, and an SRS vs Hanford tank-inventory comparison dashboard."
 >
   <section class="page-hero">
     <div class="container">
@@ -51,7 +65,7 @@ const comingSoon = [
       <h1>Interactive experiments</h1>
       <p class="lede">
         Small client-side models and visualizations. The ideas behind the research, but
-        things you can poke at. Two are live below.
+        things you can poke at. Three are live below.
       </p>
     </div>
   </section>
