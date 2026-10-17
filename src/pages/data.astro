@@ -1,0 +1,514 @@
+---
+import Layout from '../layouts/Base.astro';
+import { SITE } from '../config';
+
+const generated = 'October 2026';
+
+const stats = [
+  { value: '51', label: 'SRS tanks (FTF + HTF)' },
+  { value: '19', label: 'Public source documents' },
+  { value: '56.7k', label: 'Database rows, 9 tables' },
+  { value: '177', label: 'Hanford tanks in comparison set' },
+];
+
+const headline = [
+  { site: 'SRS (2025-09-30)', volume: '33.2 Mgal', activity: '191 MCi', tanks: '43 active' },
+  { site: 'Hanford (BBI eff. 2025-10-01)', volume: '53.0 Mgal', activity: '122.6 MCi', tanks: '177' },
+];
+
+const downloads = [
+  {
+    href: '/data/srs/srs_tank_waste.db',
+    name: 'srs_tank_waste.db',
+    format: 'SQLite',
+    size: '5.1 MB',
+    desc:
+      'The full database: SRS per-tank radionuclides and chemicals across four datasets, Hanford BBI for comparison, SRNL measured batch samples, sources, and per-dataset methodology notes. The ML-ready artifact.',
+  },
+  {
+    href: '/data/srs/ml_inventory_long.csv',
+    name: 'ml_inventory_long.csv',
+    format: 'CSV (tidy)',
+    size: '685 KB',
+    desc:
+      'Tidy long-format export of every inventory row: one row per tank × dataset × analyte, with dataset, basis, and source columns so different bases cannot be mixed by accident.',
+  },
+  {
+    href: '/data/srs/wide_rad_assigned.csv',
+    name: 'wide_rad_assigned.csv',
+    format: 'CSV (wide)',
+    size: '16 KB',
+    desc: 'Per-tank closure-residual radionuclide pivot, all 51 tanks.',
+  },
+  {
+    href: '/data/srs/wide_chem_assigned.csv',
+    name: 'wide_chem_assigned.csv',
+    format: 'CSV (wide)',
+    size: '7.4 KB',
+    desc: 'Per-tank closure-residual chemical pivot, all 51 tanks.',
+  },
+  {
+    href: '/data/srs/srnl_current_waste.json',
+    name: 'srnl_current_waste.json',
+    format: 'JSON',
+    size: '28 KB',
+    desc:
+      'SRNL-measured current waste: 607 sample rows across 14 sludge and salt batches (SB11, SB10, Salt Batches 8–14, PRFT), the closest public equivalent of a per-tank current inventory.',
+  },
+  {
+    href: '/data/srs/DB_README.md',
+    name: 'DB_README.md',
+    format: 'Markdown',
+    size: '6.3 KB',
+    desc: 'Full data dictionary, schema, validation log, and the critical basis caveats. Read this before using the data.',
+  },
+  {
+    href: '/data/srs/sources_ledger.json',
+    name: 'sources_ledger.json',
+    format: 'JSON',
+    size: '2.2 KB',
+    desc: 'The 19 registered source documents with titles, document numbers, years, and URLs.',
+  },
+];
+
+const perTankSets = [
+  {
+    href: '/data/srs/htf_assigned_rad_by_tank.csv',
+    name: 'HTF assigned radionuclides',
+    note: '29 H-Area tanks, 54 nuclides, closure basis decayed to 2032.',
+  },
+  {
+    href: '/data/srs/htf_assigned_chem_by_tank.csv',
+    name: 'HTF assigned chemicals',
+    note: '27 analytes per HTF tank, kg.',
+  },
+  {
+    href: '/data/srs/htf_pa_chem_by_tank.csv',
+    name: 'HTF PA-basis chemicals',
+    note: 'Original 2010 PA Rev 1 estimates, 26 analytes.',
+  },
+  {
+    href: '/data/srs/htf_pa_rad_by_tank.csv',
+    name: 'HTF PA-basis radionuclides',
+    note: 'Original 2010 PA Rev 1 estimates, 54 nuclides.',
+  },
+  {
+    href: '/data/srs/htf_assigned_annulus_rad_by_tank.csv',
+    name: 'HTF annulus radionuclides',
+    note: 'Assigned annulus (secondary containment) inventories, tanks 9–16.',
+  },
+  {
+    href: '/data/srs/ftf_assigned_rad_by_tank.csv',
+    name: 'FTF assigned radionuclides',
+    note: '22 F-Area tanks, 51 nuclides, revised SA closure basis.',
+  },
+  {
+    href: '/data/srs/ftf_assigned_chem_by_tank.csv',
+    name: 'FTF assigned chemicals',
+    note: '18 analytes per FTF tank, kg.',
+  },
+  {
+    href: '/data/srs/tank16_final_residual.csv',
+    name: 'Tank 16 final actual',
+    note: 'Measured final residual after closure, plus annulus.',
+  },
+  {
+    href: '/data/srs/tank18_19_residual.csv',
+    name: 'Tanks 18/19 actual',
+    note: 'Measured residuals from the closure module.',
+  },
+  {
+    href: '/data/srs/tank18_19_residual_closuremodule.csv',
+    name: 'Tanks 18/19 closure module',
+    note: 'The closure-module chemical scope, 25 elements.',
+  },
+];
+---
+
+<Layout
+  title="Open Data"
+  description="Download the SRS tank waste database: a Best-Basis-Inventory-style dataset for the Savannah River Site's 51 tanks assembled from public DOE, NRC, and SRNS documents, with the Hanford BBI comparison set included."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Open Data</p>
+      <h1>The SRS tank waste database, published</h1>
+      <p class="lede">
+        {SITE.title} maintains a Best-Basis-Inventory-style research dataset for the
+        Savannah River Site's F- and H-Area Tank Farms, assembled from public DOE, NRC,
+        and SRNS documents — plus a live pull of the Hanford Site's 177-tank BBI for
+        comparison. Everything below is free to download and use. Built from published
+        reports, published back out.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <dl class="stat-strip glass-card">
+        {
+          stats.map((s) => (
+            <div class="stat">
+              <dt>{s.label}</dt>
+              <dd>{s.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <h2 class="section-title">What's in it</h2>
+      <div class="glass-card table-card">
+        <h3>Nine tables</h3>
+        <table class="schema-table">
+          <thead>
+            <tr><th>Table</th><th class="num">Rows</th><th>Contents</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>tanks</code></td><td class="num">51</td><td>All 51 SRS tanks: farm, type, capacity, status, closure date, service function.</td></tr>
+            <tr><td><code>inventory_rad</code></td><td class="num">4,872</td><td>Per-tank × nuclide activity (Ci), long format, 57 nuclides across four datasets.</td></tr>
+            <tr><td><code>inventory_chem</code></td><td class="num">1,952</td><td>Per-tank × chemical mass (kg), 27 analytes, long format.</td></tr>
+            <tr><td><code>current_inventory</code></td><td class="num">13</td><td>Farm-level phase totals, snapshots 2025 / 2018 / 2016.</td></tr>
+            <tr><td><code>current_waste_samples</code></td><td class="num">607</td><td>SRNL measured samples: sludge batches 10–11, salt batches 8–14, PRFT.</td></tr>
+            <tr><td><code>hanford_bbi</code></td><td class="num">46,600</td><td>Full Hanford BBI pull: 54 radionuclides + 140 chemicals × 7 phases × 177 tanks.</td></tr>
+            <tr><td><code>hanford_bbi_volume</code></td><td class="num">628</td><td>Per-tank phase volumes (kL) for the 177-tank comparison set.</td></tr>
+            <tr><td><code>sources</code></td><td class="num">19</td><td>Registered source documents: titles, numbers, years, URLs.</td></tr>
+            <tr><td><code>dataset_notes</code></td><td class="num">10</td><td>Methodology caveats per dataset — read before analysis.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <h2 class="section-title">Headline inventory (late 2025)</h2>
+      <div class="glass-card table-card">
+        <table class="schema-table">
+          <thead>
+            <tr><th>Site</th><th class="num">Remaining volume</th><th class="num">Remaining activity</th><th class="num">Tanks</th></tr>
+          </thead>
+          <tbody>
+            {
+              headline.map((row) => (
+                <tr>
+                  <td>{row.site}</td>
+                  <td class="num">{row.volume}</td>
+                  <td class="num">{row.activity}</td>
+                  <td class="num">{row.tanks}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <h2 class="section-title">Downloads</h2>
+      <div class="dl-grid">
+        {
+          downloads.map((d) => (
+            <a class="glass-card dl-card" href={d.href} download>
+              <div class="dl-head">
+                <span class="dl-format">{d.format}</span>
+                <span class="dl-size">{d.size}</span>
+              </div>
+              <h3>{d.name}</h3>
+              <p>{d.desc}</p>
+              <span class="card-cta">Download →</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <h2 class="section-title">Per-tank datasets</h2>
+      <p class="lede-sm">
+        The SRS per-tank data are closure-residual inventories — conservative estimates of
+        what remains after waste removal, decayed to 2032 — because SRS does not publish a
+        per-tank current inventory the way Hanford publishes its BBI. Actual measured
+        residuals are included for the six closed-and-characterized tanks.
+      </p>
+      <ul class="per-tank-list">
+        {
+          perTankSets.map((p) => (
+            <li>
+              <a href={p.href} download>{p.name}</a>
+              <span class="note">{p.note}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <h2 class="section-title">The basis caveat, stated plainly</h2>
+      <div class="glass-card caveat-card">
+        <p>
+          SRS tracks current per-tank composition in an internal system that is not publicly
+          released at that granularity. The public per-tank data are closure residuals from
+          the Performance Assessments and Special Analyses: conservative, decayed-to-2032
+          estimates built for §3116 closure determinations. Hanford's BBI, by contrast, is a
+          current inventory published per tank. The two bases are not interchangeable, and
+          every row in this database carries its dataset, basis, and source so they cannot
+          be mixed by accident. Read the data dictionary before drawing conclusions.
+        </p>
+        <p>
+          The underlying source documents are public DOE, NRC, and SRNS publications and
+          remain the property of their issuing organizations; each is cited in the
+          sources ledger. The compiled dataset and pipeline code are provided as-is for
+          research use, with no warranty as to fitness for any regulatory or operational
+          purpose.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <div class="glass-card links-card">
+        <h3>Explore before you download</h3>
+        <div class="link-row">
+          <a href="/tank-comparison/">Interactive comparison dashboard →</a>
+          <a href="/blog/srs-hanford-tank-comparison/">Read the findings write-up →</a>
+          <a href={SITE.github + '/srs-tank-waste-database'} target="_blank" rel="noopener noreferrer">
+            Full pipeline & source documents on GitHub ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero .lede {
+    margin-top: 1.1rem;
+    font-size: 1.12rem;
+    color: var(--text-muted);
+    max-width: 46rem;
+  }
+
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    padding: 1.5rem 1.75rem;
+  }
+
+  @media (min-width: 48rem) {
+    .stat-strip {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stat dd {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .stat dt {
+    order: 2;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .section-title {
+    margin-bottom: 1.25rem;
+    font-size: 1.55rem;
+  }
+
+  .table-card {
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .table-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .schema-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .schema-table th {
+    text-align: left;
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid var(--border-strong);
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.82rem;
+  }
+
+  .schema-table td {
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .schema-table .num {
+    text-align: right;
+    font-family: var(--font-mono);
+    white-space: nowrap;
+  }
+
+  .schema-table code {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    background: var(--accent-soft);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+  }
+
+  .dl-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 48rem) {
+    .dl-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .dl-card {
+    padding: 1.4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    color: var(--text);
+  }
+
+  .dl-card:hover {
+    text-decoration: none;
+  }
+
+  .dl-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .dl-format {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-strong);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-glow);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+  }
+
+  .dl-size {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .dl-card h3 {
+    font-size: 1rem;
+    font-family: var(--font-mono);
+    word-break: break-all;
+  }
+
+  .dl-card p {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    flex-grow: 1;
+    line-height: 1.55;
+  }
+
+  .lede-sm {
+    color: var(--text-muted);
+    max-width: 46rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+
+  .per-tank-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .per-tank-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+  }
+
+  .per-tank-list a {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    color: var(--accent-strong);
+    font-weight: 600;
+  }
+
+  .per-tank-list .note {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .caveat-card {
+    padding: 1.75rem 1.9rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .caveat-card p {
+    color: var(--text-muted);
+    line-height: 1.65;
+    font-size: 0.95rem;
+  }
+
+  .links-card {
+    padding: 1.5rem 1.75rem;
+  }
+
+  .links-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .link-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+
+  .link-row a {
+    color: var(--accent-strong);
+    font-weight: 600;
+    font-size: 0.93rem;
+  }
+</style>

@@ -20,6 +20,7 @@ export const NAV = [
   { href: '/', label: 'Home' },
   { href: '/research/', label: 'Research' },
   { href: '/papers/', label: 'White Paper' },
+  { href: '/data/', label: 'Open Data' },
   { href: '/blog/', label: 'Blog' },
   { href: '/about/', label: 'About' },
   { href: '/playground/', label: 'Playground' },
