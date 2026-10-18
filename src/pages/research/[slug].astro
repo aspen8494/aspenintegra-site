@@ -74,6 +74,35 @@ const articleLd = {
 
       <hr />
       <Content />
+
+      {
+        data.paper && (
+          <div class="paper-embed glass-card">
+            <h2>The white paper</h2>
+            <div class="pdf-frame">
+              <object
+                data={data.paper.file}
+                type="application/pdf"
+                aria-label={`${data.title} — full PDF`}
+              >
+                <p class="pdf-fallback">
+                  Your browser can't display embedded PDFs.
+                  <a href={data.paper.file}>Download the full paper (PDF)</a> instead.
+                </p>
+              </object>
+            </div>
+            <div class="embed-actions">
+              <a class="btn btn-primary" href={data.paper.file} download>
+                Download the PDF
+              </a>
+              <span class="embed-note">
+                Open access — the complete {data.paper.pages}-page paper, with full
+                methodology, results, and caveats.
+              </span>
+            </div>
+          </div>
+        )
+      }
     </div>
   </article>
 </Layout>
@@ -94,5 +123,48 @@ const articleLd = {
     border-radius: 999px;
     border: 1px solid var(--border-strong);
     color: var(--text-muted);
+  }
+
+  .paper-embed {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .paper-embed h2 {
+    font-size: 1.3rem;
+  }
+
+  .pdf-frame {
+    width: 100%;
+    height: 46rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--card);
+  }
+
+  .pdf-frame object {
+    width: 100%;
+    height: 100%;
+  }
+
+  .pdf-fallback {
+    padding: 1.5rem;
+    color: var(--text-muted);
+  }
+
+  .embed-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .embed-note {
+    color: var(--text-muted);
+    font-size: 0.85rem;
   }
 </style>

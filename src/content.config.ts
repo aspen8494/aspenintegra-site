@@ -18,6 +18,13 @@ const research = defineCollection({
     /** Higher = shown first on the Research page */
     weight: z.number().default(0),
     status: z.enum(['active', 'complete', 'archived']).default('active'),
+    /** Optional embedded white paper: served file path + page count */
+    paper: z
+      .object({
+        file: z.string(),
+        pages: z.number(),
+      })
+      .optional(),
   }),
 });
 
