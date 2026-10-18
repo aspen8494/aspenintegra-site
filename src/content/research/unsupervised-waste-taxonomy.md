@@ -38,4 +38,4 @@ Coverage is stated, not hidden: SRS samples carry 37% (sludge), 77% (salt), and 
 
 ## The paper and the explorer
 
-The full 22-page white paper documents the mathematics, the model selection, the per-panel results, and the caveats, and is embedded below. Every number is reproducible from the published database on the Open Data page. An interactive analog explorer — every SRS sample against every Hanford cluster, with the supporting analytes listed — lives in the repository.
+The full 22-page white paper documents the mathematics, the model selection, the per-panel results, and the caveats, and is embedded below. Every number is reproducible from the published database on the Open Data page. The interactive analog explorer — every SRS sample against every Hanford cluster, with the supporting analytes listed — runs in the [playground section](/playground/) of this site.

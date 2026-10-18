@@ -44,6 +44,20 @@ const live = [
     ],
     repo: 'https://github.com/aspen8494/srs-tank-waste-database',
   },
+  {
+    title: 'Cross-Site Waste Taxonomy Explorer',
+    href: '/waste-taxonomy/',
+    badge: 'Live',
+    detail:
+      'Unsupervised machine learning across both tank farms: Hanford\'s 433 tank-phase compositions clustered into data-driven waste families (Ward on CLR-transformed chemistry), then every Savannah River measured batch and closure vector projected onto that taxonomy with shared-support distances. Find which Hanford waste each SRS batch resembles — and which batches have no analog at all.',
+    features: [
+      'Three feature spaces: sludge chemistry, salt chemistry, radionuclide signatures',
+      'Analog finder: top-5 Hanford matches per SRS sample, with the supporting analytes',
+      'Cluster profiles, UMAP geometry, and anomaly flags for data-quality review',
+      'Full methods and caveats tab: coverage stated per claim, basis asymmetry explained',
+    ],
+    repo: 'https://github.com/aspen8494/srs-tank-waste-database',
+  },
 ];
 
 const comingSoon = [
@@ -57,7 +71,7 @@ const comingSoon = [
 
 <Layout
   title="Playground"
-  description="Interactive in-browser experiments from the Aspen Integra lab: a blend-sandbox mission planner, a glass property explorer, and an SRS vs Hanford tank-inventory comparison dashboard."
+  description="Interactive in-browser experiments from the Aspen Integra lab: a blend-sandbox mission planner, a glass property explorer, an SRS vs Hanford tank-inventory comparison, and an unsupervised waste-taxonomy explorer."
 >
   <section class="page-hero">
     <div class="container">
@@ -65,7 +79,7 @@ const comingSoon = [
       <h1>Interactive experiments</h1>
       <p class="lede">
         Small client-side models and visualizations. The ideas behind the research, but
-        things you can poke at. Three are live below, all open source, all built from
+        things you can poke at. Four are live below, all open source, all built from
         published public data. Every experiment runs in your browser, with its sources
         cited.
       </p>
