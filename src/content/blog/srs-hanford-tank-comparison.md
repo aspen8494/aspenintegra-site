@@ -1,6 +1,6 @@
 ---
 title: 'Two tank farms, one question: how do SRS and Hanford inventories actually compare?'
-description: 'Our team assembled the first public SRS-vs-Hanford tank-waste comparison: 51 Savannah River tanks (33.2 Mgal, 191 MCi) against Hanford''s 177-tank BBI (53.0 Mgal, 122.6 MCi). The headline surprises: SRS holds more curies in less volume, Sr-90 and its daughters dominate SRS where Cs-137 dominates Hanford, and the two sites publish their inventories on completely different bases.'
+description: 'The first public SRS vs Hanford tank waste comparison: 51 Savannah River tanks (191 MCi) vs Hanford''s 177-tank BBI (122.6 MCi) — who holds more curies, and why the two inventories are hard to compare.'
 pubDate: 2026-10-16
 tags: ['nuclear engineering', 'data engineering', 'waste treatment', 'data visualization']
 ---

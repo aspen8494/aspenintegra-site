@@ -1,6 +1,6 @@
 ---
 title: 'An Unsupervised Taxonomy of Tank Waste Across Hanford and Savannah River'
-description: 'Unsupervised learning organizes Hanford''s 177-tank Best-Basis Inventory into data-driven waste families, then screens Savannah River''s measured batches against that taxonomy: strong radionuclide analogs for the salt waste, no Hanford analog for the titanate-bearing PRFT batches, and an honest accounting of what the coverage gaps allow you to conclude.'
+description: 'Unsupervised machine learning maps Hanford''s 177-tank Best-Basis Inventory into waste families and screens SRS batches against them: strong salt analogs, no PRFT analog, honest coverage gaps.'
 pubDate: 2026-10-18
 tags: ['machine learning', 'unsupervised learning', 'nuclear engineering', 'data engineering', 'waste treatment']
 repo: 'https://github.com/aspen8494/srs-tank-waste-database'

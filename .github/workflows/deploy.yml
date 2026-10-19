@@ -28,6 +28,9 @@ jobs:
       - name: Build site
         run: npm run build
 
+      - name: Append playground apps to sitemap
+        run: python scripts/append_sitemap.py
+
       # ---- Deploy over SFTP (IONOS, port 22) ----
       # Custom paramiko deploy script that mirrors an interactive `sftp`
       # login: password auth with keyboard-interactive fallback. This is

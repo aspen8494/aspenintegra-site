@@ -33,6 +33,33 @@ TEXT_EDITS = [
 FORBIDDEN = ["Hermes", "hermes", "/Users/", "Savannah_RiverTF"]
 
 
+
+
+# ---- SEO head injection (idempotent) ----
+# Adds canonical + description + keywords to the vendored page so search
+# engines index it. Safe to re-run after every upstream re-sync: skips if
+# already present.
+
+CANONICAL_MARKER = 'rel="canonical"'
+
+
+def inject_seo(
+    path: pathlib.Path, canonical: str, description: str, keywords: str
+) -> None:
+    html = path.read_text(encoding="utf-8")
+    if CANONICAL_MARKER in html:
+        return
+    tags = (
+        f'\n  <link rel="canonical" href="{canonical}" />\n'
+        f'  <meta name="description" content="{description}" />\n'
+        f'  <meta name="keywords" content="{keywords}" />\n'
+    )
+    marker = "</title>"
+    idx = html.find(marker)
+    assert idx != -1, f"{path}: no <title> tag to anchor SEO tags on"
+    html = html[: idx + len(marker)] + tags + html[idx + len(marker) :]
+    path.write_text(html, encoding="utf-8")
+
 def main() -> int:
     src = PAGE.read_text(encoding="utf-8")
 
@@ -52,6 +79,17 @@ def main() -> int:
     PAGE.write_text(src, encoding="utf-8")
 
     # Verify: no forbidden strings anywhere.
+    inject_seo(
+        PAGE,
+        "https://aspenintegra.com/tank-comparison/",
+        "Compare Hanford tank waste against the Savannah River Site: 177 "
+        "Hanford tanks (Best-Basis Inventory) vs 51 SRS tanks — volumes, "
+        "curies, phases, radionuclides, per-tank drill-downs.",
+        "Hanford waste, Hanford tank waste, Hanford open source data, "
+        "Best-Basis Inventory, SRS tank waste, Savannah River Site, tank "
+        "farm, radionuclide inventory, open data",
+    )
+
     final = PAGE.read_text(encoding="utf-8")
     leaks = [f for f in FORBIDDEN if f in final]
     if leaks:

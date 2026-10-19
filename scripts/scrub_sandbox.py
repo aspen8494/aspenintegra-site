@@ -82,6 +82,32 @@ JSON_META = {
 TERMS = ("hanford", "ewg", "rpp-rpt", "pnnl")
 
 
+# ---- SEO head injection (idempotent) ----
+# Adds canonical + description + keywords to the vendored page. Safe to
+# re-run after every upstream re-sync: skips if already present. NOTE: this
+# app ships under a Hanford-free scrub policy (TERMS leak gate below), so
+# the keywords/description passed here must also be Hanford-free.
+
+CANONICAL_MARKER = 'rel="canonical"'
+
+
+def inject_seo(
+    path: pathlib.Path, canonical: str, description: str, keywords: str
+) -> None:
+    html = path.read_text(encoding="utf-8")
+    if CANONICAL_MARKER in html:
+        return
+    tags = (
+        f'\n  <link rel="canonical" href="{canonical}" />\n'
+        f'  <meta name="description" content="{description}" />\n'
+        f'  <meta name="keywords" content="{keywords}" />\n'
+    )
+    marker = "</title>"
+    idx = html.find(marker)
+    assert idx != -1, f"{path}: no <title> tag to anchor SEO tags on"
+    html = html[: idx + len(marker)] + tags + html[idx + len(marker) :]
+    path.write_text(html, encoding="utf-8")
+
 def main() -> int:
     misses = []
     for rel, old, new in TEXT_EDITS:
@@ -112,6 +138,16 @@ def main() -> int:
         for t in TERMS:
             if t in low:
                 leaks.append(f"{f.relative_to(SBX)} contains {t!r}")
+    inject_seo(
+        SBX / "index.html",
+        "https://aspenintegra.com/sandbox/",
+        "In-browser mission planner for nuclear tank waste blending: build "
+        "retrieval campaigns, optimize the glass formulation, watch mission "
+        "glass respond — client-side, no server.",
+        "tank waste, HLW, mission planning, waste blending, glass "
+        "formulation, vitrification, nuclear waste, open data",
+    )
+
     if leaks:
         print("IDENTIFIER LEAKS remain:")
         for l in leaks:

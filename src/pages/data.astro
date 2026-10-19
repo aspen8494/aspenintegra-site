@@ -123,11 +123,53 @@ const perTankSets = [
     note: 'The closure-module chemical scope, 25 elements.',
   },
 ];
+
+// Structured data: the SRS + Hanford databases as downloadable Datasets.
+const datasetLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'SRS Tank Waste Database + Hanford Best-Basis Inventory Comparison Set',
+  description:
+    'Open-source tank waste database for the Savannah River Site F- and H-Area Tank Farms (51 tanks), assembled from public DOE, NRC, and SRNS documents in Best-Basis-Inventory style, plus the Hanford Site 177-tank Best-Basis Inventory pulled from the public data service for comparison. SQLite, CSV, and JSON exports with per-row dataset, basis, and source provenance.',
+  url: 'https://aspenintegra.com/data/',
+  creator: {
+    '@type': 'Person',
+    name: 'Aspen',
+    url: 'https://aspenintegra.com/',
+  },
+  keywords: [
+    'Hanford waste',
+    'Hanford open source data',
+    'Hanford Best-Basis Inventory',
+    'SRS tank waste',
+    'Savannah River Site tank waste',
+    'nuclear waste database',
+    'tank farm inventory',
+    'open data',
+  ],
+  license: 'https://aspenintegra.com/data/#license',
+  isAccessibleForFree: true,
+  distribution: [
+    {
+      '@type': 'DataDownload',
+      name: 'srs_tank_waste.db',
+      encodingFormat: 'application/vnd.sqlite3',
+      contentUrl: 'https://aspenintegra.com/data/srs/srs_tank_waste.db',
+    },
+    {
+      '@type': 'DataDownload',
+      name: 'ml_inventory_long.csv',
+      encodingFormat: 'text/csv',
+      contentUrl: 'https://aspenintegra.com/data/srs/ml_inventory_long.csv',
+    },
+  ],
+};
 ---
 
 <Layout
-  title="Open Data"
-  description="Download the SRS tank waste database: a Best-Basis-Inventory-style dataset for the Savannah River Site's 51 tanks assembled from public DOE, NRC, and SRNS documents, with the Hanford BBI comparison set included."
+  title="Hanford & SRS Tank Waste Databases — Open Data"
+  description="Free tank waste databases: the SRS tank waste database (51 tanks) and the Hanford 177-tank Best-Basis Inventory — SQLite, CSV, JSON, from public sources."
+  jsonLd={datasetLd}
 >
   <section class="page-hero">
     <div class="container">
@@ -286,6 +328,16 @@ const perTankSets = [
             Full pipeline & source documents on GitHub ↗
           </a>
         </div>
+      </div>
+      <div id="license" class="glass-card links-card">
+        <h3>License & data rights</h3>
+        <p>
+          The compiled datasets and code are provided as-is, free, for research
+          and public use. The underlying source documents are public DOE, NRC,
+          and SRNS publications; each remains the property of its issuing
+          organization. No warranty is made as to fitness for any regulatory
+          or operational purpose.
+        </p>
       </div>
     </div>
   </section>

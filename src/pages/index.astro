@@ -26,7 +26,7 @@ const websiteLd = {
   alternateName: 'Aspen Integra Personal Research Laboratory',
   url: 'https://aspenintegra.com/',
   description:
-    'Personal research laboratory of Aspen, a nuclear process engineer. Research write-ups, a blog, and a CV linking machine learning with waste disposal, treatment, and power.',
+    'Open-source nuclear waste research: Hanford tank waste databases, Best-Basis Inventory data, machine-learning mission models, interactive public dashboards, and free white papers on vitrification and tank-farm mission planning.',
   inLanguage: 'en-US',
   author: {
     '@type': 'Person',
@@ -36,7 +36,11 @@ const websiteLd = {
 };
 ---
 
-<Layout jsonLd={websiteLd}>
+<Layout
+  jsonLd={websiteLd}
+  title="Hanford Tank Waste & Open Nuclear Data — Research Lab"
+  description="Open-source Hanford tank waste research: the 177-tank Best-Basis Inventory, SRS tank waste database, ML mission models, white papers, and public dashboards."
+>
   <section class="hero">
     <div class="container hero-inner">
       <span class="badge">Personal Research Laboratory</span>
@@ -105,6 +109,46 @@ const websiteLd = {
   </section>
 
   <section class="section section-sm">
+    <div class="container">
+      <p class="eyebrow">Open nuclear data</p>
+      <h2 class="section-title">Hanford & SRS tank waste, open source</h2>
+      <div class="card-grid cols-2">
+        <a class="glass-card project-card" href="/data/">
+          <div class="meta-row">
+            <span class="badge">Database</span>
+            <span>SQLite · CSV · JSON</span>
+          </div>
+          <h3>Tank waste databases, free to download</h3>
+          <p>
+            The SRS tank waste database — 51 tanks of Best-Basis-Inventory-style
+            inventory data assembled from public documents — and the full
+            Hanford 177-tank Best-Basis Inventory comparison set. Every row
+            carries its dataset, basis, and source.
+          </p>
+          <span class="card-cta">Download the data →</span>
+        </a>
+        <a class="glass-card project-card" href="/playground/">
+          <div class="meta-row">
+            <span class="badge">Interactive</span>
+            <span>Runs in your browser</span>
+          </div>
+          <h3>Explore the waste yourself</h3>
+          <p>
+            Four live dashboards built on the open data: the SRS vs Hanford
+            tank comparison, an unsupervised cross-site waste taxonomy, a
+            glass property explorer, and the HLW blend sandbox. No server,
+            no sign-up — every experiment runs client-side.
+          </p>
+          <span class="card-cta">Open the playground →</span>
+        </a>
+      </div>
+      <p class="section-more">
+        <a href="/papers/">Read the white papers →</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
       <p class="eyebrow">From the blog</p>
       <h2 class="section-title">Recent writing</h2>

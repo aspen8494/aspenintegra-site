@@ -1,6 +1,6 @@
 ---
 title: 'Washing the waste: how one retrieval parameter doubles a mission'
-description: 'A sensitivity study from the HLW facility mission model. Lowering retrieval wash efficiency from 0.9 to 0.5 nearly doubles mission glass (45.0 to 86.2 kt) and stretches the mission from 9,044 to 16,033 days. The coupling explains why.'
+description: 'Sensitivity study: lowering retrieval wash efficiency from 0.9 to 0.5 nearly doubles mission glass (45 to 86 kt) and stretches the mission by 7,000 days. The coupling explains why.'
 pubDate: 2026-10-12
 tags: ['nuclear engineering', 'modeling', 'waste treatment']
 ---

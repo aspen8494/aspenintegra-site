@@ -1,6 +1,6 @@
 ---
 title: 'Teaching a network the glass formulation chain'
-description: 'I trained a PyTorch surrogate on 3,503 formulations my mission model produced, so a feed analysis becomes a recipe, a glass, and thirteen property flags in fifty milliseconds. Notes on what the network should never be allowed to learn, honest holdouts, and why a linear baseline seven times worse is the most useful table in the paper.'
+description: 'Training a PyTorch surrogate on 3,503 mission-model formulations: feed analysis to recipe, glass, and thirteen property flags in 50 ms — plus what a network must never be allowed to learn.'
 pubDate: 2026-10-15
 tags: ['machine learning', 'pytorch', 'glass chemistry', 'surrogate modeling']
 ---
