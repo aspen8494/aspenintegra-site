@@ -71,6 +71,37 @@ const downloads = [
   },
 ];
 
+const glassDb = {
+  href: '/glass-research-db/',
+  records: '6,742',
+  span: '1976–present',
+  desc:
+    'A searchable compilation of published research on Hanford waste-glass composition modeling and glass formulation algorithms — the pioneering HWVP-era studies, the baseline property models, and the current Enhanced Waste Glass program. Every record is a published document (journal article, DOE report, conference paper, or preprint) with tags for LAW/HLW, era, relevance tier, and topic. Search it in the browser, or download the full 17.9k-record dataset.',
+  files: [
+    {
+      href: 'https://github.com/aspen8494/hanford-glass-research-db/raw/main/db/hanford_glass_research.db',
+      name: 'hanford_glass_research.db',
+      format: 'SQLite',
+      size: '41 MB',
+      note: 'All 17,946 records with abstracts, tags, DOIs, and OSTI links.',
+    },
+    {
+      href: 'https://github.com/aspen8494/hanford-glass-research-db/raw/main/db/hanford_glass_research.csv',
+      name: 'hanford_glass_research.csv',
+      format: 'CSV',
+      size: '12 MB',
+      note: 'Flat export of every record.',
+    },
+    {
+      href: 'https://github.com/aspen8494/hanford-glass-research-db/raw/main/data/records.jsonl.gz',
+      name: 'records.jsonl.gz',
+      format: 'JSONL (gz)',
+      size: '42 MB',
+      note: 'Full-fidelity line-delimited records for pipelines.',
+    },
+  ],
+};
+
 const perTankSets = [
   {
     href: '/data/srs/htf_assigned_rad_by_tank.csv',
@@ -164,12 +195,79 @@ const datasetLd = {
     },
   ],
 };
+
+// Second Dataset: the glass research bibliography (17.9k records).
+const glassDatasetLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Hanford Glass Research Database — Waste-Glass Composition Modeling & Formulation Bibliography',
+  description:
+    'Open, searchable compilation of 17,946 published documents on Hanford waste-glass composition modeling and glass formulation algorithms (LAW + HLW), 1976–present, harvested from OSTI, OpenAlex, Crossref, arXiv, and curated bibliographies. Searchable web UI plus SQLite, CSV, and JSONL downloads.',
+  url: 'https://aspenintegra.com/glass-research-db/',
+  sameAs: 'https://github.com/aspen8494/hanford-glass-research-db',
+  creator: {
+    '@type': 'Person',
+    name: 'Aspen',
+    url: 'https://aspenintegra.com/',
+  },
+  keywords: [
+    'Hanford Site Glass',
+    'Hanford glass research',
+    'waste glass composition',
+    'glass formulation algorithms',
+    'vitrification',
+    'LAW glass',
+    'HLW glass',
+    'waste glass durability',
+    'glass property models',
+    'open database',
+  ],
+  license: 'https://github.com/aspen8494/hanford-glass-research-db/blob/main/LICENSE',
+  isAccessibleForFree: true,
+  variableMeasured: [
+    'title',
+    'authors',
+    'year',
+    'venue',
+    'DOI',
+    'OSTI ID',
+    'abstract',
+    'facility (LAW/HLW)',
+    'era',
+    'relevance tier',
+    'topic tags',
+    'citation counts',
+  ],
+  distribution: [
+    {
+      '@type': 'DataDownload',
+      name: 'hanford_glass_research.db',
+      encodingFormat: 'application/vnd.sqlite3',
+      contentUrl:
+        'https://github.com/aspen8494/hanford-glass-research-db/raw/main/db/hanford_glass_research.db',
+    },
+    {
+      '@type': 'DataDownload',
+      name: 'hanford_glass_research.csv',
+      encodingFormat: 'text/csv',
+      contentUrl:
+        'https://github.com/aspen8494/hanford-glass-research-db/raw/main/db/hanford_glass_research.csv',
+    },
+    {
+      '@type': 'DataDownload',
+      name: 'records.jsonl.gz',
+      encodingFormat: 'application/gzip',
+      contentUrl:
+        'https://github.com/aspen8494/hanford-glass-research-db/raw/main/data/records.jsonl.gz',
+    },
+  ],
+};
 ---
 
 <Layout
   title="Hanford & SRS Tank Waste Databases — Open Data"
   description="Free tank waste databases: the SRS tank waste database (51 tanks) and the Hanford 177-tank Best-Basis Inventory — SQLite, CSV, JSON, from public sources."
-  jsonLd={datasetLd}
+  jsonLd={[datasetLd, glassDatasetLd]}
 >
   <section class="page-hero">
     <div class="container">
@@ -290,6 +388,42 @@ const datasetLd = {
           ))
         }
       </ul>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <h2 class="section-title">The research bibliography: Hanford glass, 1976–present</h2>
+      <div class="glass-card">
+        <div class="meta-row">
+          <span class="badge">Searchable</span>
+          <span>{glassDb.records} records · {glassDb.span}</span>
+        </div>
+        <p class="lede-sm">{glassDb.desc}</p>
+        <p>
+          <a class="button" href={glassDb.href}>Search the glass research database →</a>
+        </p>
+        <ul class="per-tank-list">
+          {
+            glassDb.files.map((f) => (
+              <li>
+                <a href={f.href} download>
+                  {f.name}
+                </a>
+                <span class="note">
+                  {f.format} · {f.size} · {f.note}
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="note">
+          Automated harvest of public sources (OSTI, OpenAlex, Crossref, arXiv, curated
+          bibliographies); harvesting scripts and provenance are versioned in the
+          <a href="https://github.com/aspen8494/hanford-glass-research-db" target="_blank" rel="noopener noreferrer">
+            source repository ↗</a>.
+        </p>
+      </div>
     </div>
   </section>
 

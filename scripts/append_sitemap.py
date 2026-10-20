@@ -21,6 +21,7 @@ APP_URLS = [
     "https://aspenintegra.com/glass-explorer/",
     "https://aspenintegra.com/tank-comparison/",
     "https://aspenintegra.com/waste-taxonomy/",
+    "https://aspenintegra.com/glass-research-db/",
 ]
 
 
@@ -58,7 +59,7 @@ def main() -> int:
     if missing:
         print("ERROR: still missing after write:", missing)
         return 1
-    print("Sitemap verified: all 4 app URLs present.")
+    print("Sitemap verified: all", len(APP_URLS), "app URLs present.")
     return 0
 
 

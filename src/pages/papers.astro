@@ -121,7 +121,8 @@ const extraShots = [
       <p class="lede">
         The full write-ups of the mission-modeling toolchain, plus the SRS vs Hanford
         inventory comparison — published open access, embedded below. Explore the
-        dashboard's capabilities after.
+        dashboard's capabilities after. Now with the open Hanford glass research
+        bibliography: 17.9k published records, searchable.
       </p>
     </div>
   </section>
@@ -198,6 +199,51 @@ const extraShots = [
         </section>
     ))
   }
+
+  <!-- ---------- Glass research database ---------- -->
+  <section class="section-sm paper-section" id="glass-research-db">
+    <div class="container">
+      <p class="eyebrow new-flag">Open database</p>
+      <div class="paper-grid">
+        <div class="paper-info glass-card">
+          <span class="badge">17,946 records · 1976–present</span>
+          <h2>Hanford Glass Research Database</h2>
+          <p class="paper-subtitle">
+            A searchable bibliography of waste-glass composition modeling and formulation
+            algorithm development (LAW + HLW)
+          </p>
+          <p class="paper-abstract">
+            Every published document I could find on Hanford waste-glass composition
+            modeling and glass formulation algorithms — journal articles, DOE technical
+            reports, conference papers, and preprints, harvested automatically from OSTI,
+            OpenAlex, Crossref, and arXiv with curated lineage back to the 1970s
+            pioneering work. Records carry LAW/HLW facility tags, era classification,
+            relevance tiers, topic tags, and citation counts. The web UI searches all
+            6,742 non-tangential records instantly in the browser; the full 17,946-record
+            dataset downloads as SQLite, CSV, or JSONL.
+          </p>
+          <div class="paper-highlights">
+            <h3>What's in it</h3>
+            <ul>
+              <li>The complete published lineage of Hanford glass property models, from the HWVP-era studies through the baseline WTP design models to the current Enhanced Waste Glass program</li>
+              <li>Topic coverage: durability, viscosity, nepheline, sulfate solubility, spinel crystallization, redox, melter performance, technetium retention, and machine-learning surrogates</li>
+              <li>Every record linked to its DOI, OSTI record, or full-text PDF where public</li>
+              <li>Fully re-runnable: harvesting scripts and exact queries are versioned in the repository</li>
+            </ul>
+          </div>
+          <p class="data-cta">
+            <a href="/glass-research-db/">Search the database now →</a>
+            &nbsp;·&nbsp;
+            <a
+              href="https://github.com/aspen8494/hanford-glass-research-db"
+              target="_blank"
+              rel="noopener noreferrer">Source repository & harvest scripts ↗</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ---------- Dashboard feature ---------- -->
   <section class="section-sm">
