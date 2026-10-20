@@ -265,26 +265,41 @@ const glassDatasetLd = {
 ---
 
 <Layout
-  title="Hanford & SRS Tank Waste Databases — Open Data"
-  description="Free tank waste databases: the SRS tank waste database (51 tanks) and the Hanford 177-tank Best-Basis Inventory — SQLite, CSV, JSON, from public sources."
+  title="Hanford Tank Waste & Glass Research Databases — Open Data"
+  description="Free open data: SRS + Hanford tank waste inventories (SQLite, CSV, JSON) and a searchable 17,946-record bibliography of Hanford waste-glass research."
   jsonLd={[datasetLd, glassDatasetLd]}
 >
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Open Data</p>
-      <h1>The SRS tank waste database, published</h1>
+      <h1>Two open databases: tank waste & glass research</h1>
       <p class="lede">
-        {SITE.title} maintains a Best-Basis-Inventory-style research dataset for the
-        Savannah River Site's F- and H-Area Tank Farms, assembled from public DOE, NRC,
-        and SRNS documents — plus a live pull of the Hanford Site's 177-tank BBI for
-        comparison. Everything below is free to download and use. Built from published
-        reports, published back out.
+        {SITE.title} maintains two separately built databases. The first is a
+        Best-Basis-Inventory-style research dataset for the Savannah River Site's F- and
+        H-Area Tank Farms, assembled from public DOE, NRC, and SRNS documents, with a live
+        pull of the Hanford Site's 177-tank BBI for comparison. The second is a searchable
+        bibliography of published Hanford waste-glass research, 1976–present. Both are
+        free to download and use — built from published reports, published back out.
       </p>
+      <div class="db-nav">
+        <a href="#tank-waste-db"><strong>01</strong><span>Tank waste inventory data</span></a>
+        <a href="#glass-research-db"><strong>02</strong><span>Glass research bibliography</span></a>
+      </div>
     </div>
   </section>
 
-  <section class="section-sm">
+  <section id="tank-waste-db" class="section-sm">
     <div class="container">
+      <div class="db-head">
+        <p class="eyebrow">Database 01</p>
+        <h2>Tank waste inventory data</h2>
+        <p class="lede-sm">
+          Per-tank radionuclide and chemical inventories: all 51 SRS tanks across four
+          documented datasets, the full Hanford 177-tank Best-Basis Inventory comparison
+          set, and SRNL's measured current-waste samples — every row carrying its dataset,
+          basis, and source.
+        </p>
+      </div>
       <dl class="stat-strip glass-card">
         {
           stats.map((s) => (
@@ -393,7 +408,50 @@ const glassDatasetLd = {
 
   <section class="section-sm">
     <div class="container">
-      <h2 class="section-title">The research bibliography: Hanford glass, 1976–present</h2>
+      <h2 class="section-title">The basis caveat, stated plainly</h2>
+      <div class="glass-card caveat-card">
+        <p>
+          SRS tracks current per-tank composition in an internal system that is not publicly
+          released at that granularity. The public per-tank data are closure residuals from
+          the Performance Assessments and Special Analyses: conservative, decayed-to-2032
+          estimates built for §3116 closure determinations. Hanford's BBI, by contrast, is a
+          current inventory published per tank. The two bases are not interchangeable, and
+          every row in this database carries its dataset, basis, and source so they cannot
+          be mixed by accident. Read the data dictionary before drawing conclusions.
+        </p>
+        <p>
+          The underlying source documents are public DOE, NRC, and SRNS publications and
+          remain the property of their issuing organizations; each is cited in the
+          sources ledger. The compiled dataset and pipeline code are provided as-is for
+          research use, with no warranty as to fitness for any regulatory or operational
+          purpose.
+        </p>
+      </div>
+      <div class="glass-card links-card">
+        <h3>Explore the tank waste data before you download</h3>
+        <div class="link-row">
+          <a href="/tank-comparison/">Interactive comparison dashboard →</a>
+          <a href="/blog/srs-hanford-tank-comparison/">Read the findings write-up →</a>
+          <a href={SITE.github + '/srs-tank-waste-database'} target="_blank" rel="noopener noreferrer">
+            Full pipeline & source documents on GitHub ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="glass-research-db" class="section-sm">
+    <div class="container">
+      <div class="db-head">
+        <p class="eyebrow">Database 02</p>
+        <h2>Glass research bibliography</h2>
+        <p class="lede-sm">
+          Published documents, not measurements: every journal article, DOE report,
+          conference paper, and preprint on Hanford waste-glass composition modeling and
+          formulation algorithms, from the pioneering 1970s work to the current property
+          models — tagged by facility, era, relevance, and topic.
+        </p>
+      </div>
       <div class="glass-card">
         <div class="meta-row">
           <span class="badge">Searchable</span>
@@ -424,45 +482,19 @@ const glassDatasetLd = {
             source repository ↗</a>.
         </p>
       </div>
-    </div>
-  </section>
-
-  <section class="section-sm">
-    <div class="container">
-      <h2 class="section-title">The basis caveat, stated plainly</h2>
-      <div class="glass-card caveat-card">
-        <p>
-          SRS tracks current per-tank composition in an internal system that is not publicly
-          released at that granularity. The public per-tank data are closure residuals from
-          the Performance Assessments and Special Analyses: conservative, decayed-to-2032
-          estimates built for §3116 closure determinations. Hanford's BBI, by contrast, is a
-          current inventory published per tank. The two bases are not interchangeable, and
-          every row in this database carries its dataset, basis, and source so they cannot
-          be mixed by accident. Read the data dictionary before drawing conclusions.
-        </p>
-        <p>
-          The underlying source documents are public DOE, NRC, and SRNS publications and
-          remain the property of their issuing organizations; each is cited in the
-          sources ledger. The compiled dataset and pipeline code are provided as-is for
-          research use, with no warranty as to fitness for any regulatory or operational
-          purpose.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-sm">
-    <div class="container">
       <div class="glass-card links-card">
-        <h3>Explore before you download</h3>
+        <h3>Explore the glass research before you download</h3>
         <div class="link-row">
-          <a href="/tank-comparison/">Interactive comparison dashboard →</a>
-          <a href="/blog/srs-hanford-tank-comparison/">Read the findings write-up →</a>
-          <a href={SITE.github + '/srs-tank-waste-database'} target="_blank" rel="noopener noreferrer">
-            Full pipeline & source documents on GitHub ↗
-          </a>
+          <a href="/glass-research-db/">Search the full bibliography →</a>
+          <a href="/glass-explorer/">Glass property explorer →</a>
+          <a href="/papers/#glass-research-db">Read the database write-up →</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
       <div id="license" class="glass-card links-card">
         <h3>License & data rights</h3>
         <p>
@@ -482,6 +514,63 @@ const glassDatasetLd = {
     margin-top: 1.1rem;
     font-size: 1.12rem;
     color: var(--text-muted);
+    max-width: 46rem;
+  }
+
+  /* ---------- Two-database navigator & section headers ---------- */
+  .db-nav {
+    margin-top: 1.6rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .db-nav a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.8rem 1.25rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .db-nav a:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .db-nav strong {
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .db-nav span {
+    font-size: 0.95rem;
+  }
+
+  #tank-waste-db,
+  #glass-research-db {
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+
+  .db-head {
+    margin-bottom: 1.5rem;
+  }
+
+  .db-head h2 {
+    font-size: 1.9rem;
+    margin: 0.35rem 0 0.75rem;
+  }
+
+  .db-head .lede-sm {
     max-width: 46rem;
   }
 
