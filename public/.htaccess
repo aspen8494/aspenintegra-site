@@ -1,0 +1,48 @@
+# aspenintegra.com — Apache directives (IONOS shared hosting)
+# Shipped by deploy_sftp.py; safe on Apache 2.4.
+#
+# Goals: single canonical host (https + apex), compression, static-asset
+# caching, clean 404s. No content changes — headers and redirects only.
+
+# ---- Canonical host: www -> apex, http -> https (301, permanent) ----
+# Guarded: if mod_rewrite is ever unavailable, the site must still serve.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # One 301 hop for both cases: plain http, and any www host.
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^(.*)$ https://aspenintegra.com/$1 [R=301,L,QSA]
+</IfModule>
+
+# HSTS: once a visitor is on https, stay there.
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=15552000"
+</IfModule>
+
+# ---- Compression (IONOS Apache ships mod_deflate) ----
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ---- Caching: Astro's /_astro/ bundles are content-hashed (immutable) ----
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType application/pdf "access plus 1 month"
+  ExpiresByType application/json "access plus 1 hour"
+  ExpiresDefault "access plus 1 hour"
+</IfModule>
+
+# ---- 404s serve the site's own 404 page, not the IONOS default ----
+ErrorDocument 404 /404.html
