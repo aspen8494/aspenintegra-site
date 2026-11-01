@@ -74,13 +74,23 @@ const live = [
       { href: '/glass-research-db/', label: 'Glass research on this waste →' },
     ],
   },
-];
-
-const comingSoon = [
   {
-    title: 'Off-gas capture visualizer',
+    title: 'Off-Gas Capture Visualizer',
+    href: '/offgas-visualizer/',
+    badge: 'Live',
     detail:
-      'Interactive diagram of a melter off-gas train (scrubber, WESP, HEPA, carbon bed, mordenite, SCO/SCR) with sliders for decontamination factors and live stack-composition readouts.',
+      'An interactive diagram of a melter off-gas treatment train (scrubber, WESP, demister, HEPA, carbon bed, silver mordenite, SCO/SCR) with decontamination-factor sliders on every capture stage and live stack-composition readouts. The default sliders reproduce the facility chain within a few percent on every tracked species. No server, nothing leaves your browser.',
+    features: [
+      '14-stage train visualized end to end: melter → scrubber → WESP → HEME → reheat → HEPA → fan → carbon bed → mordenite → HX → SCO → SCR → stack',
+      'DF slider on every capture stage, recomputing the full train live',
+      'Live stack readout with per-species flows and capture-to-sink ledgers',
+      'Default-slider engine matches the model chain snapshot within tolerance (node-verified)',
+    ],
+    repo: 'https://github.com/aspen8494/offgas-visualizer',
+    related: [
+      { href: '/research/hlw-facility-mission-model/', label: 'The facility model behind the basis →' },
+      { href: '/sandbox/', label: 'Feed composition drives the off-gas load →' },
+    ],
   },
 ];
 ---
@@ -95,7 +105,7 @@ const comingSoon = [
       <h1>Interactive experiments</h1>
       <p class="lede">
         Small client-side models and visualizations. The ideas behind the research, but
-        things you can poke at. Four are live below, all open source, all built from
+        things you can poke at. Five are live below, all open source, all built from
         published public data. Every experiment runs in your browser, with its sources
         cited.
       </p>
@@ -134,19 +144,6 @@ const comingSoon = [
                 Open the sandbox →
               </a>
             </article>
-          ))
-        }
-      </div>
-
-      <h2 class="soon-heading">Coming soon</h2>
-      <div class="card-grid cols-2">
-        {
-          comingSoon.map((teaser) => (
-            <div class="glass-card teaser-card">
-              <h3>{teaser.title}</h3>
-              <p>{teaser.detail}</p>
-              <span class="soon">In development</span>
-            </div>
           ))
         }
       </div>
@@ -265,37 +262,5 @@ const comingSoon = [
 
   .related-links a:hover {
     border-color: var(--accent-strong);
-  }
-
-  .soon-heading {
-    font-size: 1.15rem;
-    margin-bottom: 1rem;
-  }
-
-  .teaser-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    padding: 1.6rem;
-  }
-
-  .teaser-card h3 {
-    font-size: 1.1rem;
-  }
-
-  .teaser-card p {
-    color: var(--text-muted);
-    font-size: 0.93rem;
-    flex-grow: 1;
-  }
-
-  .soon {
-    align-self: flex-start;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.2rem 0.7rem;
-    border-radius: 999px;
-    border: 1px dashed var(--accent);
-    color: var(--accent-strong);
   }
 </style>

@@ -22,6 +22,7 @@ APP_URLS = [
     "https://aspenintegra.com/tank-comparison/",
     "https://aspenintegra.com/waste-taxonomy/",
     "https://aspenintegra.com/glass-research-db/",
+    "https://aspenintegra.com/offgas-visualizer/",
 ]
 
 

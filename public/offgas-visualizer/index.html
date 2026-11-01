@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Off-Gas Capture Visualizer — HLW Melter</title>
+<link rel="canonical" href="https://aspenintegra.com/offgas-visualizer/" />
+<meta name="description" content="Interactive Hanford HLW melter off-gas capture visualizer: DF sliders on every treatment stage (scrubber, WESP, HEPA, carbon bed, mordenite, SCO/SCR) with live stack-composition readouts — fully client-side." />
+<meta name="keywords" content="Hanford offgas, off-gas treatment, melter off-gas, vitrification offgas train, SBS scrubber, WESP, HEPA, carbon bed, mordenite, SCO SCR, decontamination factor, Hanford waste, stack emissions, interactive" />
+<link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+<header>
+  <h1>Melter Off-Gas Capture Visualizer</h1>
+  <p class="basis" id="basis-line"></p>
+</header>
+
+<main>
+  <section id="train"></section>
+
+  <aside>
+    <h2>Live stack readout</h2>
+    <div class="stack-summary" id="stack-summary"></div>
+    <table id="stack-table" class="stack-table">
+      <thead><tr><th>Species</th><th>g/s</th><th>mol&nbsp;%</th><th>mass&nbsp;%</th><th>kg/campaign</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <p class="muted" id="stack-note"></p>
+
+    <h2>Capture ledger <span class="muted">(kg per campaign → sinks)</span></h2>
+    <table id="capture-table" class="stack-table">
+      <thead><tr><th>Species</th><th>kg</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </aside>
+</main>
+
+<footer class="muted">
+  Client-side visualizer — no data leaves your browser. Drag any decontamination-
+  factor slider; every stage and the stack recompute instantly. Basis: the full
+  HLW facility-chain model, scenario 135.120.100 campaign 1, hold-rate glass
+  basis 5.0 t/d (MFV draw 2.353 gpm), campaign-mean steady streams.
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
