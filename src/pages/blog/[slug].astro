@@ -18,9 +18,10 @@ const { data } = post;
 // Article structured data for rich results
 const articleLd = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
+  '@type': 'BlogPosting',
   headline: data.title,
   description: data.description,
+  image: 'https://aspenintegra.com/og.png',
   datePublished: data.pubDate.toISOString(),
   ...(data.updatedDate && { dateModified: data.updatedDate.toISOString() }),
   author: {
@@ -32,6 +33,10 @@ const articleLd = {
     '@type': 'Organization',
     name: 'Aspen Integra',
     url: 'https://aspenintegra.com/',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://aspenintegra.com/og.png',
+    },
   },
   mainEntityOfPage: {
     '@type': 'WebPage',
@@ -49,9 +54,27 @@ const articleLd = {
       <div class="meta-row">
         <time datetime={data.pubDate.toISOString()}>Published {formatDate(data.pubDate)}</time>
         {data.updatedDate && <span>· Updated {formatDate(data.updatedDate)}</span>}
+        <a href="/rss.xml" class="rss-link" title="Blog RSS feed">RSS</a>
       </div>
       <hr />
       <Content />
     </div>
   </article>
 </Layout>
+
+<style>
+  .rss-link {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    border: 1px solid var(--border-strong);
+    padding: 0.1rem 0.55rem;
+    border-radius: 999px;
+  }
+
+  .rss-link:hover {
+    color: var(--accent-strong);
+    border-color: var(--accent-strong);
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Base.astro';
+import { SITE } from '../config';
 
 // Papers are listed newest-first. Each renders as its own embedded-viewer
 // section. Generic filenames keep program identifiers out of URLs.
@@ -191,7 +192,9 @@ const extraShots = [
                   The complete {paper.pages}-page write-up, with full methodology, results
                   tables, and verification evidence, is available for reading on request.
                 </p>
-                <a class="btn btn-primary" href="/contact/">Request a copy</a>
+                <a class="btn btn-primary" href={`mailto:${SITE.email}?subject=${encodeURIComponent(`White paper request: ${paper.title}`)}`}>
+                  Request a copy by email
+                </a>
               </div>
             )}
           </div>
@@ -256,6 +259,12 @@ const extraShots = [
         unit-by-unit streams, energy and effluent ledgers, and the discrete operator
         schedule, all interactive.
       </p>
+      <p class="note">
+        Screenshots below are from the full application. A public, browser-based
+        version of the same ideas lives in the{' '}
+        <a href="/playground/">playground</a>: blend sandbox, glass property explorer,
+        tank comparison, and waste taxonomy.
+      </p>
 
       <div class="card-grid cols-3 dash-grid">
         {
@@ -282,7 +291,8 @@ const extraShots = [
           <p>
             The dashboard runs against the full dataset and isn't public-facing, but I'm
             happy to walk through it: PFD, trends, streams, exports, and the discrete
-            operations schedule.
+            operations schedule. Public version of these tools:{' '}
+            <a href="/playground/">open the playground →</a>
           </p>
         </div>
         <a class="btn btn-primary" href="/contact/">{dashboard.cta}</a>

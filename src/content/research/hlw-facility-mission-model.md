@@ -1,6 +1,6 @@
 ---
 title: 'HLW Facility Mission Model'
-description: 'An element-conserving, speciated stream-flow model of a high-level waste vitrification facility and its complete off-gas treatment train, driven by real campaign schedules.'
+description: "Element-conserving simulation of a vitrification plant and its full off-gas train: 135+ automated verification tests, full-campaign runtime 1-2 s, mass and energy closure enforced per species and per unit."
 pubDate: 2026-10-01
 tags: ['nuclear engineering', 'process modeling', 'python', 'thermodynamics']
 repo: 'https://github.com/aspen8494/hlw-facility-mission-model'

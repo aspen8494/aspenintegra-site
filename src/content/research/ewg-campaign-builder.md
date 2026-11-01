@@ -1,6 +1,6 @@
 ---
 title: 'Campaign Builder & Mission Planning'
-description: 'Turns tank waste inventory chemistry into sequenced retrieval campaigns with WAC evaluation, glass-forming optimization, and mission rollups, reproducing published benchmarks.'
+description: "Sequences tank waste inventories into retrieval campaigns with WAC evaluation and glass-forming optimization: 59-76 campaigns per scenario, benchmarks reproduced to 1-4%."
 pubDate: 2026-09-20
 tags: ['optimization', 'mission planning', 'python', 'nuclear engineering']
 repo: 'https://github.com/aspen8494/hlw-facility-mission-model'

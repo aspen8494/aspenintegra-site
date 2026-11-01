@@ -17,12 +17,11 @@ export const SITE = {
 } as const;
 
 export const NAV = [
-  { href: '/', label: 'Home' },
   { href: '/research/', label: 'Research' },
-  { href: '/papers/', label: 'White Paper' },
+  { href: '/papers/', label: 'Papers' },
   { href: '/data/', label: 'Open Data' },
+  { href: '/playground/', label: 'Playground' },
   { href: '/blog/', label: 'Blog' },
   { href: '/about/', label: 'About' },
-  { href: '/playground/', label: 'Playground' },
   { href: '/contact/', label: 'Contact' },
 ] as const;

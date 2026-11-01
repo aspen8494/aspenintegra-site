@@ -1,6 +1,6 @@
 ---
 title: 'GlassNet: Feed-to-Glass Formulation Surrogate'
-description: 'A PyTorch surrogate: feed analysis in, glass-former recipe and thirteen acceptance properties out in under 50 ms — trained on 3,503 mission-model formulations.'
+description: "PyTorch surrogate of the glass formulation chain, feed analysis to glass-former recipe and 13 acceptance properties in under 50 ms, trained on 3,503 mission-model formulations."
 pubDate: 2026-10-15
 tags: ['machine learning', 'pytorch', 'surrogate modeling', 'glass chemistry', 'nuclear engineering']
 repo: 'https://github.com/aspen8494/PytorchNN_GlassApp'

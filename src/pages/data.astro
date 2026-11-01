@@ -381,6 +381,17 @@ const glassDatasetLd = {
           ))
         }
       </div>
+      <div class="glass-card va-card">
+        <h3>Version & integrity</h3>
+        <p>
+          Database 01 as published: <strong>release 2026-10-17</strong> (pipeline commit{' '}
+          <code>6533b75</code>). Every file's SHA-256 is in{' '}
+          <a href="/data/srs/CHECKSUMS.txt" download>CHECKSUMS.txt</a> — verify with{' '}
+          <code>sha256sum -c CHECKSUMS.txt</code> after downloading. If an upstream public
+          document changes, the release date here moves and old checksums stay valid for
+          the old release.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -432,6 +443,7 @@ const glassDatasetLd = {
         <div class="link-row">
           <a href="/tank-comparison/">Interactive comparison dashboard →</a>
           <a href="/blog/srs-hanford-tank-comparison/">Read the findings write-up →</a>
+          <a href="/waste-taxonomy/">Cross-site waste taxonomy →</a>
           <a href={SITE.github + '/srs-tank-waste-database'} target="_blank" rel="noopener noreferrer">
             Full pipeline & source documents on GitHub ↗
           </a>
@@ -488,6 +500,7 @@ const glassDatasetLd = {
           <a href="/glass-research-db/">Search the full bibliography →</a>
           <a href="/glass-explorer/">Glass property explorer →</a>
           <a href="/papers/#glass-research-db">Read the database write-up →</a>
+          <a href="/sandbox/">Blend sandbox (glass responds to waste) →</a>
         </div>
       </div>
     </div>
@@ -572,6 +585,27 @@ const glassDatasetLd = {
 
   .db-head .lede-sm {
     max-width: 46rem;
+  }
+
+  .va-card {
+    margin-top: 1.25rem;
+    padding: 1.1rem 1.4rem;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+  }
+
+  .va-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+    color: var(--text);
+  }
+
+  .va-card code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background: var(--code-bg);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
   }
 
   .stat-strip {

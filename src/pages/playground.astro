@@ -15,6 +15,10 @@ const live = [
       'Same-engine parity with the full application (within a few percent)',
     ],
     repo: 'https://github.com/aspen8494/hanford-blend-sandbox',
+    related: [
+      { href: '/research/ewg-campaign-builder/', label: 'The full campaign builder →' },
+      { href: '/tank-comparison/', label: 'The tank data it plans on →' },
+    ],
   },
   {
     title: 'Glass Property Explorer',
@@ -29,6 +33,10 @@ const live = [
       'Inside-the-network views: signal flow, MC-dropout consensus, driver gradients, data-space map',
     ],
     repo: 'https://github.com/aspen8494/glass-property-explorer',
+    related: [
+      { href: '/research/glassnet-formulation-surrogate/', label: 'The GlassNet write-up →' },
+      { href: '/glass-research-db/', label: 'The published glass literature →' },
+    ],
   },
   {
     title: 'SRS vs Hanford Tank Comparison',
@@ -43,6 +51,10 @@ const live = [
       'Basis caveats surfaced, not buried: closure-residual vs current BBI explained',
     ],
     repo: 'https://github.com/aspen8494/srs-tank-waste-database',
+    related: [
+      { href: '/blog/srs-hanford-tank-comparison/', label: 'The findings write-up →' },
+      { href: '/data/#tank-waste-db', label: 'Download the underlying database →' },
+    ],
   },
   {
     title: 'Cross-Site Waste Taxonomy Explorer',
@@ -57,6 +69,10 @@ const live = [
       'Full methods and caveats tab: coverage stated per claim, basis asymmetry explained',
     ],
     repo: 'https://github.com/aspen8494/srs-tank-waste-database',
+    related: [
+      { href: '/research/unsupervised-waste-taxonomy/', label: 'The taxonomy paper →' },
+      { href: '/glass-research-db/', label: 'Glass research on this waste →' },
+    ],
   },
 ];
 
@@ -70,8 +86,8 @@ const comingSoon = [
 ---
 
 <Layout
-  title="Playground"
-  description="Interactive open-source nuclear waste experiments: SRS vs Hanford tank comparison, waste-taxonomy explorer, and glass-property tools — all in your browser."
+  title="Interactive Nuclear Waste Tools — Playground"
+  description="Free interactive dashboards and open-data tools for Hanford tank waste: SRS vs Hanford tank comparison, waste-taxonomy explorer, glass property explorer, and HLW blend sandbox — all client-side."
 >
   <section class="page-hero">
     <div class="container">
@@ -107,6 +123,13 @@ const comingSoon = [
                   <li>{f}</li>
                 ))}
               </ul>
+              {item.related && (
+                <p class="related-links">
+                  {item.related.map((r) => (
+                    <a href={r.href}>{r.label}</a>
+                  ))}
+                </p>
+              )}
               <a class="btn btn-primary launch" href={item.href}>
                 Open the sandbox →
               </a>
@@ -225,6 +248,23 @@ const comingSoon = [
   .launch {
     align-self: flex-start;
     margin-top: 0.35rem;
+  }
+
+  .related-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.1rem;
+    font-size: 0.85rem;
+  }
+
+  .related-links a {
+    color: var(--accent-strong);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-strong);
+  }
+
+  .related-links a:hover {
+    border-color: var(--accent-strong);
   }
 
   .soon-heading {
