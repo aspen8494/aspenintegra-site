@@ -6,6 +6,26 @@ import { SITE } from '../config';
 // section. Generic filenames keep program identifiers out of URLs.
 const papers = [
   {
+    id: 'gfc-formulation-algorithm',
+    featured: true,
+    embedded: true,
+    title: 'Glass-Former Selection in the EWG2.5 Formulation Model',
+    subtitle:
+      'Formal exposition of the constrained glass-formulation procedure, with a complete worked example on a reference high-alumina waste',
+    pdf: '/gfc-formulation-white-paper.pdf',
+    pages: 13,
+    date: 'November 2026 · Rev. 2.1',
+    abstract:
+      'This paper documents the formulation procedure by which the campaign software converts a waste oxide composition into a glass-forming recipe: maximize waste loading subject to every glass property limit of the published basis models, solved as a constrained nonlinear program (SLSQP, multi-start) with the full calculation exhibited on a reference waste. It is the algorithmic companion to the mission-planning papers above — the same glass formulation engine, examined on its own, with its constraints, tolerances, and a worked example readers can reproduce.',
+    highlights: [
+      'Complete constraint set: summation equality, fourteen inequality limits from the published property models, nonnegativity',
+      'Multi-start SLSQP (five starting points) converging to a feasible local optimum',
+      'Worked example on the Batch 3 reference waste: 54.73 wt% waste loading with six glass formers, every property limit satisfied',
+      'All formulas, matrices, and recovery equations shown in full — reproducible end to end',
+    ],
+    dataPage: true,
+  },
+  {
     id: 'campaign-retrieval-optimization',
     featured: true,
     title: 'Campaign Retrieval Optimization',
