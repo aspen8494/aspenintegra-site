@@ -5,7 +5,7 @@ const APP_VERSION = "1.0";
 const INDEX_URL = "pyodide/";
 const ENGINE_PREFIX = "engine/ewg/";
 const ENGINE_ROOT = "engine/"; // ewg30-fetch-fixed
-const ENGINE_VER = "?v=2"; // cache-bust against host CGI mishandling during rollout
+const ENGINE_VER = "?v=3"; // cache-bust against host CGI mishandling during rollout
 const ENGINE_FILES = ["__init__.py", "gfc.py", "optimize.py", "properties.py", "tensor_backend.py"];
 
 const statusEl = id => document.getElementById(id);
@@ -23,7 +23,7 @@ async function main() {
 
     py.runPython("import os\nos.makedirs('/engine/ewg/data/ewg30', exist_ok=True)");
     for (const f of ENGINE_FILES) {
-      const txt = await (await fetch(ENGINE_PREFIX + f)).text();
+      const txt = await (await fetch(ENGINE_PREFIX + f + ENGINE_VER)).text();
       py.FS.writeFile(`/engine/ewg/${f}`, txt);
     }
     const manifest = await (await fetch(ENGINE_PREFIX + "data_manifest.json")).json();
