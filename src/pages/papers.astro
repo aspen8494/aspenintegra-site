@@ -6,6 +6,26 @@ import { SITE } from '../config';
 // section. Generic filenames keep program identifiers out of URLs.
 const papers = [
   {
+    id: 'ewg30-software-formulation',
+    featured: true,
+    embedded: true,
+    title: 'Formulating HLW Glass in Software',
+    subtitle:
+      'How the EWG 3.0 Python application computes waste loading and glass-forming chemicals — algorithm structure, property models, and verification of the formulation engine (PNNL-38953)',
+    pdf: '/ewg30-software-white-paper.pdf',
+    pages: 12,
+    date: 'November 19, 2026 · Rev. 1.0',
+    abstract:
+      'This paper walks the EWG 3.0 formulation engine end to end: the waste oxide vector reduced to a contribution matrix against a ten-chemical glass-former library, fifteen property models with prediction-uncertainty margins evaluated inside every constraint call, a five-seed multi-start sequential quadratic programming solve, the V2O5 re-solve gate for sulfate-limited feeds, and the compliance close-out that anchors the waste fraction downward for feeds with a narrow feasible simplex. All numbers come from the engine itself, printed to a ledger before the paper was written; the six report example glasses serve as a verification battery, and a standalone command-line distribution holds a byte-identical copy of the engine for independent audit.',
+    highlights: [
+      'Six stages: contribution matrix, oxide-fraction decision variables, margin-aware constraint set, multi-start sequential quadratic programming, V2O5 gate, compliance close-out',
+      'The six published example property evaluations reproduce to a worst relative deviation of 1.5%; all six solve to feasible maximum-waste-loading formulations',
+      'Bit-identical parity: the standalone command-line distribution matches the full application bit for bit on a live campaign feed',
+      'Prediction uncertainty rides inside each limit — a candidate glass passes only when every property sits safely inside its published bound',
+    ],
+    repo: 'https://github.com/aspen8494/EWG30_Lite',
+  },
+  {
     id: 'gfc-formulation-algorithm',
     featured: true,
     embedded: true,
@@ -140,10 +160,11 @@ const extraShots = [
       <p class="eyebrow">Deliverables</p>
       <h1>White papers & dashboard</h1>
       <p class="lede">
-        The full write-ups of the mission-modeling toolchain, plus the SRS vs Hanford
-        inventory comparison — published open access, embedded below. Explore the
-        dashboard's capabilities after. Now with the open Hanford glass research
-        bibliography: 17.9k published records, searchable.
+        The full write-ups of the mission-modeling toolchain — including the EWG 3.0
+        formulation engine itself, glass-former selection, campaign retrieval optimization,
+        and the SRS vs Hanford inventory comparison — published open access, embedded
+        below. Explore the dashboard's capabilities after. Now with the open Hanford glass
+        research bibliography: 17.9k published records, searchable.
       </p>
     </div>
   </section>
