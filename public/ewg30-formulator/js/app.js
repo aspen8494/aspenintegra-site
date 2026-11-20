@@ -54,6 +54,10 @@ EXAMPLE_WASTES = _gfc.EXAMPLE_WASTES
       `Engine loaded — vendored byte-identical EWG3.0 stack · solves in your browser, data never leaves this page · v${APP_VERSION}`;
     statusEl('foot').textContent =
       `Engine: EWG30_Lite ewg30lite/ewg (byte-identical vendored copy, engine commit f5fff58) · WASM runtime: Pyodide 0.27.3 · all computation client-side`;
+    // populate the preset dropdown (was missing options → box looked empty)
+    const sel = statusEl('preset');
+    sel.innerHTML = Object.keys(window.PRESETS)
+      .map(n => `<option value="${n}">${n}</option>`).join('');
     buildWasteTable('High Al2O3');
     statusEl('run').disabled = false;
   } catch (e) {
@@ -98,8 +102,9 @@ json.dumps(_out)
 }
 
 function buildWasteTable(name) {
-  const w = window.PRESETS[name];
-  statusEl('preset').value = name;
+  const key = window.PRESETS[name] ? name : Object.keys(window.PRESETS)[0];
+  const w = window.PRESETS[key];
+  statusEl('preset').value = key;
   const rows = [];
   for (const [oxide, val] of Object.entries(w))
     rows.push(trOxide(oxide, val, true));
