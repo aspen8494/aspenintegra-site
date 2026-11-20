@@ -1,0 +1,5 @@
+# Serve engine .py as plain text (shared host maps .py to CGI)
+RemoveHandler .py
+RemoveType .py
+AddType text/plain .py
+AddDefaultCharset utf-8
