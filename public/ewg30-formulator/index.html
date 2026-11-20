@@ -31,6 +31,22 @@
   <section id="panel-out" hidden>
     <h2>Result <span class="muted" id="meta"></span></h2>
     <div class="kpi" id="kpi"></div>
+    <div class="wl-explain">
+      <div class="wl-card">
+        <h4>Waste loading — optimizer basis <span class="muted">(what the engine maximizes)</span></h4>
+        <p>Kilograms of waste <em>oxides</em> per kilogram of glass produced. Every waste oxide is
+        assumed to end up in the glass. This is the number the property-constraint set is keyed to,
+        and the one that defines the acceptance limit.</p>
+      </div>
+      <div class="wl-card">
+        <h4>Physical (GFC) loading <span class="muted">(what the melt actually takes in)</span></h4>
+        <p>Kilograms of waste oxides per kilogram of <em>total as-fired feed</em> — waste plus
+        glass-forming chemicals, before calcining losses. The raw chemicals carry non-glass mass
+        that never reaches the glass: boric acid sheds water of hydration, carbonates shed CO₂
+        (Na₂CO₃ delivers only ~0.59 of its mass as Na₂O), and the waste itself arrives wet. The
+        flowsheet side of the mission model keys on this number.</p>
+      </div>
+    </div>
     <p id="wl" class="muted"></p>
     <h3>Glass-forming chemicals (raw kg per glass kg)</h3>
     <table id="gfc" class="num"></table>

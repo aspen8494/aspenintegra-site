@@ -21,3 +21,10 @@ td.num,th.num th { text-align:right; font-family:var(--mono); }
 .kpi .v { font-size:18px; font-weight:700; color:var(--accent); font-family:var(--mono); }
 .pass { color:var(--accent); } .fail { color:var(--bad); font-weight:700; }
 footer { max-width:1000px; margin:20px auto 0; padding:8px 24px; border-top:1px solid var(--line); }
+
+.wl-explain { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:12px 0; }
+@media (max-width:720px){ .wl-explain { grid-template-columns:1fr; } }
+.wl-card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:12px 14px; }
+.wl-card h4 { margin:0 0 6px; font-size:13px; }
+.wl-card h4 .muted { font-weight:400; }
+.wl-card p { margin:0; color:var(--muted); font-size:12.5px; }

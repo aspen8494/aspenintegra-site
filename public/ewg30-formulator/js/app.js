@@ -132,15 +132,17 @@ function renderResult(r, tSec) {
   const kpiCard = (label, val, cls = '') =>
     `<div class="card"><div class="muted">${label}</div><div class="v ${cls}">${val}</div></div>`;
   statusEl('kpi').innerHTML =
-    kpiCard('Waste loading', fmt(r.waste_loading * 100, 2) + ' %') +
-    kpiCard('Physical (GFC) loading', fmt(r.wl_physical * 100, 2) + ' %') +
+    kpiCard('Waste loading (optimizer basis)', fmt(r.waste_loading * 100, 2) + ' %') +
+    kpiCard('Physical loading (as-fired feed)', fmt(r.wl_physical * 100, 2) + ' %') +
     kpiCard('Glass produced', fmt(r.glass_input_total, 3) + ' kg') +
     kpiCard('Verifier', r.all_pass ? 'PASS' : 'FAIL', r.all_pass ? 'pass' : 'fail');
 
   statusEl('wl').innerHTML =
-    `The optimizer maximizes its internal (<i>optimizer</i>) waste loading, here ` +
-    `<b>${fmt(r.waste_loading * 100, 2)} %</b>, then reports a separately-computed physical, ` +
-    `GFC-based loading of <b>${fmt(r.wl_physical * 100, 2)} %</b> that accounts for the volatile fraction.`;
+    `For this run: <b>${fmt(r.waste_loading * 100, 2)} %</b> of the glass (by waste-oxide mass) ` +
+    `comes from the waste; on an as-fired-feed basis, waste oxides are ` +
+    `<b>${fmt(r.wl_physical * 100, 2)} %</b> of everything entering the feed system, because the ` +
+    `${fmt(r.glass_input_total, 2)} kg of raw input per kg of glass includes GFC raw masses that ` +
+    `shed water and CO₂ during calcining (calcining + volatile fraction).`;
 
   fillTable('gfc', Object.entries(r.gfc_raw).filter(([k, v]) => v > 1e-9),
     ['Glass-forming chemical', 'Raw mass (per glass kg)'],
