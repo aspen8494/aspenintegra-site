@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>EWG3.0 Formulator — Glass Loading & Recipe Online</title>
+<link rel="canonical" href="https://aspenintegra.com/ewg30-formulator/" />
+<meta name="description" content="Run the EWG3.0 (PNNL-38953) glass formulation engine in your browser: maximize waste loading on any waste-oxide vector with every published property limit and uncertainty margin checked. The exact engine as the mission application, running client-side." />
+<meta name="keywords" content="EWG3.0, PNNL-38953, glass formulation, waste loading, Hanford waste glass, glass property model, vitrification, DFHLW, HLW, interactive" />
+<link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+<header>
+  <h1>EWG3.0 Glass Formulator</h1>
+  <p class="basis" id="basis-line">Loading engine… (first load fetches the WASM runtime, ~35 MB, cached after)</p>
+</header>
+<main>
+  <section id="panel-input">
+    <h2>Waste oxide vector</h2>
+    <div class="row">
+      <label>Example waste<select id="preset"></select></label>
+      <label>Waste mass (kg)<input id="mass" type="number" value="1" step="0.1" min="0"/></label>
+      <label>Upred confidence<input id="conf" type="number" value="0.90" step="0.01" min="0.5" max="0.9999"/></label>
+      <button id="run" class="btn-run" disabled>Formulate</button>
+    </div>
+    <p class="muted">Edit any mass fraction below; zero-valued base oxides can be raised to build your own vector.</p>
+    <table id="waste"><thead><tr><th>Component</th><th class="num">Mass fraction</th></tr></thead><tbody id="tbody-waste"></tbody></table>
+    <p class="muted" id="waste-sum"></p>
+  </section>
+  <section id="panel-busy" hidden><p class="muted" id="busy-msg">Solving…</p></section>
+  <section id="panel-out" hidden>
+    <h2>Result <span class="muted" id="meta"></span></h2>
+    <div class="kpi" id="kpi"></div>
+    <p id="wl" class="muted"></p>
+    <h3>Glass-forming chemicals (raw kg per glass kg)</h3>
+    <table id="gfc" class="num"></table>
+    <h3>Glass composition (mass fraction)</h3>
+    <table id="glass"></table>
+    <h3>Property model outputs</h3>
+    <table id="props"></table>
+    <h3>Constraint check — <span id="verdict"></span></h3>
+    <table id="cons"></table>
+  </section>
+</main>
+<footer><p class="muted" id="foot">Loading…</p></footer>
+<script src="pyodide/pyodide.js"></script>
+<script>window.pyodideModule = { loadPyodide };</script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,525 @@
+{
+ "table_3_3_gfc_densities": [
+  {
+   "name": "Table 3.3. Particle and powder densities of GFCs. Particle Density (g/L) Powder Density (lb/ft3) Powder Density (g/L) Hopper Volume (ft3) Kyanite",
+   "formula": "Al2SiO5",
+   "particle_density_g_L": 3395.9,
+   "powder_density_lb_ft3": 76.2,
+   "powder_density_g_L": 1220.6,
+   "hopper_volume_ft3": 10.0
+  },
+  {
+   "name": "Boric acid",
+   "formula": "H3BO3",
+   "particle_density_g_L": 1505.7,
+   "powder_density_lb_ft3": 54.8,
+   "powder_density_g_L": 877.8,
+   "hopper_volume_ft3": 10.0
+  },
+  {
+   "name": "Wollastonite",
+   "formula": "CaSiO3",
+   "particle_density_g_L": 2899.3,
+   "powder_density_lb_ft3": 58.5,
+   "powder_density_g_L": 937.1,
+   "hopper_volume_ft3": 10.0
+  },
+  {
+   "name": "Na2CO3",
+   "formula": "Na2CO3",
+   "particle_density_g_L": 2530.9,
+   "powder_density_lb_ft3": 66.3,
+   "powder_density_g_L": 1062.0,
+   "hopper_volume_ft3": 10.0
+  },
+  {
+   "name": "Li2CO3",
+   "formula": "Li2CO3",
+   "particle_density_g_L": 2114.4,
+   "powder_density_lb_ft3": 61.8,
+   "powder_density_g_L": 989.9,
+   "hopper_volume_ft3": 10.0
+  },
+  {
+   "name": "Cr2O3",
+   "formula": "Cr2O3",
+   "particle_density_g_L": 5231.9,
+   "powder_density_lb_ft3": 65.0,
+   "powder_density_g_L": 1041.2,
+   "hopper_volume_ft3": 3.0
+  },
+  {
+   "name": "Silica",
+   "formula": "SiO2",
+   "particle_density_g_L": 2643.0,
+   "powder_density_lb_ft3": 69.1,
+   "powder_density_g_L": 1106.9,
+   "hopper_volume_ft3": 10.0
+  },
+  {
+   "name": "Zincite",
+   "formula": "ZnO",
+   "particle_density_g_L": 5606.5,
+   "powder_density_lb_ft3": 42.5,
+   "powder_density_g_L": 680.8,
+   "hopper_volume_ft3": 10.0
+  },
+  {
+   "name": "Zircon",
+   "formula": "ZrSiO4",
+   "particle_density_g_L": 4709.4,
+   "powder_density_lb_ft3": 121.9,
+   "powder_density_g_L": 1952.7,
+   "hopper_volume_ft3": 3.0
+  },
+  {
+   "name": "V2O5",
+   "formula": "V2O5",
+   "particle_density_g_L": 3388.0,
+   "powder_density_lb_ft3": 46.0,
+   "powder_density_g_L": 736.9,
+   "hopper_volume_ft3": 10.0
+  }
+ ],
+ "retention": {
+  "Ac2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Ag2O": {
+   "retention_factor": 0.97803,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 4.1638,
+   "lnDF_max": 6.9256
+  },
+  "Al2O3": {
+   "retention_factor": 0.99888,
+   "lnDF_min": 4.3656,
+   "lnDF_most_likely": 6.6733,
+   "lnDF_max": 8.8901
+  },
+  "Am2O3": {
+   "retention_factor": 0.97803,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 4.1638,
+   "lnDF_max": 6.9256
+  },
+  "As2O5": {
+   "retention_factor": 0.77121,
+   "lnDF_min": 1.8405,
+   "lnDF_most_likely": 2.4844,
+   "lnDF_max": 3.989
+  },
+  "B2O3": {
+   "retention_factor": 0.98968,
+   "lnDF_min": 3.3726,
+   "lnDF_most_likely": 4.4967,
+   "lnDF_max": 5.8519
+  },
+  "BaO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 4.1109,
+   "lnDF_most_likely": 5.0163,
+   "lnDF_max": 5.5413
+  },
+  "BeO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Bi2O3": {
+   "retention_factor": 0.97803,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 4.1638,
+   "lnDF_max": 6.9256
+  },
+  "CaO": {
+   "retention_factor": 0.99892,
+   "lnDF_min": 3.7126,
+   "lnDF_most_likely": 6.8385,
+   "lnDF_max": 8.6034
+  },
+  "CdO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 3.619,
+   "lnDF_most_likely": 4.7221,
+   "lnDF_max": 5.6218
+  },
+  "Ce2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Cl": {
+   "retention_factor": 0.54407,
+   "lnDF_min": 0.0979,
+   "lnDF_most_likely": 0.7583,
+   "lnDF_max": 1.9095
+  },
+  "Cm2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "CoO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Cr2O3": {
+   "retention_factor": 0.95261,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 3.2542,
+   "lnDF_max": 6.9256
+  },
+  "Cs2O": {
+   "retention_factor": 0.87902,
+   "lnDF_min": 0.47,
+   "lnDF_most_likely": 2.4423,
+   "lnDF_max": 4.237
+  },
+  "CuO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 4.1927,
+   "lnDF_most_likely": 5.1008,
+   "lnDF_max": 5.7141
+  },
+  "Eu2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "F": {
+   "retention_factor": 0.72984,
+   "lnDF_min": 0.0643,
+   "lnDF_most_likely": 1.2953,
+   "lnDF_max": 2.8649
+  },
+  "Fe2O3": {
+   "retention_factor": 0.99848,
+   "lnDF_min": 3.9608,
+   "lnDF_most_likely": 6.4321,
+   "lnDF_max": 8.8984
+  },
+  "Gd2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "HgO": {
+   "retention_factor": 0.0,
+   "lnDF_min": 0.0,
+   "lnDF_most_likely": 0.0,
+   "lnDF_max": 0.0
+  },
+  "I": {
+   "retention_factor": 0.50961,
+   "lnDF_min": 0.0945,
+   "lnDF_most_likely": 0.5463,
+   "lnDF_max": 2.266
+  },
+  "K2O": {
+   "retention_factor": 0.96423,
+   "lnDF_min": 2.0669,
+   "lnDF_most_likely": 3.3844,
+   "lnDF_max": 5.5607
+  },
+  "La2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Li2O": {
+   "retention_factor": 0.99601,
+   "lnDF_min": 3.4689,
+   "lnDF_most_likely": 5.806,
+   "lnDF_max": 7.2894
+  },
+  "MgO": {
+   "retention_factor": 0.99984,
+   "lnDF_min": 3.381,
+   "lnDF_most_likely": 8.6802,
+   "lnDF_max": 11.0268
+  },
+  "MnO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 4.5799,
+   "lnDF_most_likely": 5.5721,
+   "lnDF_max": 6.6107
+  },
+  "MoO3": {
+   "retention_factor": 0.97803,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 4.1638,
+   "lnDF_max": 6.9256
+  },
+  "Na2O": {
+   "retention_factor": 0.99136,
+   "lnDF_min": 3.4874,
+   "lnDF_most_likely": 4.792,
+   "lnDF_max": 6.4944
+  },
+  "Nb2O5": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Nd2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "NiO": {
+   "retention_factor": 0.99187,
+   "lnDF_min": 3.9299,
+   "lnDF_most_likely": 4.7875,
+   "lnDF_max": 6.3835
+  },
+  "NpO2": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "P2O5": {
+   "retention_factor": 0.99169,
+   "lnDF_min": 2.9601,
+   "lnDF_most_likely": 4.9154,
+   "lnDF_max": 6.7822
+  },
+  "Pa2O5": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "PbO": {
+   "retention_factor": 0.98796,
+   "lnDF_min": 3.2426,
+   "lnDF_most_likely": 4.382,
+   "lnDF_max": 6.2971
+  },
+  "PdO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Pr2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "PuO2": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "RaO": {
+   "retention_factor": 0.77121,
+   "lnDF_min": 0.0643,
+   "lnDF_most_likely": 1.4803,
+   "lnDF_max": 5.591
+  },
+  "Rb2O": {
+   "retention_factor": 0.97803,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 4.1638,
+   "lnDF_max": 6.9256
+  },
+  "Rh2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "RuO2": {
+   "retention_factor": 0.97803,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 4.1638,
+   "lnDF_max": 6.9256
+  },
+  "SO3": {
+   "retention_factor": 0.84032,
+   "lnDF_min": 0.3219,
+   "lnDF_most_likely": 1.8469,
+   "lnDF_max": 3.2089
+  },
+  "Sb2O3": {
+   "retention_factor": 0.77121,
+   "lnDF_min": 3.9532,
+   "lnDF_most_likely": 4.9125,
+   "lnDF_max": 5.591
+  },
+  "SeO2": {
+   "retention_factor": 0.77121,
+   "lnDF_min": 0.1205,
+   "lnDF_most_likely": 0.4547,
+   "lnDF_max": 1.2187
+  },
+  "SiO2": {
+   "retention_factor": 0.99926,
+   "lnDF_min": 4.6597,
+   "lnDF_most_likely": 7.3324,
+   "lnDF_max": 9.7527
+  },
+  "Sm2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "SnO2": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "SrO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 3.7773,
+   "lnDF_most_likely": 4.7158,
+   "lnDF_max": 5.6595
+  },
+  "Ta2O5": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Tc2O7": {
+   "retention_factor": 0.43049,
+   "lnDF_min": 0.0953,
+   "lnDF_most_likely": 0.47,
+   "lnDF_max": 1.6094
+  },
+  "TeO2": {
+   "retention_factor": 0.77121,
+   "lnDF_min": 0.0643,
+   "lnDF_most_likely": 1.4803,
+   "lnDF_max": 5.591
+  },
+  "ThO2": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "TiO2": {
+   "retention_factor": 0.99752,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.0313,
+   "lnDF_max": 8.074
+  },
+  "Tl2O": {
+   "retention_factor": 0.77121,
+   "lnDF_min": 0.0643,
+   "lnDF_most_likely": 1.4803,
+   "lnDF_max": 5.591
+  },
+  "UO3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "V2O5": {
+   "retention_factor": 0.97803,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 4.1638,
+   "lnDF_max": 6.9256
+  },
+  "WO3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Y2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "ZnO": {
+   "retention_factor": 0.99773,
+   "lnDF_min": 4.0656,
+   "lnDF_most_likely": 5.9819,
+   "lnDF_max": 7.8709
+  },
+  "ZrO2": {
+   "retention_factor": 0.99982,
+   "lnDF_min": 4.2121,
+   "lnDF_most_likely": 8.6115,
+   "lnDF_max": 11.1239
+  }
+ },
+ "table_3_1_rows": [
+  {
+   "property": "PCT",
+   "section": "2.7",
+   "constraint_text": "NCAve \u2264 12.88 g/L | (or NLAve \u2264 6.44 g/m2) | AR, Mole | Applied | 95% CI | (c)"
+  },
+  {
+   "property": "TCLP",
+   "section": "2.8",
+   "constraint_text": "CCd \u2264 0.48, | CCr \u2264 4.95, | CV \u2264 16.9 mg/L | AR, Mole | Applied | 90% CI | -"
+  },
+  {
+   "property": "Nepheline",
+   "constraint_text": ""
+  },
+  {
+   "property": "formation",
+   "section": "2.9",
+   "constraint_text": "P \u2265 0.031 | (distance to the line) | AR, Mole | None | 90% CI | -"
+  },
+  {
+   "property": "Viscosity",
+   "section": "2.1",
+   "constraint_text": "2 \u2264 \u03b71150 \u2264 8 Pa\u2219s | \u03b71100 < 15 Pa\u2219s | AR, Mass | Applied | 90% CI | -"
+  },
+  {
+   "property": "EC",
+   "section": "2.5",
+   "constraint_text": "\u03b51100 \u2265 10 S/m | \u03b51200 \u2264 70 S/m | AR, Mass | Applied | 90% CI | - | Melter SO3 | tolerance | gSO3 \u2264 wSO3-3TS - offset, wt% | BR, Mass | (SO3 removed) Applied | 90% CI | (d) | Immiscibility | Peeler and | Hrma (1994) | NNaLi \u2265 20 wt% | AR, Mass | None | 90% CI | (e) | K-3 corrosion | Kneck \u2264 0.025 inch | (referenced to 1208\u00b0C bubbled) | AR, Mole | (Cl removed) | Applied | 90% CI | (f) | Phosphate TL | TL-P \u2264 1050 \u00b0C | (for gP2O5 \u2265 0.01) | AR, Mass | Applied | 90% CI | (g) | Zirconia TL | TL-Zr \u2264 1050\u00b0C | (for gZrO2 \u2265 0.027) | AR, Mass | Applied | 90% CI | (h) | Formulation Methods and Constraints | 3.2"
+  },
+  {
+   "property": "Spinel",
+   "section": "2.6",
+   "constraint_text": "C950-Sp \u2264 1 vol% | AR, Mass | Applied | 90% CI | (i)"
+  },
+  {
+   "property": "Metal corrosion",
+   "section": "2.10",
+   "constraint_text": "F \u2264 2.5 wt% | BR, Mass | None | 90% CI | -"
+  },
+  {
+   "property": "Non-spinel",
+   "constraint_text": "phase constraint | Vienna and | Kim (2014) | gThO2 + gZrO2 < 13 wt% | AR, Mass | None | 90% CI | -"
+  }
+ ],
+ "table_3_1_note": "Constraint columns: Comp.(a) = basis (AR/BR, Mass/Mole); Upred(b) applied or None; Ucomp = confidence level; see verbatim_extracts for notes (a)-(i).",
+ "table_3_2_model_validity": {},
+ "table_3_2_overall": {},
+ "verbatim_extracts": {
+  "table_3_1_notes_a_to_i": "(a) Compositions to be used for model predictions: AR (after applying retention factors), BR (before applying retention \nfactors), Mass (mass fractions), and Mole (molar fractions). \n(b) Prediction uncertainties (Upred) are applied to the limits associated with all models generated in this report. They are \ncalculated based on confidence intervals (CIs) for processing related properties: \ud835\udc48\u0be3\u0be5\u0bd8\u0bd7\u0d4c\ud835\udc61\u0b35\u0b3f\u0c08,\u0be1\u0b3f\u0be3\u0da5\ud835\udc20\u0b58\u123e\ud835\udc60\u0b36\u123a\ud835\udc06\u0b58\ud835\udc06\u123b\u0b3f\u0b35\u123f \ud835\udc20, \nwhere n is the total number of points used to fit a model (i.e., total observations), p is the total number of model \nterms/coefficients. n and p values of each model can be found in the coefficient table. \u03b1 is the statistical significance \nlevel (e.g., \u03b1 = 0.10 for 90% confidence), and \ud835\udc61\u0b35\u0b3f\u0c08,\u0be1\u0b3f\u0be3 represents 100(1\u2212\u03b1)-percentile of the Student\u2019s t-distribution \nwith n \u2212 p degrees of freedom. For PCT and TCLP response, a simultaneous upper confidence interval (SUCI): \n\ud835\udc48\u0be3\u0be5\u0bd8\u0bd7\u0d4c\u0da5\ud835\udc5d\ud835\udc39\u0b35\u0b3f\u0b36\u0c08,\u123a\u0be3,\u0be1\u0b3f\u0be3\u123b\u0da5\ud835\udc20\u0b58\ud835\udc60\u0b36\u123a\ud835\udc06\u0b58\ud835\udc06\u123b\u0b3f\u0b35\ud835\udc20, where \ud835\udc39\u0b35\u0b3f\u0b36\u0c08,\u123a\u0be3,\u0be1\u0b3f\u0be3\u123b represents 100(1\u22122\u03b1)-percentile of the F-distribution with \np and n \u2212 p degrees of freedom. The variance covariance matrices (\ud835\udc60\u0b36\u123e\ud835\udc06\u0b58\ud835\udc06\u123f\u0b3f\u0b35) are reported in Appendix A. More \ndetails on the statistical methods to develop, evaluate and validate property-composition models can be found in \nAppendix B by Vienna et al. (2022b). \n(c) The Ave ln[NL] of the Defense Waste Processing Facility (DWPF) EA glass = (ln[8.350] + ln[6.675] + ln[4.785])/3 = \n1.862. Applying an exponential function to Ave ln[NL] yields a NLAve = 6.44 g/m2 (NCAve \u2264 12.88 g/L), which will be \nused to limit PCT response for the model in this report.  \n(d) The wSO3 model in this report was based on 3TS solubility data, which have been shown to be 0.33 wt% SO3 higher \nthan the melter tolerance data as reported by Skidmore et al. (2019). Therefore, the predicted gSO3 \u2264 wSO3-3TS \u2013 0.33 \nis the bounding limit. Here, gSO3 is BR (e.g. before accounting for any volatile loss of SO3). \n(e) Immiscibility limit is given by \ud835\udc41\u0bc7\u0bd4\u0bc5\u0bdc\u0d4c\u123a\ud835\udc54\u0bc7\u0bd4\u0c2e\u0bc8\u0d452.07\ud835\udc54\u0bc5\u0bdc\u0c2e\u0bc8\u123b/\u123a\ud835\udc54\u0bc7\u0bd4\u0c2e\u0bc8\u0d452.07\ud835\udc54\u0bc5\u0bdc\u0c2e\u0bc8\u0d45\ud835\udc54\u0bbb\u0c2e\u0bc8\u0c2f\u0d45\ud835\udc54\u0bcc\u0bdc\u0bc8\u0c2e\u123b \u2265 0.2 mass fraction. \n(f) kneck limit was \u2264 0.04 inch in EWG2.5 (Vienna et al. 2024), but after review of all glass processing related limits, WTP \nrevised the limit to k1208 \u2264 0.025 inch in future glass designs (Peters 2025). \n(g) A sigmoid function is used with the TL-P model predictions to avoid a singularity in the first derivative of composition \nvs. predicted response with 0 for gP2O5 < 0.01 and much greater than zero predicted TL-P for gP2O5 \u2265 0.01. The \nequation used is: \ud835\udc47\u0bc5 \ud835\udc43\u0d4c\n\u2211\u0bcd\n\u0cd4\u0bda\u0cd4\n\u0b35\u0b3e\u0bd8\u0c37\u0c2e\u0c2c\u0c2c\u0c2c\u123a\u0cd2\u0cc1\u0c2e\u0cc0\u0c31\u0c37\u0c2c.\u0c2c\u0c2c\u0c35\u123b. \n(h) A sigmoid function is used with the TL-Zr model predictions with 0 for gZrO2 < 0.027 and much greater than zero \npredicted TL-Zr for gZrO2 \u2265 0.027. The equation used is: \ud835\udc47\u0bc5 \ud835\udc4d\ud835\udc5f\u0d4c\n\u2211\u0bcd\n\u0cd4\u0bda\u0cd4\n\u0b35\u0b3e\u0bd8\u0c37\u0c2e\u0c2c\u0c2c\u0c2c\u123a\u0cd2\u0ccb\u0cdd\u0cc0\u0c2e\u0c37\u0c2c.\u0c2c\u0c2e\u0c32\u123b. \n(i) In EWG2.5, spinel fraction in glass was limited to 2 vol% at 950\u00b0C (T2% \u2264 950\u00b0C). WTP revised the limit to T1%-Sp \u2264 \n950\u00b0C for EWG2.6 (Peters 2025). C950 < 1% is used in EWG3.0 and variable C950 values will be used in a planned \nsensitivity study.  ",
+  "note_g_tl_p_sigmoid": "(g) A sigmoid function is used with the TL-P model predictions to avoid a singularity in the first derivative of composition \nvs. predicted response with 0 for gP2O5 < 0.01 and much greater than zero predicted TL-P for gP2O5 \u2265 0.01. The \nequation used is: \ud835\udc47\u0bc5 \ud835\udc43\u0d4c\n\u2211\u0bcd\n\u0cd4\u0bda\u0cd4\n\u0b35\u0b3e\u0bd8\u0c37\u0c2e\u0c2c\u0c2c\u0c2c\u123a\u0cd2\u0cc1\u0c2e\u0cc0\u0c31\u0c37\u0c2c.\u0c2c\u0c2c\u0c35\u123b. \n",
+  "note_h_tl_zr_sigmoid": "(h) A sigmoid function is used with the TL-Zr model predictions with 0 for gZrO2 < 0.027 and much greater than zero \npredicted TL-Zr for gZrO2 \u2265 0.027. The equation used is: \ud835\udc47\u0bc5 \ud835\udc4d\ud835\udc5f\u0d4c\n\u2211\u0bcd\n\u0cd4\u0bda\u0cd4\n\u0b35\u0b3e\u0bd8\u0c37\u0c2e\u0c2c\u0c2c\u0c2c\u123a\u0cd2\u0ccb\u0cdd\u0cc0\u0c2e\u0c37\u0c2c.\u0c2c\u0c2e\u0c32\u123b. \n",
+  "nepheline_threshold_text": "a value of 0.031 would exclude all current ",
+  "eq_2_10_context": "l et al. (2025a) \nHAl24 \nPNNL \n50 \nRussell et al. (2025b) \nHAlG \nPNNL \n24 \nRussell et al. (2025c) \nTotal \n \n486 \n \nTable 2.31. Glasses excluded from TCLP model development. \nGlass \nStudy \nReason \nHAlG-21 \nHAlG \nStudentized residual over 95% Bonferroni limits \nLANL-8 \nLANL \nStudentized residual over 95% Bonferroni limits \nLANL-AE \nLANL \nStudentized residual over 95% Bonferroni limits \nWETF-7 \nSRS LLMW \nStudentized residual over 95% Bonferroni limits \nHLW99-04 WTP HLW \nStudentized residual over 95% Bonferroni limits \nRFP-9 \nSRS LLMW \nStudentized residual over 95% Bonferroni limits \nTotal \n6 \n \nTable 2.32. Range of glass data used in the TCLP model development, mole fraction. \nOxide \nMin \nMean \nMedian \nMax \nAl2O3 \n0.0000 \n0.0436 \n0.0561 \n0.1989 \nB2O3 \n0.0165 \n0.1014 \n0.1077 \n0.2456 \nCaO \n0.0000 \n0.0094 \n0.0326 \n0.3164 \nFe2O3 \n0.0000 \n0.0255 \n0.0282 \n0.0845 \nK2O \n0.0000 \n0.0019 \n0.0057 \n0.1097 \nLi2O \n0.0000 \n0.0739 \n0.0716 \n0.2050 \nLN2O3 \n0.0000 \n0.0008 \n0.0022 \n0.0346 \nMgO \n0.0000 \n0.0022 \n0.0165 \n0.1959 \nNa2O \n0.0000 \n0.1269 \n0.1317 \n0.2714 \nP2O5 \n0.0000 \n0.0023 \n0.0037 \n0.0231 \nSiO2 \n0.2376 \n0.4758 \n0.4598 \n0.7524 \nZnO \n0.0000 \n0.0165 \n0.0121 \n0.0374 \nZrO2 \n0.0000 \n0.0154 \n0.0161 \n0.0908 \nOthers \n0.0004 \n0.0455 \n0.0560 \n0.2434 \n\n=== PAGE 61 ===\nPNNL-38953, Rev. 0 \nEWG-RPT-058, Rev. 0 \nProperty Models \n2.40 \n \nFor each element i (B, Ba, Cd, Ni, Zn, etc.), the normalized elemental release rele and its natural \nlogarithm ln(rele) were calculated as: \n \nln\u123a\ud835\udc5f\u0bd8\u0bdf\u0bd8\u123b\u0d4cln \u1240\ud835\udc50\u0bd8\u0bdf\u0bd8\ud835\udc53\u0bd8\u0bdf\u0bd8\n\u0d57\n\u1241 \n(2.10) \nwhere cele is the measured TCLP elemental release in the unit of mg/L and fele is the mass \nfraction of the element in the glass.  \nIn many glass alteration tests, including TCLP, the response of boron can be used as an \nindicator of glass response. Figure 2.20 compares the ln(rele) with ln("
+ }
+}

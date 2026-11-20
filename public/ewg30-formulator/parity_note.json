@@ -1,0 +1,12 @@
+{
+ "engine_commit": "f5fff58",
+ "pyodide": "0.27.3",
+ "numpy_local_cli": "2.5.2",
+ "numpy_browser": "2.0.2-pyodide",
+ "waste_loading_deltas": {
+  "High Al2O3": 0.0001,
+  "rest": "<1e-12"
+ },
+ "constraint_verdict_match": "50/50 on all six example wastes",
+ "note": "solver recipe differ in flat optimum basin (BLAS float noise); acceptance verdicts identical"
+}

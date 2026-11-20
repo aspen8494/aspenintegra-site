@@ -93,12 +93,29 @@ const live = [
       { href: '/sandbox/', label: 'Feed composition drives the off-gas load →' },
     ],
   },
-];
----
+  {
+    title: 'EWG3.0 Glass Formulator',
+    href: '/ewg30-formulator/',
+    badge: 'Live',
+    detail:
+      'The EWG3.0 (PNNL-38953) glass formulation engine, exactly as it runs in the mission application — byte-identical code, vendored and executed in your browser via WebAssembly. Pick or edit any waste-oxide vector and the tool maximizes waste loading against the full published property-constraint set, reporting the recipe, glass composition, and a value-vs-limit verdict on all 50 acceptance checks. No server, nothing leaves your browser.',
+    features: [
+      'Six published Table 3.4 example wastes preloaded as presets',
+      'Edit any mass fraction: the optimizer re-solves waste loading over the full 49-oxide space',
+      'Full output: GFC recipe, glass composition, property values with Upred uncertainty margins',
+      'All 50 constraints shown as value vs published limit with PASS / FAIL flags',
+    ],
+    repo: 'https://github.com/aspen8494/EWG30_Lite',
+    related: [
+      { href: '/research/ewg30-formulator-lite/', label: 'The CLI write-up →' },
+      { href: '/glass-explorer/', label: 'The GlassNet surrogate explorer →' },
+    ],
+  },
+];---
 
 <Layout
   title="Interactive Nuclear Waste Tools — Playground"
-  description="Free interactive dashboards and open-data tools for Hanford tank waste: SRS vs Hanford tank comparison, waste-taxonomy explorer, glass property explorer, and HLW blend sandbox — all client-side."
+  description="Free interactive dashboards and open-data tools for Hanford tank waste: SRS vs Hanford tank comparison, waste-taxonomy explorer, glass property explorer, EWG3.0 glass formulator, and HLW blend sandbox — all client-side."
 >
   <section class="page-hero">
     <div class="container">
@@ -106,7 +123,7 @@ const live = [
       <h1>Interactive experiments</h1>
       <p class="lede">
         Small client-side models and visualizations. The ideas behind the research, but
-        things you can poke at. Five are live below, all open source, all built from
+        things you can poke at. Six are live below, all open source, all built from
         published public data. Every experiment runs in your browser, with its sources
         cited.
       </p>

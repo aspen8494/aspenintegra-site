@@ -1,0 +1,390 @@
+{
+ "source": "Table F.1 (Appendix F \u2013 Retention Factors)",
+ "note": "retention factor nu_i applied to waste-sourced oxide; ln(DF) min/most-likely/max reported",
+ "retention_factors": {
+  "Ac2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Ag2O": {
+   "retention_factor": 0.97803,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 4.1638,
+   "lnDF_max": 6.9256
+  },
+  "Al2O3": {
+   "retention_factor": 0.99888,
+   "lnDF_min": 4.3656,
+   "lnDF_most_likely": 6.6733,
+   "lnDF_max": 8.8901
+  },
+  "Am2O3": {
+   "retention_factor": 0.97803,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 4.1638,
+   "lnDF_max": 6.9256
+  },
+  "As2O5": {
+   "retention_factor": 0.77121,
+   "lnDF_min": 1.8405,
+   "lnDF_most_likely": 2.4844,
+   "lnDF_max": 3.989
+  },
+  "B2O3": {
+   "retention_factor": 0.98968,
+   "lnDF_min": 3.3726,
+   "lnDF_most_likely": 4.4967,
+   "lnDF_max": 5.8519
+  },
+  "BaO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 4.1109,
+   "lnDF_most_likely": 5.0163,
+   "lnDF_max": 5.5413
+  },
+  "BeO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Bi2O3": {
+   "retention_factor": 0.97803,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 4.1638,
+   "lnDF_max": 6.9256
+  },
+  "CaO": {
+   "retention_factor": 0.99892,
+   "lnDF_min": 3.7126,
+   "lnDF_most_likely": 6.8385,
+   "lnDF_max": 8.6034
+  },
+  "CdO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 3.619,
+   "lnDF_most_likely": 4.7221,
+   "lnDF_max": 5.6218
+  },
+  "Ce2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Cl": {
+   "retention_factor": 0.54407,
+   "lnDF_min": 0.0979,
+   "lnDF_most_likely": 0.7583,
+   "lnDF_max": 1.9095
+  },
+  "Cm2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "CoO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Cr2O3": {
+   "retention_factor": 0.95261,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 3.2542,
+   "lnDF_max": 6.9256
+  },
+  "Cs2O": {
+   "retention_factor": 0.87902,
+   "lnDF_min": 0.47,
+   "lnDF_most_likely": 2.4423,
+   "lnDF_max": 4.237
+  },
+  "CuO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 4.1927,
+   "lnDF_most_likely": 5.1008,
+   "lnDF_max": 5.7141
+  },
+  "Eu2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "F": {
+   "retention_factor": 0.72984,
+   "lnDF_min": 0.0643,
+   "lnDF_most_likely": 1.2953,
+   "lnDF_max": 2.8649
+  },
+  "Fe2O3": {
+   "retention_factor": 0.99848,
+   "lnDF_min": 3.9608,
+   "lnDF_most_likely": 6.4321,
+   "lnDF_max": 8.8984
+  },
+  "Gd2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "HgO": {
+   "retention_factor": 0.0,
+   "lnDF_min": 0.0,
+   "lnDF_most_likely": 0.0,
+   "lnDF_max": 0.0
+  },
+  "I": {
+   "retention_factor": 0.50961,
+   "lnDF_min": 0.0945,
+   "lnDF_most_likely": 0.5463,
+   "lnDF_max": 2.266
+  },
+  "K2O": {
+   "retention_factor": 0.96423,
+   "lnDF_min": 2.0669,
+   "lnDF_most_likely": 3.3844,
+   "lnDF_max": 5.5607
+  },
+  "La2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Li2O": {
+   "retention_factor": 0.99601,
+   "lnDF_min": 3.4689,
+   "lnDF_most_likely": 5.806,
+   "lnDF_max": 7.2894
+  },
+  "MgO": {
+   "retention_factor": 0.99984,
+   "lnDF_min": 3.381,
+   "lnDF_most_likely": 8.6802,
+   "lnDF_max": 11.0268
+  },
+  "MnO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 4.5799,
+   "lnDF_most_likely": 5.5721,
+   "lnDF_max": 6.6107
+  },
+  "MoO3": {
+   "retention_factor": 0.97803,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 4.1638,
+   "lnDF_max": 6.9256
+  },
+  "Na2O": {
+   "retention_factor": 0.99136,
+   "lnDF_min": 3.4874,
+   "lnDF_most_likely": 4.792,
+   "lnDF_max": 6.4944
+  },
+  "Nb2O5": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Nd2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "NiO": {
+   "retention_factor": 0.99187,
+   "lnDF_min": 3.9299,
+   "lnDF_most_likely": 4.7875,
+   "lnDF_max": 6.3835
+  },
+  "NpO2": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "P2O5": {
+   "retention_factor": 0.99169,
+   "lnDF_min": 2.9601,
+   "lnDF_most_likely": 4.9154,
+   "lnDF_max": 6.7822
+  },
+  "Pa2O5": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "PbO": {
+   "retention_factor": 0.98796,
+   "lnDF_min": 3.2426,
+   "lnDF_most_likely": 4.382,
+   "lnDF_max": 6.2971
+  },
+  "PdO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Pr2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "PuO2": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "RaO": {
+   "retention_factor": 0.77121,
+   "lnDF_min": 0.0643,
+   "lnDF_most_likely": 1.4803,
+   "lnDF_max": 5.591
+  },
+  "Rb2O": {
+   "retention_factor": 0.97803,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 4.1638,
+   "lnDF_max": 6.9256
+  },
+  "Rh2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "RuO2": {
+   "retention_factor": 0.97803,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 4.1638,
+   "lnDF_max": 6.9256
+  },
+  "SO3": {
+   "retention_factor": 0.84032,
+   "lnDF_min": 0.3219,
+   "lnDF_most_likely": 1.8469,
+   "lnDF_max": 3.2089
+  },
+  "Sb2O3": {
+   "retention_factor": 0.77121,
+   "lnDF_min": 3.9532,
+   "lnDF_most_likely": 4.9125,
+   "lnDF_max": 5.591
+  },
+  "SeO2": {
+   "retention_factor": 0.77121,
+   "lnDF_min": 0.1205,
+   "lnDF_most_likely": 0.4547,
+   "lnDF_max": 1.2187
+  },
+  "SiO2": {
+   "retention_factor": 0.99926,
+   "lnDF_min": 4.6597,
+   "lnDF_most_likely": 7.3324,
+   "lnDF_max": 9.7527
+  },
+  "Sm2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "SnO2": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "SrO": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 3.7773,
+   "lnDF_most_likely": 4.7158,
+   "lnDF_max": 5.6595
+  },
+  "Ta2O5": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Tc2O7": {
+   "retention_factor": 0.43049,
+   "lnDF_min": 0.0953,
+   "lnDF_most_likely": 0.47,
+   "lnDF_max": 1.6094
+  },
+  "TeO2": {
+   "retention_factor": 0.77121,
+   "lnDF_min": 0.0643,
+   "lnDF_most_likely": 1.4803,
+   "lnDF_max": 5.591
+  },
+  "ThO2": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "TiO2": {
+   "retention_factor": 0.99752,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.0313,
+   "lnDF_max": 8.074
+  },
+  "Tl2O": {
+   "retention_factor": 0.77121,
+   "lnDF_min": 0.0643,
+   "lnDF_most_likely": 1.4803,
+   "lnDF_max": 5.591
+  },
+  "UO3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "V2O5": {
+   "retention_factor": 0.97803,
+   "lnDF_min": 1.8563,
+   "lnDF_most_likely": 4.1638,
+   "lnDF_max": 6.9256
+  },
+  "WO3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "Y2O3": {
+   "retention_factor": 0.99721,
+   "lnDF_min": 2.6027,
+   "lnDF_most_likely": 6.1079,
+   "lnDF_max": 11.1239
+  },
+  "ZnO": {
+   "retention_factor": 0.99773,
+   "lnDF_min": 4.0656,
+   "lnDF_most_likely": 5.9819,
+   "lnDF_max": 7.8709
+  },
+  "ZrO2": {
+   "retention_factor": 0.99982,
+   "lnDF_min": 4.2121,
+   "lnDF_most_likely": 8.6115,
+   "lnDF_max": 11.1239
+  }
+ }
+}

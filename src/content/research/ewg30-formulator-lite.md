@@ -31,4 +31,4 @@ The template ships pre-filled with the report's Table 3.4 "High Al2O3" example w
 
 ## What's next
 
-The same engine powers the [glass property explorer](/glass-explorer/) in the browser and the formulation step of the [campaign builder](/research/ewg-campaign-builder/). Lite is the portable piece of that chain: no server, no GUI, stdlib-plus-numpy/scipy/openpyxl only.
+You don't even need the CLI: the same engine runs [in your browser on this site](/ewg30-formulator/), byte-identical, executed as WebAssembly — pick an example waste, edit the vector, and watch waste loading and the 50 acceptance checks re-solve client-side. The CLI remains the portable piece of that chain: no server, no GUI, stdlib-plus-numpy/scipy/openpyxl only.
