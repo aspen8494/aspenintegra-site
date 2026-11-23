@@ -8,7 +8,7 @@ AuthName "Aspen Integra Members Portal"
 # On IONOS, discover yours with this one-time command over SFTP/SSH:
 #   pwd    (from the webspace root, then append the path below)
 # Typical IONOS form: /homepages/<customer-id>/d<node>/htdocs/members/.htpasswd
-AuthUserFile REPLACE_WITH_ABSOLUTE_SERVER_PATH_TO/members/.htpasswd
+AuthUserFile /home/www/aspenintegra/members/.htpasswd
 AuthGroupFile /dev/null
 Require valid-user
 

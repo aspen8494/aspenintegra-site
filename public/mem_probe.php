@@ -1,1 +1,0 @@
-<?php echo "ABSPATH=" . realpath(__DIR__);
