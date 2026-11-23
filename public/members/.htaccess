@@ -2,3 +2,8 @@ AuthType Basic
 AuthName "Aspen Integra Members Portal"
 AuthUserFile /home/www/aspenintegra/members/.htpasswd
 Require valid-user
+
+# never serve credential/template files (defense beyond the auth gate)
+<FilesMatch "^(\.htpasswd|README)$">
+  Require all denied
+</FilesMatch>
