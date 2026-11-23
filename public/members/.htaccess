@@ -1,22 +1,4 @@
-# Members portal access gate (Apache 2.4 / IONOS)
-# Basic Auth over the entire /members/ directory. Users authenticate against
-# the bundled .htpasswd. HTTPS is enforced by the site root .htaccess before
-# this directory handles the request, so credentials never travel in the clear.
 AuthType Basic
 AuthName "Aspen Integra Members Portal"
-# NOTE: AuthUserFile requires the ABSOLUTE server path of the .htpasswd.
-# On IONOS, discover yours with this one-time command over SFTP/SSH:
-#   pwd    (from the webspace root, then append the path below)
-# Typical IONOS form: /homepages/<customer-id>/d<node>/htdocs/members/.htpasswd
 AuthUserFile /home/www/aspenintegra/members/.htpasswd
-AuthGroupFile /dev/null
 Require valid-user
-
-# The portal index and any listed downloads are authenticated; nothing else
-# is served from this directory.
-Options -Indexes
-
-# Never serve credential or template files themselves.
-<FilesMatch "^(\.htaccess|\.htpasswd|README)$">
-  Require all denied
-</FilesMatch>
