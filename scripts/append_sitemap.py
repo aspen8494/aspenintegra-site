@@ -33,6 +33,22 @@ def main() -> int:
 
     xml = SITEMAP.read_text(encoding="utf-8")
 
+    # Private routes must never be indexed — strip them if Astro emitted them.
+    removed = []
+    for private in ("/members/",):
+        tag = f"<url><loc>https://aspenintegra.com{private}</loc></url>"
+        if tag in xml:
+            xml = xml.replace(tag, "")
+            removed.append(private)
+        # tolerate self-closing/attribute variants Astro may emit
+        else:
+            import re as _re
+            xml, n = _re.subn(r"<url>\s*<loc>https://aspenintegra\.com" + private.replace("/", r"\/") + r"</loc>.*?</url>", "", xml)
+            if n:
+                removed.append(private)
+    if removed:
+        print("Sitemap: removed private route(s):", removed)
+
     added = []
     for url in APP_URLS:
         if f"<loc>{url}</loc>" in xml:

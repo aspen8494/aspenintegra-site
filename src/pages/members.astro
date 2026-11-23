@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Base.astro';
+
+// Served from the /members/ directory, which carries server-side Basic Auth
+// on the host (.htaccess + .htpasswd). The page content itself is not secret;
+// the gate is what protects the linked exports.
+---
+
+<Layout
+  title="Members Portal"
+  description="Members-only downloads: full-application exports, mission reports, and datasets for registered members."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Members portal</p>
+      <h1>Members downloads</h1>
+      <p class="lede">
+        Welcome. This portal carries the full-application exports — mission reports,
+        dataset downloads, and workbooks — for registered members. If you can read this
+        page, your access works.
+      </p>
+    </div>
+  </section>
+
+  <section class="container section">
+    <h2>Available downloads</h2>
+    <ul class="member-list">
+      <li class="member-item unavailable">
+        <strong>Mission reports (PDF)</strong>
+        <span>Full-application scenario reports — first release pending.</span>
+      </li>
+      <li class="member-item unavailable">
+        <strong>Mission workbooks (Excel)</strong>
+        <span>Per-campaign summary + stream ledgers from the full model.</span>
+      </li>
+      <li class="member-item unavailable">
+        <strong>Layer-vector datasets</strong>
+        <span>Fixed snapshots of the blend space behind the formulation engine.</span>
+      </li>
+    </ul>
+    <p class="muted" style="margin-top:14px">
+      Downloads appear here as releases ship. Questions about access:
+      <a href="/contact/">contact</a>.
+    </p>
+  </section>
+</Layout>
